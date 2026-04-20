@@ -20,7 +20,8 @@
     "check:fix": "biome check --write src/",
     "preview": "vite preview --mode ssr",
     "qwik": "qwik",
-    "test": "vitest"
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@builder.io/qwik": "^1.17.1",
