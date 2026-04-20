@@ -111,7 +111,7 @@ jobs:
       - name: 📊 Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
         with:
-          configPath: './lighthouse.config.js'
+          configPath: './lighthouse.config.cjs'
           uploadArtifacts: true
           temporaryPublicStorage: true
 
