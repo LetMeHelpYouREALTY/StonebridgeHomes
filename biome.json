@@ -1,7 +1,13 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "$schema": "https://biomejs.dev/schemas/2.3.1/schema.json",
+  "root": true,
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "linter": {
     "enabled": true,
@@ -48,15 +54,13 @@
     }
   },
   "files": {
-    "include": [
+    "includes": [
       "src/**/*.{js,jsx,ts,tsx}",
-      "*.{js,jsx,ts,tsx,json}"
-    ],
-    "ignore": [
-      "node_modules/**",
-      "dist/**",
-      ".vercel/**",
-      "public/**"
+      "*.{js,jsx,ts,tsx,json}",
+      "!node_modules/**",
+      "!dist/**",
+      "!.vercel/**",
+      "!public/**"
     ]
   }
 }

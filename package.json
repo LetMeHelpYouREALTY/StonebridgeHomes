@@ -20,7 +20,8 @@
     "check:fix": "biome check --write src/",
     "preview": "vite preview --mode ssr",
     "qwik": "qwik",
-    "test": "vitest"
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@builder.io/qwik": "^1.17.1",
@@ -43,7 +44,7 @@
     "@rollup/rollup-win32-x64-msvc": "^4.52.5"
   },
   "engines": {
-    "node": ">=18.17.0"
+    "node": ">=20.0.0"
   },
   "keywords": [
     "real-estate",
