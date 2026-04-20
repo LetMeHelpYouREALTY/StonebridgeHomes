@@ -43,7 +43,7 @@
     "@rollup/rollup-win32-x64-msvc": "^4.52.5"
   },
   "engines": {
-    "node": ">=18.17.0"
+    "node": ">=20.0.0"
   },
   "keywords": [
     "real-estate",
