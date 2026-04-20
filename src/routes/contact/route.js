@@ -1,5 +1,5 @@
 export default {
-  data: ({ request }) => {
+  data: () => {
     return {
       contactInfo: {
         agentName: "Dr. Jan Duffy",
