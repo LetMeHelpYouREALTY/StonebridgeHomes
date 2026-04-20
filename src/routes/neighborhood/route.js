@@ -1,5 +1,5 @@
 export default {
-  data: ({ request }) => {
+  data: () => {
     return {
       neighborhood: {
         name: "Summerlin",

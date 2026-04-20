@@ -63,8 +63,8 @@ export default component$(() => {
                 { icon: '🚶‍♀️', title: 'Walking Trails', description: 'Scenic walking trails throughout the community' },
                 { icon: '🌳', title: 'Parks & Recreation', description: 'Beautiful parks and recreational areas for families' },
                 { icon: '🏛️', title: 'Community Clubhouse', description: 'Elegant clubhouse for events and community gatherings' }
-              ].map((amenity, index) => (
-                <div key={index} class="heritage-card p-6 text-center">
+              ].map((amenity) => (
+                <div key={amenity.title} class="heritage-card p-6 text-center">
                   <div class="text-4xl mb-4">{amenity.icon}</div>
                   <h3 class="text-xl font-semibold mb-3">{amenity.title}</h3>
                   <p class="text-gray-600">{amenity.description}</p>

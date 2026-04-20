@@ -1,5 +1,5 @@
 export default {
-  data: ({ request, params }) => {
+  data: ({ params }) => {
     // Mock property data - in a real app, this would fetch from a database
     const properties = {
       "hs-001": {
