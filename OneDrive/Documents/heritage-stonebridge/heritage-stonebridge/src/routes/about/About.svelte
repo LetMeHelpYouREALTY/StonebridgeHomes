@@ -1,8 +1,8 @@
 <script>
   import SEO from '../../components/SEO.svelte';
-  
+
   export let data;
-  
+
   const { community, history, amenities, location, schools, lifestyle } = data;
 </script>
 
@@ -45,7 +45,7 @@
           </p>
         {/each}
       </div>
-      
+
       <div class="heritage-card p-8 bg-heritage-light">
         <h3 class="heritage-heading text-2xl mb-6">Community Highlights</h3>
         <div class="space-y-4">
@@ -94,7 +94,7 @@
         <p class="text-gray-700 mb-6 leading-relaxed">
           {location.description}
         </p>
-        
+
         <h3 class="font-semibold text-lg mb-4">Location Highlights:</h3>
         <ul class="space-y-2 mb-8">
           {#each location.highlights as highlight}
@@ -104,7 +104,7 @@
             </li>
           {/each}
         </ul>
-        
+
         <h3 class="font-semibold text-lg mb-4">Nearby Attractions:</h3>
         <ul class="space-y-2">
           {#each location.nearbyAttractions as attraction}
@@ -115,7 +115,7 @@
           {/each}
         </ul>
       </div>
-      
+
       <div class="heritage-card p-8">
         <h3 class="heritage-heading text-2xl mb-6">Community Vision</h3>
         <blockquote class="text-lg text-gray-700 italic leading-relaxed">
@@ -132,7 +132,7 @@
     <p class="text-center text-gray-700 mb-12 max-w-3xl mx-auto">
       {schools.description}
     </p>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div class="heritage-card p-6">
         <h3 class="font-semibold text-heritage-primary mb-4">Elementary Schools</h3>
@@ -142,7 +142,7 @@
           {/each}
         </ul>
       </div>
-      
+
       <div class="heritage-card p-6">
         <h3 class="font-semibold text-heritage-primary mb-4">Middle Schools</h3>
         <ul class="space-y-2">
@@ -151,7 +151,7 @@
           {/each}
         </ul>
       </div>
-      
+
       <div class="heritage-card p-6">
         <h3 class="font-semibold text-heritage-primary mb-4">High Schools</h3>
         <ul class="space-y-2">
@@ -160,7 +160,7 @@
           {/each}
         </ul>
       </div>
-      
+
       <div class="heritage-card p-6">
         <h3 class="font-semibold text-heritage-primary mb-4">Universities</h3>
         <ul class="space-y-2">
@@ -179,7 +179,7 @@
     <p class="text-center text-gray-700 mb-12 max-w-3xl mx-auto">
       {lifestyle.description}
     </p>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {#each lifestyle.features as feature}
         <div class="flex items-center space-x-3 p-4 bg-heritage-light rounded-lg">
@@ -188,7 +188,7 @@
         </div>
       {/each}
     </div>
-    
+
     <div class="text-center mt-12">
       <a href="/contact" class="heritage-button text-lg px-8 py-4">
         Learn More About Living Here

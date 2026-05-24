@@ -243,3 +243,4 @@ npm run analyze
 **Built with ❤ by Dr. Jan Duffy for Heritage at Stonebridge**
 
 *For questions or support, contact: jan.duffy@heritagestonebridge.com*
+

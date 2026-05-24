@@ -1,7 +1,10 @@
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Script from 'next/script'
+import NearbyNeighborhoods from '@/components/neighborhoods/NearbyNeighborhoods'
+import NeighborhoodBreadcrumbSchema from '@/components/neighborhoods/NeighborhoodBreadcrumbSchema'
+import HyperLocalSeoSection from '@/components/neighborhoods/HyperLocalSeoSection'
+import RealScoutListings from '@/components/neighborhoods/RealScoutListings'
 
 export const metadata: Metadata = {
   title:
@@ -10,18 +13,31 @@ export const metadata: Metadata = {
     'View current Green Valley Henderson homes for sale with live MLS data. Complete buyer guide: HOA fees ($120-180/month), schools, shopping distances, and neighborhood insights.',
   keywords:
     'Green Valley Henderson homes for sale, Green Valley MLS listings, Henderson real estate, Green Valley Ranch homes',
+  alternates: {
+    canonical: '/neighborhoods/green-valley',
+  },
+  openGraph: {
+    title: 'Green Valley Henderson Homes for Sale | Live MLS Listings',
+    description:
+      'Explore live Green Valley Henderson homes for sale, local market trends, HOA details, school insights, and buyer guidance.',
+    url: 'https://searchforhomesinhenderson.com/neighborhoods/green-valley',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Green Valley Henderson Homes for Sale',
+    description:
+      'Live Green Valley listings, neighborhood insights, and local buyer guidance in Henderson, Nevada.',
+  },
 }
 
 export default function GreenValleyPage() {
   return (
     <>
-      {/* RealScout Script in Head */}
-      <Script
-        src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-        type="module"
-        strategy="afterInteractive"
+      <NeighborhoodBreadcrumbSchema
+        neighborhoodName="Green Valley"
+        neighborhoodPath="/neighborhoods/green-valley"
       />
-
       <main>
         <Breadcrumbs />
 
@@ -59,53 +75,11 @@ export default function GreenValleyPage() {
           </div>
         </section>
 
-        {/* LIVE MLS LISTINGS - REALSCOUT WIDGET */}
+        {/* LIVE MLS LISTINGS - REALSCOUT INTEGRATION */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">
-                  Current Green Valley Henderson Homes for Sale
-                </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto">
-                  Live MLS listings updated every 15 minutes. Filtered for Green
-                  Valley Henderson properties in the $500K-$1.2M range (single
-                  family homes and townhomes).
-                </p>
-              </div>
-
-              {/* RealScout Widget with Green Valley specific filtering */}
-              <div className="bg-gray-50 p-6 rounded-xl shadow-lg">
-                <realscout-office-listings
-                  agent-encoded-id="QWdlbnQtMjI1MDUw"
-                  sort-order="STATUS_AND_SIGNIFICANT_CHANGE"
-                  listing-status="For Sale"
-                  property-types="SFR,MF"
-                  price-min="500000"
-                  price-max="1200000"
-                />
-
-                <div className="mt-6 text-center">
-                  <p className="text-sm text-gray-600 mb-4">
-                    Showing Green Valley Henderson homes • Updated every 15
-                    minutes from Greater Las Vegas MLS
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link
-                      href="/contact"
-                      className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
-                    >
-                      Schedule Green Valley Tour
-                    </Link>
-                    <Link
-                      href="/home-value"
-                      className="border-2 border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-600 hover:text-white transition-colors"
-                    >
-                      Get Green Valley Home Value
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <RealScoutListings neighborhood="Green Valley" />
             </div>
           </div>
         </section>
@@ -245,7 +219,6 @@ export default function GreenValleyPage() {
               <h2 className="text-3xl font-bold mb-8">
                 Green Valley School Information for Home Buyers
               </h2>
-
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white p-6 rounded-lg shadow">
                   <h3 className="text-xl font-semibold mb-3 text-blue-600">
@@ -492,75 +465,36 @@ export default function GreenValleyPage() {
           </div>
         </section>
 
-        {/* Internal Links to Other Neighborhoods */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">
-                Compare Green Valley to Other Henderson Communities
-              </h2>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Link
-                  href="/neighborhoods/anthem"
-                  className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-all group"
-                >
-                  <h3 className="text-xl font-semibold mb-3 text-purple-600 group-hover:text-purple-800">
-                    Anthem Henderson
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Hillside community with Las Vegas Strip views and Anthem
-                    Country Club. Similar luxury level but higher elevation and
-                    different amenities.
-                  </p>
-                  <div className="text-sm text-gray-500 mb-3">
-                    Price Range: $650K - $950K
-                  </div>
-                  <span className="text-blue-600 group-hover:underline font-medium">
-                    Compare Anthem vs Green Valley →
-                  </span>
-                </Link>
+        <NearbyNeighborhoods
+          currentSlug="green-valley"
+          currentName="Green Valley"
+        />
 
-                <Link
-                  href="/neighborhoods/seven-hills"
-                  className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-all group"
-                >
-                  <h3 className="text-xl font-semibold mb-3 text-orange-600 group-hover:text-orange-800">
-                    Seven Hills Henderson
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Ultra-luxury guard-gated community with Rio Secco Golf Club.
-                    More exclusive and private than Green Valley.
-                  </p>
-                  <div className="text-sm text-gray-500 mb-3">
-                    Price Range: $800K - $2M+
-                  </div>
-                  <span className="text-blue-600 group-hover:underline font-medium">
-                    Compare Seven Hills vs Green Valley →
-                  </span>
-                </Link>
-
-                <Link
-                  href="/neighborhoods/whitney-ranch"
-                  className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-all group"
-                >
-                  <h3 className="text-xl font-semibold mb-3 text-blue-600 group-hover:text-blue-800">
-                    Whitney Ranch Henderson
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Family-friendly community with excellent value and mature
-                    landscaping. More affordable alternative to Green Valley.
-                  </p>
-                  <div className="text-sm text-gray-500 mb-3">
-                    Price Range: $400K - $600K
-                  </div>
-                  <span className="text-blue-600 group-hover:underline font-medium">
-                    Compare Whitney Ranch vs Green Valley →
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HyperLocalSeoSection
+          neighborhoodName="Green Valley"
+          faq={[
+            {
+              question: 'What is the typical home price range in Green Valley?',
+              answer:
+                'Most Green Valley resale homes fall between the high $700Ks and low $1.2M range, with pricing varying by sub-community, lot size, and property updates.',
+            },
+            {
+              question: 'How competitive is Green Valley for buyers?',
+              answer:
+                'Well-presented homes in desirable pockets often move quickly. Buyers should monitor new listings daily and be pre-approved before touring.',
+            },
+            {
+              question: 'Are HOA communities common in Green Valley?',
+              answer:
+                'Yes, many Green Valley neighborhoods include HOA governance with monthly dues that generally support landscaping, common areas, and neighborhood amenities.',
+            },
+            {
+              question: 'Can I schedule a Green Valley area tour?',
+              answer:
+                'Yes. We can set up a neighborhood tour with active listings, recent comps, and school-zone context so you can compare options efficiently.',
+            },
+          ]}
+        />
 
         {/* Contact CTA with Local Focus */}
         <section className="py-16 bg-green-600 text-white">

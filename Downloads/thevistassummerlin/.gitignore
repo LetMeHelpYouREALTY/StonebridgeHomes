@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+.next/
+out/
+
+# Env & local
+.env
+.env.*
+!.env.example
+.vercel
+
+# Debug / IDE (keep repo clean under home-directory git)
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TypeScript
+next-env.d.ts
+
+# Testing
+coverage/

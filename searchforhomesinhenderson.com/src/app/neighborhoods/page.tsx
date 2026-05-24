@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import StructuredData, { webPageData } from '@/components/StructuredData'
+import HyperLocalSeoSection from '@/components/neighborhoods/HyperLocalSeoSection'
 
 export const metadata: Metadata = {
   title:
@@ -416,6 +417,32 @@ export default function NeighborhoodsPage() {
             </div>
           </div>
         </section>
+
+        <HyperLocalSeoSection
+          neighborhoodName="Henderson Neighborhoods"
+          faq={[
+            {
+              question: 'Which Henderson neighborhoods are most in demand?',
+              answer:
+                'Buyer demand is strongest in established, amenity-rich areas including Green Valley, Anthem, Stephanie Ranch, and Whitney Ranch, with demand varying by budget segment.',
+            },
+            {
+              question: 'How should I compare neighborhoods before buying?',
+              answer:
+                'Compare each area by commute, school zones, HOA structure, lot sizes, and recent sold prices, then tour top choices in the same week for cleaner decision-making.',
+            },
+            {
+              question: 'Can I get hyper-local market data before making an offer?',
+              answer:
+                'Yes. We provide neighborhood-level sold comps, active inventory trends, and days-on-market context so offers are grounded in current conditions.',
+            },
+            {
+              question: 'What is the fastest way to start a neighborhood search?',
+              answer:
+                'Begin with a targeted consultation and live listing setup so you receive alerts for matching homes in your preferred Henderson neighborhoods.',
+            },
+          ]}
+        />
 
         {/* CTA Section */}
         <section className="py-16 bg-purple-600 text-white">
