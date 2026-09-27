@@ -1,26 +1,11 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { WhatsNearbySection } from '~/components/hyperlocal/WhatsNearbySection';
+import { heritageRealEstateAgentSchema } from '~/lib/schema/realEstateAgent';
 import { StructuredData } from '../components/StructuredData';
 
 export default component$(() => {
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
-    'name': 'Dr. Jan Duffy',
-    'jobTitle': 'Real Estate Agent',
-    'telephone': '(702) 222-1964',
-    'email': 'jan.duffy@heritagestonebridge.com',
-    'address': {
-      '@type': 'PostalAddress',
-      'addressLocality': 'Summerlin',
-      'addressRegion': 'NV',
-      'addressCountry': 'US',
-    },
-    'areaServed': {
-      '@type': 'City',
-      'name': 'Las Vegas',
-    },
-  };
+  const structuredData = heritageRealEstateAgentSchema();
 
   return (
     <div class="min-h-screen bg-heritage-light">
@@ -77,9 +62,7 @@ export default component$(() => {
             <div class="heritage-card p-6 text-center">
               <div class="text-4xl mb-4">📐</div>
               <h2 class="text-xl font-semibold mb-3">Floor Plans</h2>
-              <p class="text-gray-600 mb-4">
-                Explore our available floor plans and home designs.
-              </p>
+              <p class="text-gray-600 mb-4">Explore our available floor plans and home designs.</p>
               <a href="/homes" class="heritage-button text-sm">
                 View Plans →
               </a>
@@ -89,9 +72,7 @@ export default component$(() => {
             <div class="heritage-card p-6 text-center">
               <div class="text-4xl mb-4">📞</div>
               <h2 class="text-xl font-semibold mb-3">Contact Us</h2>
-              <p class="text-gray-600 mb-4">
-                Schedule a tour or request more information.
-              </p>
+              <p class="text-gray-600 mb-4">Schedule a tour or request more information.</p>
               <a href="/contact" class="heritage-button text-sm">
                 Get In Touch →
               </a>
@@ -110,13 +91,21 @@ export default component$(() => {
                 <h3 class="text-2xl font-semibold mb-4">Dr. Jan Duffy</h3>
                 <p class="mb-4">Real Estate Professional</p>
                 <p class="mb-6">
-                  With extensive experience in the Summerlin real estate market, Dr. Jan Duffy specializes in luxury homes and provides personalized service to help you find your dream home in Heritage at Stonebridge.
+                  With extensive experience in the Summerlin real estate market, Dr. Jan Duffy
+                  specializes in luxury homes and provides personalized service to help you find
+                  your dream home in Heritage at Stonebridge.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                  <a href="tel:702-222-1964" class="bg-white text-heritage-primary px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+                  <a
+                    href="tel:702-222-1964"
+                    class="bg-white text-heritage-primary px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors"
+                  >
                     📞 (702) 222-1964
                   </a>
-                  <a href="mailto:jan.duffy@heritagestonebridge.com" class="bg-heritage-secondary text-white px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-colors">
+                  <a
+                    href="mailto:jan.duffy@heritagestonebridge.com"
+                    class="bg-heritage-secondary text-white px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-colors"
+                  >
                     📧 Email Dr. Duffy
                   </a>
                 </div>
@@ -130,6 +119,8 @@ export default component$(() => {
           </div>
         </div>
       </section>
+
+      <WhatsNearbySection />
 
       {/* Community Stats */}
       <section class="py-16 bg-white">
@@ -166,11 +157,13 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: 'Discover luxury living at Heritage at Stonebridge in Summerlin, Las Vegas. Custom homes, resort-style amenities, and A-rated schools. Your Dr. Jan Duffy, local expert.',
+      content:
+        'Discover luxury living at Heritage at Stonebridge in Summerlin, Las Vegas. Custom homes, resort-style amenities, and A-rated schools. Your Dr. Jan Duffy, local expert.',
     },
     {
       name: 'keywords',
-      content: 'Heritage Stonebridge, Summerlin homes, Las Vegas real estate, luxury homes, Dr. Jan Duffy, gated community, custom homes, resort amenities, A-rated schools',
+      content:
+        'Heritage Stonebridge, Summerlin homes, Las Vegas real estate, luxury homes, Dr. Jan Duffy, gated community, custom homes, resort amenities, A-rated schools',
     },
     {
       name: 'author',
