@@ -1,13 +1,42 @@
 import { component$ } from '@builder.io/qwik';
 import { Form, routeAction$ } from '@builder.io/qwik-city';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import {
+  CONTACT_ERROR_MESSAGE,
+  getFollowUpBossApiKey,
+  sendFollowUpBossEvent,
+  validateContactPayload,
+  type ContactFormPayload,
+} from '~/lib/follow-up-boss';
 
-export const useContactAction = routeAction$(async (values) => {
-  // This would typically send an email or save to a database
-  console.log('Contact form submitted:', values);
+export const useContactAction = routeAction$(async (values, event) => {
+  const payload = values as ContactFormPayload;
+  const fallbackSourceUrl =
+    event.request.headers.get('referer') ?? `${event.url.origin}/contact`;
+  const validation = validateContactPayload(payload, fallbackSourceUrl);
+
+  if (!validation.ok) {
+    return event.fail(validation.status, {
+      success: false,
+      message: validation.error,
+    });
+  }
+
+  const apiKey = getFollowUpBossApiKey(event.env);
+  const result = await sendFollowUpBossEvent(validation.data, { apiKey });
+
+  if (!result.ok) {
+    const message =
+      result.status === 503 ? result.error : CONTACT_ERROR_MESSAGE;
+    return event.fail(result.status, {
+      success: false,
+      message,
+    });
+  }
+
   return {
     success: true,
-    message: 'Thank you for your message! We will get back to you soon.'
+    message: 'Thank you for your message! We will get back to you soon.',
   };
 });
 
@@ -81,6 +110,12 @@ export default component$(() => {
               <div class="heritage-card p-6">
                 {contactAction.value?.success && (
                   <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                    {contactAction.value.message}
+                  </div>
+                )}
+
+                {contactAction.value?.failed && (
+                  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
                     {contactAction.value.message}
                   </div>
                 )}
@@ -172,8 +207,9 @@ export default component$(() => {
                   <button
                     type="submit"
                     class="w-full heritage-button"
+                    disabled={contactAction.isRunning}
                   >
-                    Send Message
+                    {contactAction.isRunning ? 'Sending...' : 'Send Message'}
                   </button>
                 </Form>
               </div>

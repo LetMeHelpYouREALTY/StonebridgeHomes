@@ -80,8 +80,7 @@ export class FUBApiService {
   private cacheTTL = 15 * 60 * 1000 // 15 minutes
 
   constructor() {
-    this.apiKey =
-      process.env.FUB_API_KEY || 'fka_0N4mnNW7Q94BLjEMKvoC0Lz9bYtIH0dU5c'
+    this.apiKey = process.env.FOLLOW_UP_BOSS_API_KEY ?? process.env.FUB_API_KEY ?? ''
     this.baseUrl = 'https://api.followupboss.com/v1'
   }
 
