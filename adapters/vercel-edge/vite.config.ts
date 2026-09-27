@@ -6,7 +6,18 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => {
   return {
-    plugins: [qwikCity(), qwikVite(), vercelEdgeAdapter(), tsconfigPaths()],
+    plugins: [
+      qwikCity(),
+      qwikVite(),
+      vercelEdgeAdapter({
+        target: 'node',
+        ssg: {
+          include: ['/*'],
+          origin: 'https://stonebridge-homes.vercel.app',
+        },
+      }),
+      tsconfigPaths(),
+    ],
     build: {
       ssr: true,
       rollupOptions: {
@@ -15,7 +26,7 @@ export default defineConfig(() => {
       outDir: '.vercel/output/functions/_qwik-city.func',
     },
     ssr: {
-      target: 'webworker',
+      target: 'node',
       noExternal: true,
     },
   };
