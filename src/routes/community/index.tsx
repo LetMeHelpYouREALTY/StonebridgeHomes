@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { WhatsNearbySection } from '~/components/hyperlocal/WhatsNearbySection';
 
 export default component$(() => {
   return (
@@ -21,7 +22,10 @@ export default component$(() => {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
                 <p class="text-lg mb-6">
-                  Heritage at Stonebridge is a premier gated community offering luxury homes with stunning mountain and valley views. Located in the heart of Summerlin, this exclusive neighborhood provides residents with an unparalleled lifestyle experience.
+                  Heritage at Stonebridge is a premier gated community offering luxury homes with
+                  stunning mountain and valley views. Located in the heart of Summerlin, this
+                  exclusive neighborhood provides residents with an unparalleled lifestyle
+                  experience.
                 </p>
                 <div class="space-y-4">
                   <div class="flex items-center">
@@ -55,14 +59,48 @@ export default component$(() => {
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { icon: '🏊‍♀️', title: 'Resort-Style Pool & Spa', description: 'Luxurious pool area with spa, perfect for relaxation and entertaining' },
-                { icon: '⛳', title: 'Championship Golf Course', description: 'Access to world-class golf courses designed by renowned architects' },
-                { icon: '💪', title: 'Fitness Center', description: 'State-of-the-art fitness facilities with personal training available' },
-                { icon: '🎾', title: 'Tennis Courts', description: 'Professional tennis courts for residents and guests' },
-                { icon: '🔒', title: 'Gated Security', description: '24/7 security with controlled access for peace of mind' },
-                { icon: '🚶‍♀️', title: 'Walking Trails', description: 'Scenic walking trails throughout the community' },
-                { icon: '🌳', title: 'Parks & Recreation', description: 'Beautiful parks and recreational areas for families' },
-                { icon: '🏛️', title: 'Community Clubhouse', description: 'Elegant clubhouse for events and community gatherings' }
+                {
+                  icon: '🏊‍♀️',
+                  title: 'Resort-Style Pool & Spa',
+                  description:
+                    'Luxurious pool area with spa, perfect for relaxation and entertaining',
+                },
+                {
+                  icon: '⛳',
+                  title: 'Championship Golf Course',
+                  description: 'Access to world-class golf courses designed by renowned architects',
+                },
+                {
+                  icon: '💪',
+                  title: 'Fitness Center',
+                  description:
+                    'State-of-the-art fitness facilities with personal training available',
+                },
+                {
+                  icon: '🎾',
+                  title: 'Tennis Courts',
+                  description: 'Professional tennis courts for residents and guests',
+                },
+                {
+                  icon: '🔒',
+                  title: 'Gated Security',
+                  description: '24/7 security with controlled access for peace of mind',
+                },
+                {
+                  icon: '🚶‍♀️',
+                  title: 'Walking Trails',
+                  description: 'Scenic walking trails throughout the community',
+                },
+                {
+                  icon: '🌳',
+                  title: 'Parks & Recreation',
+                  description: 'Beautiful parks and recreational areas for families',
+                },
+                {
+                  icon: '🏛️',
+                  title: 'Community Clubhouse',
+                  description: 'Elegant clubhouse for events and community gatherings',
+                },
               ].map((amenity) => (
                 <div key={amenity.title} class="heritage-card p-6 text-center">
                   <div class="text-4xl mb-4">{amenity.icon}</div>
@@ -151,6 +189,8 @@ export default component$(() => {
           </div>
         </div>
       </section>
+
+      <WhatsNearbySection id="community-nearby" />
     </div>
   );
 });
@@ -160,7 +200,8 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: 'Discover Heritage at Stonebridge, a premier gated community in Summerlin with resort-style amenities, luxury homes, and A-rated schools.',
+      content:
+        'Discover Heritage at Stonebridge, a premier gated community in Summerlin with resort-style amenities, luxury homes, and A-rated schools.',
     },
   ],
 };

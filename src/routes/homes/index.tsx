@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { WhatsNearbySection } from '~/components/hyperlocal/WhatsNearbySection';
 
 export default component$(() => {
   return (
@@ -38,7 +39,10 @@ export default component$(() => {
                 </div>
                 <div class="flex justify-between items-center">
                   <span class="text-green-600 font-semibold">Available</span>
-                  <a href="/homes/123-heritage-way" class="text-heritage-primary hover:text-heritage-secondary font-semibold">
+                  <a
+                    href="/homes/123-heritage-way"
+                    class="text-heritage-primary hover:text-heritage-secondary font-semibold"
+                  >
                     View Details →
                   </a>
                 </div>
@@ -69,7 +73,10 @@ export default component$(() => {
                 </div>
                 <div class="flex justify-between items-center">
                   <span class="text-green-600 font-semibold">Available</span>
-                  <a href="/homes/456-stonebridge-dr" class="text-heritage-primary hover:text-heritage-secondary font-semibold">
+                  <a
+                    href="/homes/456-stonebridge-dr"
+                    class="text-heritage-primary hover:text-heritage-secondary font-semibold"
+                  >
                     View Details →
                   </a>
                 </div>
@@ -100,7 +107,10 @@ export default component$(() => {
                 </div>
                 <div class="flex justify-between items-center">
                   <span class="text-green-600 font-semibold">Available</span>
-                  <a href="/homes/789-heritage-lane" class="text-heritage-primary hover:text-heritage-secondary font-semibold">
+                  <a
+                    href="/homes/789-heritage-lane"
+                    class="text-heritage-primary hover:text-heritage-secondary font-semibold"
+                  >
                     View Details →
                   </a>
                 </div>
@@ -109,6 +119,8 @@ export default component$(() => {
           </div>
         </div>
       </section>
+
+      <WhatsNearbySection id="homes-nearby" />
     </div>
   );
 });
@@ -118,7 +130,8 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: 'Browse luxury homes for sale in Heritage at Stonebridge, Summerlin. Custom homes with resort-style amenities and A-rated schools.',
+      content:
+        'Browse luxury homes for sale in Heritage at Stonebridge, Summerlin. Custom homes with resort-style amenities and A-rated schools.',
     },
   ],
 };
