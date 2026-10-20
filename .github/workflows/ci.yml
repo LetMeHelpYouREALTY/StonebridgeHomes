@@ -86,42 +86,39 @@ jobs:
       - name: 🔒 Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 
-  # 📊 Performance Testing
+  # 📊 Performance Testing — audits the Vercel preview deployment, not
+  # a local server. The project uses Qwik + Vercel Edge SSR; auditing
+  # the real preview captures CDN, edge SSR, and real network behavior
+  # instead of an approximated local build. Requires a Vercel preview
+  # deployment, so this job only runs on pull_request events.
   performance:
     name: 📊 Performance Testing
     runs-on: ubuntu-latest
-    # Known issue: Lighthouse gets HTTP 400 from Qwik's preview server
-    # on CI (page loads but LHCI reports "unable to reliably load").
-    # Config path / ESM loading are correct as of this PR — the
-    # remaining failure is an infrastructure issue between Qwik preview
-    # and Chrome's request (likely a Host-header or SSR-entry concern)
-    # that requires local repro to diagnose. Unblocks the PR gate
-    # without silencing the job — failures stay visible.
-    continue-on-error: true
+    if: github.event_name == 'pull_request'
 
     steps:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-          cache-dependency-path: package-lock.json
+          # LHCI compares against ancestor commits; a shallow clone
+          # breaks that and surfaces as "Could not find hash" errors.
+          fetch-depth: 20
 
-      - name: 📦 Install Dependencies
-        run: npm ci --prefer-offline --no-audit
-
-      - name: 🏗️ Build Project
-        run: npm run build
+      - name: ⏳ Wait for Vercel Preview Deployment
+        id: vercel_preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 600
 
       - name: 📊 Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
         with:
+          urls: ${{ steps.vercel_preview.outputs.url }}
           configPath: './lighthouse.config.cjs'
           uploadArtifacts: true
           temporaryPublicStorage: true
+          runs: 3
 
   # 🧹 Dependency Updates
   dependencies:
