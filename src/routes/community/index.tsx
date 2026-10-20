@@ -1,9 +1,20 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { StructuredData } from '../../components/StructuredData';
 
 export default component$(() => {
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://heritagestonebridge.com' },
+      { '@type': 'ListItem', position: 2, name: 'Community', item: 'https://heritagestonebridge.com/community' },
+    ],
+  };
+
   return (
     <div class="min-h-screen bg-heritage-light">
+      <StructuredData data={breadcrumb} />
       <div class="hero-section">
         <div class="container-max text-center">
           <h1 class="text-4xl font-bold mb-4">Heritage at Stonebridge Community</h1>
@@ -21,7 +32,7 @@ export default component$(() => {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
                 <p class="text-lg mb-6">
-                  Heritage at Stonebridge is a premier gated community offering luxury homes with stunning mountain and valley views. Located in the heart of Summerlin, this exclusive neighborhood provides residents with an unparalleled lifestyle experience.
+                  Heritage at Stonebridge is a premier gated community offering luxury homes with stunning mountain and valley views. Located in the heart of Summerlin, this gated neighborhood provides residents with an unparalleled lifestyle experience.
                 </p>
                 <div class="space-y-4">
                   <div class="flex items-center">
@@ -38,7 +49,7 @@ export default component$(() => {
                   </div>
                   <div class="flex items-center">
                     <span class="text-heritage-primary mr-3">✓</span>
-                    <span>A-rated schools nearby</span>
+                    <span>Public schools nearby</span>
                   </div>
                 </div>
               </div>
@@ -102,7 +113,7 @@ export default component$(() => {
               </div>
 
               <div class="heritage-card p-6">
-                <h3 class="text-2xl font-semibold mb-4">Excellent Schools</h3>
+                <h3 class="text-2xl font-semibold mb-4">Schools</h3>
                 <div class="space-y-3">
                   <div class="flex items-center">
                     <span class="text-heritage-primary mr-3">🏫</span>
@@ -110,7 +121,7 @@ export default component$(() => {
                   </div>
                   <div class="flex items-center">
                     <span class="text-heritage-primary mr-3">⭐</span>
-                    <span>A-rated elementary and high schools</span>
+                    <span>Elementary and high schools nearby</span>
                   </div>
                   <div class="flex items-center">
                     <span class="text-heritage-primary mr-3">🎓</span>
@@ -144,8 +155,8 @@ export default component$(() => {
                 <div class="text-lg text-gray-600">Year Built</div>
               </div>
               <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">A+</div>
-                <div class="text-lg text-gray-600">School Rating</div>
+                <div class="text-4xl font-bold text-heritage-primary mb-2">24/7</div>
+                <div class="text-lg text-gray-600">Gated Security</div>
               </div>
             </div>
           </div>
@@ -160,7 +171,36 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: 'Discover Heritage at Stonebridge, a premier gated community in Summerlin with resort-style amenities, luxury homes, and A-rated schools.',
+      content:
+        'Discover Heritage at Stonebridge, a gated Summerlin community with resort-style amenities and custom luxury homes.',
+    },
+    { property: 'og:type', content: 'website' },
+    {
+      property: 'og:title',
+      content: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
+    },
+    {
+      property: 'og:description',
+      content: 'A gated Summerlin community with resort-style amenities and custom luxury homes.',
+    },
+    {
+      property: 'og:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
+    },
+    { property: 'og:url', content: 'https://heritagestonebridge.com/community' },
+    { property: 'og:site_name', content: 'Heritage at Stonebridge' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
+    },
+    {
+      name: 'twitter:description',
+      content: 'A gated Summerlin community with resort-style amenities and custom luxury homes.',
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
     },
   ],
 };
