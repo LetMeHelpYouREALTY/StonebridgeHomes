@@ -1,9 +1,20 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { StructuredData } from '../../components/StructuredData';
 
 export default component$(() => {
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://heritagestonebridge.com' },
+      { '@type': 'ListItem', position: 2, name: 'Homes', item: 'https://heritagestonebridge.com/homes' },
+    ],
+  };
+
   return (
     <div class="min-h-screen bg-heritage-light">
+      <StructuredData data={breadcrumb} />
       <div class="hero-section">
         <div class="container-max text-center">
           <h1 class="text-4xl font-bold mb-4">Available Properties</h1>

@@ -1,6 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import { Form, routeAction$ } from '@builder.io/qwik-city';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { StructuredData } from '../../components/StructuredData';
 
 export const useContactAction = routeAction$(async (values) => {
   // This would typically send an email or save to a database
@@ -13,9 +14,18 @@ export const useContactAction = routeAction$(async (values) => {
 
 export default component$(() => {
   const contactAction = useContactAction();
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://heritagestonebridge.com' },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://heritagestonebridge.com/contact' },
+    ],
+  };
 
   return (
     <div class="min-h-screen bg-heritage-light">
+      <StructuredData data={breadcrumb} />
       <div class="hero-section">
         <div class="container-max text-center">
           <h1 class="text-4xl font-bold mb-4">Contact Dr. Jan Duffy</h1>
