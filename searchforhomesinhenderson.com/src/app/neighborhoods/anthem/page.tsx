@@ -46,6 +46,16 @@ export default function AnthemPage() {
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Anthem Henderson Homes for Sale
               </h1>
+
+              {/* Direct Answer for AI Citation */}
+              <div className="bg-indigo-700/50 backdrop-blur-sm p-5 rounded-lg mb-6">
+                <p className="text-lg font-medium">
+                  <strong>Anthem Quick Facts:</strong> Elevated hillside community with homes $650K-$950K.
+                  HOA fees $110-$190/month. Anthem Country Club golf course access. Panoramic Las Vegas Valley views.
+                  Average 26 days on market. Newer construction with modern floor plans and energy-efficient features.
+                </p>
+              </div>
+
               <p className="text-xl mb-8">
                 Live MLS listings • Elevated hillside community • Golf and
                 country club access • Parks and trails • Strong school options

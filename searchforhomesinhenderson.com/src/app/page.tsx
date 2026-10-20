@@ -1,4 +1,5 @@
 import { RealScoutWidget } from '@/components/RealScoutWidget'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -72,8 +73,15 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
-      {/* Hero Section with H1 */}
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Henderson Real Estate', url: '/' },
+        ]}
+      />
+      <main className="min-h-screen">
+      {/* Hero Section with H1 - AEO Optimized with Direct Answer */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-center">
@@ -82,10 +90,37 @@ export default function HomePage() {
               Henderson, Nevada
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-center max-w-4xl mx-auto mb-8">
+
+          {/* AEO-Optimized Direct Answer (40-60 words for AI citation) */}
+          <div className="max-w-4xl mx-auto mb-8 bg-blue-700/50 backdrop-blur-sm p-6 rounded-lg">
+            <p className="text-lg md:text-xl font-medium mb-4">
+              <strong>Quick Answer:</strong> Henderson, Nevada offers homes from $400K (Whitney Ranch) to $1.2M+ (Green Valley).
+              Average time to sell is 30-45 days. Top family neighborhoods include Stephanie Ranch, Whitney Ranch, and Green Valley
+              with excellent schools and resort amenities. Licensed Henderson REALTOR with 15+ years local expertise.
+            </p>
+            <div className="grid md:grid-cols-4 gap-4 text-sm">
+              <div className="text-center">
+                <div className="text-2xl font-bold">$400K-$1.2M</div>
+                <div className="text-xs opacity-90">Price Range</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">30-45 days</div>
+                <div className="text-xs opacity-90">Avg. Sale Time</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">4 Areas</div>
+                <div className="text-xs opacity-90">Top Neighborhoods</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">15+ years</div>
+                <div className="text-xs opacity-90">Local Expertise</div>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-xl text-center max-w-4xl mx-auto mb-8">
             Discover exceptional properties in Henderson's premier residential
-            communities. Your perfect home awaits with our expert local guidance
-            and comprehensive market knowledge.
+            communities. Expert local guidance and comprehensive market knowledge.
           </p>
           <div className="text-center">
             <realscout-simple-search agent-encoded-id="QWdlbnQtMjI1MDUw" />
@@ -510,6 +545,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }

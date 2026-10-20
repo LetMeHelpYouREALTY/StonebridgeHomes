@@ -111,7 +111,9 @@ const realEstateSchema = {
   image: 'https://searchforhomesinhenderson.com/agent-photo.jpg',
   description:
     'Premier real estate services in Henderson, Nevada specializing in Green Valley, Anthem, Stephanie Ranch, and Whitney Ranch communities. Expert guidance from Dr. Jan Duffy with 15+ years local market expertise.',
-  dateModified: new Date().toISOString().split('T')[0],
+  dateModified: '2026-10-20',
+  datePublished: '2010-01-01',
+  lastReviewed: '2026-10-20',
   founder: {
     '@type': 'Person',
     name: 'Dr. Jan Duffy',

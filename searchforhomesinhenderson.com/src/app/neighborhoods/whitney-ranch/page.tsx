@@ -41,13 +41,23 @@ export default function WhitneyRanchPage() {
       <main>
         <Breadcrumbs />
 
-        {/* Hero with Hyper-Local Data */}
+        {/* Hero with Hyper-Local Data - AEO Optimized */}
         <section className="py-16 bg-gradient-to-r from-blue-600 to-cyan-700 text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Whitney Ranch Henderson Homes for Sale
               </h1>
+
+              {/* Direct Answer for AI Citation */}
+              <div className="bg-blue-700/50 backdrop-blur-sm p-5 rounded-lg mb-6">
+                <p className="text-lg font-medium">
+                  <strong>Whitney Ranch Quick Facts:</strong> Established Henderson community with homes $400K-$600K (best value in Henderson).
+                  HOA fees $60-$100/month. Mature landscaping with established trees. Whitney Elementary rated 8/10.
+                  Average 28 days on market. Most affordable option for families seeking quality schools and amenities.
+                </p>
+              </div>
+
               <p className="text-xl mb-8">
                 Live MLS listings • Family-friendly community • Mature
                 landscaping • Parks and recreation • Whitney Elementary (8/10

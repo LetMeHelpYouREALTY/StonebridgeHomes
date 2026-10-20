@@ -41,13 +41,23 @@ export default function StephanieRanchPage() {
       <main>
         <Breadcrumbs />
 
-        {/* Hero with Hyper-Local Data */}
+        {/* Hero with Hyper-Local Data - AEO Optimized */}
         <section className="py-16 bg-gradient-to-r from-orange-600 to-red-700 text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Stephanie Ranch Henderson Homes for Sale
               </h1>
+
+              {/* Direct Answer for AI Citation */}
+              <div className="bg-orange-700/50 backdrop-blur-sm p-5 rounded-lg mb-6">
+                <p className="text-lg font-medium">
+                  <strong>Stephanie Ranch Quick Facts:</strong> Family-friendly Henderson neighborhood with homes $450K-$650K.
+                  HOA fees $80-$120/month. Stephanie Elementary rated 9/10. Whitney Mesa Recreation Area nearby.
+                  Average 25 days on market. Affordable pricing with excellent schools makes it ideal for growing families.
+                </p>
+              </div>
+
               <p className="text-xl mb-8">
                 Live MLS listings • Family-friendly community • Excellent
                 schools • Parks and recreation • Stephanie Elementary (9/10

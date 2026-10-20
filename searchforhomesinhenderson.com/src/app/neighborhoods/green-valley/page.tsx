@@ -41,13 +41,23 @@ export default function GreenValleyPage() {
       <main>
         <Breadcrumbs />
 
-        {/* Hero with Hyper-Local Data */}
+        {/* Hero with Hyper-Local Data - AEO Optimized */}
         <section className="py-16 bg-gradient-to-r from-green-600 to-emerald-700 text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Green Valley Henderson Homes for Sale
               </h1>
+
+              {/* Direct Answer for AI Citation */}
+              <div className="bg-green-700/50 backdrop-blur-sm p-5 rounded-lg mb-6">
+                <p className="text-lg font-medium">
+                  <strong>Green Valley Quick Facts:</strong> Luxury master-planned community with homes $750K-$1.2M.
+                  HOA fees $120-$180/month covering landscaping, pools, and amenities. Green Valley High School rated 8/10.
+                  The District shopping center 0.3-1.2 miles from most homes. Average 18 days on market in 2026.
+                </p>
+              </div>
+
               <p className="text-xl mb-8">
                 Live MLS listings • Master-planned luxury community • The
                 District shopping • Green Valley High School (8/10 rating)
