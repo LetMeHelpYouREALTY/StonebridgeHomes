@@ -160,7 +160,36 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: 'Discover Heritage at Stonebridge, a premier gated community in Summerlin with resort-style amenities, luxury homes, and A-rated schools.',
+      content:
+        'Discover Heritage at Stonebridge, a gated Summerlin community with resort-style amenities and custom luxury homes.',
+    },
+    { property: 'og:type', content: 'website' },
+    {
+      property: 'og:title',
+      content: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
+    },
+    {
+      property: 'og:description',
+      content: 'A gated Summerlin community with resort-style amenities and custom luxury homes.',
+    },
+    {
+      property: 'og:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
+    },
+    { property: 'og:url', content: 'https://heritagestonebridge.com/community' },
+    { property: 'og:site_name', content: 'Heritage at Stonebridge' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
+    },
+    {
+      name: 'twitter:description',
+      content: 'A gated Summerlin community with resort-style amenities and custom luxury homes.',
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
     },
   ],
 };

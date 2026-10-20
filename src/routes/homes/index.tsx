@@ -114,11 +114,40 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Available Properties - Heritage at Stonebridge | Las Vegas Real Estate',
+  title: 'Homes for Sale | Heritage at Stonebridge Summerlin',
   meta: [
     {
       name: 'description',
-      content: 'Browse luxury homes for sale in Heritage at Stonebridge, Summerlin. Custom homes with resort-style amenities and A-rated schools.',
+      content:
+        'Browse luxury homes for sale in Heritage at Stonebridge, Summerlin — custom homes with resort-style amenities in a gated community.',
+    },
+    { property: 'og:type', content: 'website' },
+    {
+      property: 'og:title',
+      content: 'Homes for Sale | Heritage at Stonebridge Summerlin',
+    },
+    {
+      property: 'og:description',
+      content: 'Luxury homes for sale in Heritage at Stonebridge, Summerlin — custom homes in a gated community.',
+    },
+    {
+      property: 'og:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
+    },
+    { property: 'og:url', content: 'https://heritagestonebridge.com/homes' },
+    { property: 'og:site_name', content: 'Heritage at Stonebridge' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Homes for Sale | Heritage at Stonebridge Summerlin',
+    },
+    {
+      name: 'twitter:description',
+      content: 'Luxury homes for sale in Heritage at Stonebridge, Summerlin — custom homes in a gated community.',
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
     },
   ],
 };

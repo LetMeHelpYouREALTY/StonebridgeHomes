@@ -186,11 +186,40 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Contact Dr. Jan Duffy - Heritage at Stonebridge Real Estate Expert',
+  title: 'Contact Dr. Jan Duffy | Heritage at Stonebridge',
   meta: [
     {
       name: 'description',
-      content: 'Contact Dr. Jan Duffy for luxury real estate in Heritage at Stonebridge, Summerlin. Call (702) 222-1964 or email for personalized service.',
+      content:
+        'Contact Dr. Jan Duffy for luxury real estate in Heritage at Stonebridge, Summerlin — personalized service from a local expert.',
+    },
+    { property: 'og:type', content: 'website' },
+    {
+      property: 'og:title',
+      content: 'Contact Dr. Jan Duffy | Heritage at Stonebridge',
+    },
+    {
+      property: 'og:description',
+      content: 'Reach Dr. Jan Duffy for luxury real estate in Heritage at Stonebridge, Summerlin.',
+    },
+    {
+      property: 'og:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
+    },
+    { property: 'og:url', content: 'https://heritagestonebridge.com/contact' },
+    { property: 'og:site_name', content: 'Heritage at Stonebridge' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Contact Dr. Jan Duffy | Heritage at Stonebridge',
+    },
+    {
+      name: 'twitter:description',
+      content: 'Reach Dr. Jan Duffy for luxury real estate in Heritage at Stonebridge, Summerlin.',
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
     },
   ],
 };
