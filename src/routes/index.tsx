@@ -1,30 +1,9 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
-import { StructuredData } from '../components/StructuredData';
 
 export default component$(() => {
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
-    'name': 'Dr. Jan Duffy',
-    'jobTitle': 'Real Estate Agent',
-    'telephone': '(702) 222-1964',
-    'email': 'jan.duffy@heritagestonebridge.com',
-    'address': {
-      '@type': 'PostalAddress',
-      'addressLocality': 'Summerlin',
-      'addressRegion': 'NV',
-      'addressCountry': 'US',
-    },
-    'areaServed': {
-      '@type': 'City',
-      'name': 'Las Vegas',
-    },
-  };
-
   return (
     <div class="min-h-screen bg-heritage-light">
-      <StructuredData data={structuredData} />
       {/* Hero Section */}
       <section class="hero-section text-center">
         <div class="container-max">
@@ -162,15 +141,17 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Heritage at Stonebridge - Premier Summerlin Community | Las Vegas Real Estate',
+  title: 'Heritage at Stonebridge | Summerlin Luxury Homes',
   meta: [
     {
       name: 'description',
-      content: 'Discover luxury living at Heritage at Stonebridge in Summerlin, Las Vegas. Custom homes, resort-style amenities, and A-rated schools. Your Dr. Jan Duffy, local expert.',
+      content:
+        'Luxury homes at Heritage at Stonebridge in Summerlin, Las Vegas — custom builds, resort-style amenities, and gated-community privacy with Dr. Jan Duffy.',
     },
     {
       name: 'keywords',
-      content: 'Heritage Stonebridge, Summerlin homes, Las Vegas real estate, luxury homes, Dr. Jan Duffy, gated community, custom homes, resort amenities, A-rated schools',
+      content:
+        'Heritage Stonebridge, Summerlin homes, Las Vegas real estate, luxury homes, Dr. Jan Duffy, gated community, custom homes, resort amenities',
     },
     {
       name: 'author',
@@ -186,19 +167,19 @@ export const head: DocumentHead = {
     },
     {
       property: 'og:title',
-      content: 'Heritage at Stonebridge - Premier Summerlin Community',
+      content: 'Heritage at Stonebridge | Summerlin Luxury Homes',
     },
     {
       property: 'og:description',
-      content: 'Luxury homes in exclusive Summerlin community with resort amenities',
+      content: 'Luxury homes in a gated Summerlin community with resort-style amenities.',
     },
     {
       property: 'og:image',
-      content: 'https://stonebridge-homes.vercel.app/images/heritage-stonebridge-og.jpg',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
     },
     {
       property: 'og:url',
-      content: 'https://stonebridge-homes.vercel.app',
+      content: 'https://heritagestonebridge.com',
     },
     {
       property: 'og:site_name',
@@ -210,15 +191,15 @@ export const head: DocumentHead = {
     },
     {
       name: 'twitter:title',
-      content: 'Heritage at Stonebridge - Premier Summerlin Community',
+      content: 'Heritage at Stonebridge | Summerlin Luxury Homes',
     },
     {
       name: 'twitter:description',
-      content: 'Luxury homes in exclusive Summerlin community with resort amenities',
+      content: 'Luxury homes in a gated Summerlin community with resort-style amenities.',
     },
     {
       name: 'twitter:image',
-      content: 'https://stonebridge-homes.vercel.app/images/heritage-stonebridge-og.jpg',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
     },
   ],
 };
