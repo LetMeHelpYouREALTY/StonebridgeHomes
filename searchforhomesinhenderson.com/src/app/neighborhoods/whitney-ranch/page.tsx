@@ -49,7 +49,7 @@ export default function WhitneyRanchPage() {
                 Whitney Ranch Henderson Homes for Sale
               </h1>
               <p className="text-xl mb-8">
-                Live MLS listings • Family-friendly community • Mature
+                Live MLS listings • Community • Mature
                 landscaping • Parks and recreation • Whitney Elementary (8/10
                 rating)
               </p>
@@ -267,7 +267,7 @@ export default function WhitneyRanchPage() {
                       <p className="font-semibold">Whitney Elementary</p>
                       <p>Rating: 8/10 • Enrollment: 650</p>
                       <p className="text-xs text-gray-600">
-                        Good school with strong community support
+                        Public school campus. Check current CCSD and Nevada state data for school ratings.
                       </p>
                     </div>
                     <div>

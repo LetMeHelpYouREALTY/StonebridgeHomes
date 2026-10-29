@@ -9,13 +9,13 @@ module.exports = {
         location: "Summerlin, Las Vegas, Nevada",
         established: "2015",
         totalHomes: 847,
-        description: "Heritage at Stonebridge is a premier gated community in the heart of Summerlin, offering luxury living with stunning mountain and valley views. This exclusive neighborhood combines modern amenities with the natural beauty of the Las Vegas landscape.",
+        description: "Heritage at Stonebridge is a premier gated community in the heart of Summerlin, offering luxury living with stunning mountain and valley views. This luxury neighborhood combines modern amenities with the natural beauty of the Las Vegas landscape.",
         vision: "To provide residents with an unparalleled lifestyle that seamlessly blends luxury, comfort, and convenience in one of Las Vegas's most prestigious master-planned communities."
       },
       history: {
         title: "Our Story",
         content: [
-          "Heritage at Stonebridge was developed as part of Summerlin's expansion, designed to offer luxury living in a master-planned community setting. The development began in 2015 with a vision to create an exclusive neighborhood that would attract discerning homebuyers seeking both privacy and community.",
+          "Heritage at Stonebridge was developed as part of Summerlin's expansion, designed to offer luxury living in a master-planned community setting. The development began in 2015 with a vision to create a luxury neighborhood that would attract discerning homebuyers seeking both privacy and community.",
           "The community was carefully planned to take advantage of the stunning natural landscape, with homes positioned to maximize views of the Spring Mountains and Las Vegas Valley. Each home was designed with attention to detail and modern luxury in mind.",
           "Today, Heritage at Stonebridge stands as one of Summerlin's most sought-after communities, with residents enjoying the perfect balance of privacy, luxury, and access to world-class amenities."
         ]
@@ -68,7 +68,7 @@ module.exports = {
         highlights: [
           "Minutes from world-class shopping and dining",
           "Easy access to major highways and airports",
-          "Close to top-rated schools and universities",
+          "Close to public schools and universities",
           "Nearby entertainment and cultural attractions",
           "Proximity to Red Rock Canyon National Conservation Area",
           "Convenient access to Las Vegas Strip and downtown"
@@ -83,8 +83,8 @@ module.exports = {
         ]
       },
       schools: {
-        title: "Top-Rated Schools",
-        description: "Families in Heritage at Stonebridge have access to some of the best schools in the Las Vegas area.",
+        title: "Nearby Public Schools",
+        description: "Families in Heritage at Stonebridge have access to some of the public schools in the Las Vegas area.",
         elementary: [
           "John C. Vanderburg Elementary School",
           "Eldorado High School (K-12)",
