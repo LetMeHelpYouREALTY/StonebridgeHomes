@@ -6,7 +6,7 @@
 
 <svelte:head>
   <title>Neighborhood | Summerlin, Las Vegas - Heritage Stonebridge</title>
-  <meta name="description" content="Discover Summerlin, Las Vegas - a premier master-planned community with top schools, shopping, dining, and recreation near Heritage Stonebridge." />
+  <meta name="description" content="Discover Summerlin, Las Vegas - a premier master-planned community with nearby public schools, shopping, dining, and recreation near Heritage Stonebridge." />
 </svelte:head>
 
 <main class="neighborhood-page">
@@ -36,7 +36,7 @@
   <!-- Schools -->
   <section class="schools-section">
     <div class="container">
-      <h2>🏫 Top-Rated Schools</h2>
+      <h2>🏫 Nearby Public Schools</h2>
       <div class="schools-grid">
         {#each schools as school}
           <div class="school-card">

@@ -4,7 +4,7 @@ export default {
       neighborhood: {
         name: "Summerlin",
         location: "Las Vegas, Nevada",
-        description: "A master-planned community featuring world-class amenities, top-rated schools, and premier shopping and dining destinations.",
+        description: "A master-planned community featuring world-class amenities, nearby public schools, and premier shopping and dining destinations.",
         established: "1990",
         population: "100,000+",
         size: "22,500 acres"
