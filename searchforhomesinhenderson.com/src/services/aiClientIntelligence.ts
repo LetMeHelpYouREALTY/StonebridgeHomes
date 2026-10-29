@@ -474,7 +474,7 @@ export class AIClientIntelligenceService {
 
     if (profile.location.neighborhood === 'Green Valley') {
       opportunities.push('Premium location with strong appreciation potential')
-      opportunities.push('Access to top-rated schools and amenities')
+      opportunities.push('Access to public schools and amenities')
     }
 
     return opportunities
@@ -499,7 +499,7 @@ export class AIClientIntelligenceService {
     // Family size recommendations
     if (profile.preferences.bedrooms.includes(5)) {
       recommendations.push('Large family homes available in Anthem')
-      recommendations.push('Consider properties near top-rated schools')
+      recommendations.push('Consider properties near nearby public schools')
     }
 
     return recommendations
