@@ -238,13 +238,6 @@ const realEstateSchema = {
       },
     ],
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '127',
-    bestRating: '5',
-    worstRating: '1',
-  },
   review: [
     {
       '@type': 'Review',
@@ -472,11 +465,6 @@ const enhancedLocalSchema = {
     'Anthem Properties',
     'Henderson Luxury Real Estate',
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '47',
-  },
 }
 
 export default function RootLayout({
