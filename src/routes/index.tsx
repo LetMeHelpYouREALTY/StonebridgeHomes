@@ -87,7 +87,7 @@ export default component$(() => {
               <h2 class="text-3xl font-bold mb-6">Meet Your Local Expert</h2>
               <div class="text-lg mb-6">
                 <h3 class="text-2xl font-semibold mb-4">Dr. Jan Duffy</h3>
-                <p class="mb-4">Top 1% Las Vegas REALTOR®</p>
+                <p class="mb-4">Las Vegas REALTOR®</p>
                 <p class="mb-6">
                   With extensive experience in the Summerlin real estate market, Dr. Jan Duffy specializes in luxury homes and provides personalized service to help you find your dream home in Heritage at Stonebridge.
                 </p>

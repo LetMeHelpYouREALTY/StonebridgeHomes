@@ -286,7 +286,7 @@ const realEstateSchema = {
     'Property Valuation',
   ],
   award: [
-    'Top 1% Real Estate Agent',
+    'Real Estate Agent',
     'Best of Henderson Award',
     'Excellence in Customer Service',
     'Million Dollar Club Member',
