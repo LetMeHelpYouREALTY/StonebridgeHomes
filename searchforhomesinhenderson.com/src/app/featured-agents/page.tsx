@@ -145,7 +145,7 @@ export default function FeaturedAgentsPage() {
                   </div>
                   <div className="text-center p-4 bg-orange-50 rounded-lg">
                     <div className="text-3xl font-bold text-orange-600">
-                      4.9★
+                      5.0★
                     </div>
                     <div className="text-sm text-gray-600">Client Rating</div>
                   </div>
