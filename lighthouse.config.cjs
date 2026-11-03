@@ -1,12 +1,5 @@
 module.exports = {
   ci: {
-    collect: {
-      url: ['http://localhost:4173'],
-      startServerCommand: 'npm run preview',
-      startServerReadyPattern: 'Local:',
-      startServerReadyTimeout: 30000,
-      numberOfRuns: 3,
-    },
     assert: {
       assertions: {
         'categories:performance': ['error', { minScore: 0.8 }],
