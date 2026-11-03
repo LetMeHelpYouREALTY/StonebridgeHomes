@@ -1,10 +1,16 @@
-import { component$, useStyles$ } from '@builder.io/qwik';
+import { component$, useStyles$, useVisibleTask$ } from '@builder.io/qwik';
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city';
 import { RouterHead } from './components/router-head/router-head';
 import globalStyles from './styles/global.css?inline';
 
 export default component$(() => {
   useStyles$(globalStyles);
+
+  // Initialize Vercel Speed Insights
+  useVisibleTask$(async () => {
+    const { injectSpeedInsights } = await import('@vercel/speed-insights');
+    injectSpeedInsights();
+  });
 
   return (
     <QwikCityProvider>
