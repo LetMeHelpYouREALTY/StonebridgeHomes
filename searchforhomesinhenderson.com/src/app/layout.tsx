@@ -238,13 +238,6 @@ const realEstateSchema = {
       },
     ],
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '127',
-    bestRating: '5',
-    worstRating: '1',
-  },
   review: [
     {
       '@type': 'Review',
@@ -286,7 +279,7 @@ const realEstateSchema = {
     'Property Valuation',
   ],
   award: [
-    'Top 1% Real Estate Agent',
+    'Real Estate Agent',
     'Best of Henderson Award',
     'Excellence in Customer Service',
     'Million Dollar Club Member',
@@ -354,7 +347,7 @@ const neighborhoodSchema = {
       '@type': 'Neighborhood',
       name: 'Stephanie Ranch',
       description:
-        'Family-friendly with excellent schools and recreational facilities',
+        'Parks, nearby schools, and recreational facilities',
       priceRange: '$450,000 - $650,000',
       amenityFeature: [
         {
@@ -373,7 +366,7 @@ const neighborhoodSchema = {
       '@type': 'Neighborhood',
       name: 'Whitney Ranch',
       description:
-        'Established community with mature landscaping and affordability',
+        'Mature landscaping and affordability',
       priceRange: '$400,000 - $600,000',
       amenityFeature: [
         {
@@ -472,11 +465,6 @@ const enhancedLocalSchema = {
     'Anthem Properties',
     'Henderson Luxury Real Estate',
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '47',
-  },
 }
 
 export default function RootLayout({

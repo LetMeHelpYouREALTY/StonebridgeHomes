@@ -15,6 +15,9 @@ export default component$(() => {
       </head>
       <body lang="en" class="min-h-screen bg-heritage-light">
         <RouterOutlet />
+        <footer class="bg-heritage-primary text-white text-center text-sm py-6 px-4">
+          <p>Berkshire Hathaway HomeServices Nevada Properties since September 2008 · License S.0197614.LLC</p>
+        </footer>
         <ServiceWorkerRegister />
       </body>
     </QwikCityProvider>

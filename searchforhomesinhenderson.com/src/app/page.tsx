@@ -105,13 +105,13 @@ export default function HomePage() {
                 Award-Winning City
               </h3>
               <p className="text-gray-600">
-                Consistently ranked among America's safest and most livable
+                Regularly listed among America's most livable
                 cities with excellent municipal services.
               </p>
             </div>
             <div className="text-center">
               <h3 className="text-2xl font-semibold mb-4 text-blue-600">
-                Top-Rated Schools
+                Nearby Public Schools
               </h3>
               <p className="text-gray-600">
                 Access to Clark County's highest-performing schools with
@@ -193,7 +193,7 @@ export default function HomePage() {
                 Stephanie Ranch
               </h3>
               <p className="text-gray-600 mb-2">
-                Family-friendly with excellent schools and recreational
+                Parks, nearby schools, and recreational
                 facilities
               </p>
               <p className="text-sm font-semibold text-purple-600">
@@ -205,7 +205,7 @@ export default function HomePage() {
                 Whitney Ranch
               </h3>
               <p className="text-gray-600 mb-2">
-                Established community with mature landscaping and affordability
+                Mature landscaping and affordability
               </p>
               <p className="text-sm font-semibold text-orange-600">
                 $400K - $600K
@@ -304,7 +304,7 @@ export default function HomePage() {
                 Which Henderson neighborhood is best for families?
               </h3>
               <p className="text-gray-600">
-                Stephanie Ranch and Whitney Ranch offer excellent schools,
+                Stephanie Ranch and Whitney Ranch offer nearby public schools,
                 family amenities, and more affordable pricing for growing
                 families.
               </p>
@@ -461,7 +461,7 @@ export default function HomePage() {
                   >
                     Whitney Ranch
                   </a>{' '}
-                  offer excellent schools, family amenities, and more affordable
+                  offer nearby public schools, family amenities, and more affordable
                   pricing.{' '}
                   <a
                     href="/neighborhoods/green-valley"
@@ -469,7 +469,7 @@ export default function HomePage() {
                   >
                     Green Valley
                   </a>{' '}
-                  provides luxury family living with top-rated schools and
+                  provides luxury family living with nearby public schools and
                   resort-style communities.{' '}
                   <a
                     href="/neighborhoods"

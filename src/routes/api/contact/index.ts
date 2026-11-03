@@ -26,7 +26,7 @@ export const onPost: RequestHandler = async (event) => {
   }
 
   const fallbackSourceUrl =
-    event.request.headers.get('referer') ?? event.url.origin + '/contact';
+    event.request.headers.get('referer') ?? `${event.url.origin}/contact`;
   const validation = validateContactPayload(body, fallbackSourceUrl);
 
   if (!validation.ok) {

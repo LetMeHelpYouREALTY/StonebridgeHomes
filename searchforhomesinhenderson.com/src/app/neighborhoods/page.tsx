@@ -116,12 +116,12 @@ export default function NeighborhoodsPage() {
               {
                 '@type': 'Place',
                 name: 'Stephanie Ranch',
-                description: 'Family-friendly with excellent schools',
+                description: 'Parks and nearby schools',
               },
               {
                 '@type': 'Place',
                 name: 'Whitney Ranch',
-                description: 'Established community with mature landscaping',
+                description: 'Community with mature landscaping',
               },
             ],
           },
@@ -137,11 +137,11 @@ export default function NeighborhoodsPage() {
             <p className="text-xl text-purple-100 max-w-4xl mx-auto mb-8">
               Discover Henderson's premier residential communities and find the
               perfect neighborhood for your lifestyle. From luxury
-              master-planned communities to family-friendly areas with excellent
+              master-planned communities to areas with excellent
               schools.
             </p>
             <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
-              🏘️ 15+ Communities • Top Schools • Family-Friendly • Luxury Living
+              🏘️ 15+ Communities • Nearby Schools • Parks • Luxury Living
             </div>
           </div>
         </section>
@@ -215,7 +215,7 @@ export default function NeighborhoodsPage() {
                   <p className="text-gray-600 mb-4">
                     Hillside community offering stunning mountain views,
                     resort-style amenities, and a tight-knit neighborhood feel
-                    with excellent schools and recreational facilities.
+                    with nearby public schools and recreational facilities.
                   </p>
                   <div className="space-y-2 mb-4">
                     <div className="flex justify-between">
@@ -252,9 +252,9 @@ export default function NeighborhoodsPage() {
                     Stephanie Ranch
                   </h3>
                   <p className="text-gray-600 mb-4">
-                    Family-friendly community known for excellent schools, safe
+                    Community with parks and nearby public schools,
                     neighborhoods, and recreational facilities. Perfect for
-                    growing families seeking quality education and community.
+                    buyers seeking nearby schools and community amenities.
                   </p>
                   <div className="space-y-2 mb-4">
                     <div className="flex justify-between">
@@ -291,7 +291,7 @@ export default function NeighborhoodsPage() {
                     Whitney Ranch
                   </h3>
                   <p className="text-gray-600 mb-4">
-                    Established community with mature landscaping,
+                    Mature landscaping,
                     affordability, and convenient access to shopping and dining.
                     Great value for first-time homebuyers and families.
                   </p>
@@ -390,14 +390,14 @@ export default function NeighborhoodsPage() {
                   Award-Winning City
                 </h3>
                 <p className="text-gray-600">
-                  Consistently ranked among America's safest and most livable
+                  Regularly listed among America's most livable
                   cities with excellent municipal services and infrastructure.
                 </p>
               </div>
               <div className="text-center p-6">
                 <div className="text-4xl mb-4">🎓</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Top-Rated Schools
+                  Nearby Public Schools
                 </h3>
                 <p className="text-gray-600">
                   Access to Clark County's highest-performing schools with

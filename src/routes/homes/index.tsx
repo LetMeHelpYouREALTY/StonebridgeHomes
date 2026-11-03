@@ -1,9 +1,20 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { StructuredData } from '../../components/StructuredData';
 
 export default component$(() => {
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://heritagestonebridge.com' },
+      { '@type': 'ListItem', position: 2, name: 'Homes', item: 'https://heritagestonebridge.com/homes' },
+    ],
+  };
+
   return (
     <div class="min-h-screen bg-heritage-light">
+      <StructuredData data={breadcrumb} />
       <div class="hero-section">
         <div class="container-max text-center">
           <h1 class="text-4xl font-bold mb-4">Available Properties</h1>
@@ -114,11 +125,40 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Available Properties - Heritage at Stonebridge | Las Vegas Real Estate',
+  title: 'Homes for Sale | Heritage at Stonebridge Summerlin',
   meta: [
     {
       name: 'description',
-      content: 'Browse luxury homes for sale in Heritage at Stonebridge, Summerlin. Custom homes with resort-style amenities and A-rated schools.',
+      content:
+        'Browse luxury homes for sale in Heritage at Stonebridge, Summerlin — custom homes with resort-style amenities in a gated community.',
+    },
+    { property: 'og:type', content: 'website' },
+    {
+      property: 'og:title',
+      content: 'Homes for Sale | Heritage at Stonebridge Summerlin',
+    },
+    {
+      property: 'og:description',
+      content: 'Luxury homes for sale in Heritage at Stonebridge, Summerlin — custom homes in a gated community.',
+    },
+    {
+      property: 'og:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
+    },
+    { property: 'og:url', content: 'https://heritagestonebridge.com/homes' },
+    { property: 'og:site_name', content: 'Heritage at Stonebridge' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Homes for Sale | Heritage at Stonebridge Summerlin',
+    },
+    {
+      name: 'twitter:description',
+      content: 'Luxury homes for sale in Heritage at Stonebridge, Summerlin — custom homes in a gated community.',
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
     },
   ],
 };

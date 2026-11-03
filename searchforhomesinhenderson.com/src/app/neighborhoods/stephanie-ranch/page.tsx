@@ -49,7 +49,7 @@ export default function StephanieRanchPage() {
                 Stephanie Ranch Henderson Homes for Sale
               </h1>
               <p className="text-xl mb-8">
-                Live MLS listings • Family-friendly community • Excellent
+                Live MLS listings • Community • Excellent
                 schools • Parks and recreation • Stephanie Elementary (9/10
                 rating)
               </p>
@@ -269,7 +269,7 @@ export default function StephanieRanchPage() {
                       <p className="font-semibold">Stephanie Elementary</p>
                       <p>Rating: 9/10 • Enrollment: 680</p>
                       <p className="text-xs text-gray-600">
-                        Excellent school with strong community support
+                        Public school campus. Check current CCSD and Nevada state data for school ratings.
                       </p>
                     </div>
                     <div>
@@ -478,7 +478,7 @@ export default function StephanieRanchPage() {
           neighborhoodName="Stephanie Ranch"
           faq={[
             {
-              question: 'Is Stephanie Ranch considered a family-friendly area?',
+              question: 'Is Stephanie Ranch considered an area?',
               answer:
                 'Yes. Buyers often choose Stephanie Ranch for neighborhood parks, established residential streets, and convenient access to schools and daily services.',
             },
