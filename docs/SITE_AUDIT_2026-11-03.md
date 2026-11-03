@@ -65,7 +65,7 @@ Date: 2026-11-03 · Repo: LetMeHelpYouREALTY/StonebridgeHomes · Live domain: ww
 ## 5. Open decisions for Dr. Jan
 
 - **A. Phone number.** The site now shows (702) 500-1955 everywhere via one constant. Reply A to keep it, B to supply the tracking number assigned to stonebridgelasvegashomes.com, or C to use (702) 789-6561 from heritagestonebridge.com.
-- **B. Email.** The old `jan.duffy@heritagestonebridge.com` link was removed (unverified mailbox, other brand). Reply with the address to publish, or leave form-only.
+- **B. Email and form.** Decided 2026-11-03: no form; the contact page embeds Calendly, and every page CTA books a showing or call with a per-page `utm_campaign`. The `/api/contact` Follow Up Boss endpoint stays for other lead sources. The old `jan.duffy@heritagestonebridge.com` link was removed.
 - **C. Hero photography.** Current heroes are generated illustrations. Six photorealistic Gamma renders are ready to swap (see `docs/IMAGES.md`); real geo-tagged photos of the clubhouse, park, and Crossbridge Rd would beat both.
 - **D. Repo hygiene.** Three unrelated projects remain at the root (`searchforhomesinhenderson.com/`, `HendersonHomes-Clean/`, `OneDrive/`, `Downloads/`), plus a GitHub Pages deploy workflow that references `.svelte-kit`. Nothing builds from them; they just confuse contributors and Dependabot. Say the word and they go (there is already a `chore/repo-cleanup` branch).
 - **E. Weekly data refresh.** Market numbers live in one file. A scheduled task could draft the update as a PR each Monday for approval; it would never publish on its own.

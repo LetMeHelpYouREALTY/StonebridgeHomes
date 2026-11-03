@@ -180,7 +180,7 @@ export default component$(() => {
                 Call or text {AGENT.phoneDisplay}
               </a>
               <a href="/contact" class="btn-light">
-                Send a message
+                Book a showing
               </a>
             </div>
           </div>
@@ -200,10 +200,10 @@ export default component$(() => {
       <Faq faqs={SITE_FAQS} heading="Stonebridge Summerlin questions, answered" />
 
       <CtaBand
-        heading="Want this week's Stonebridge sales in your inbox?"
-        body="One email a week with closed prices by neighborhood and floor plan. No spam, cancel anytime."
-        primaryLabel="Get the weekly sales report"
-        primaryHref="/contact"
+        heading="Ready to walk a Stonebridge home?"
+        body="Pick a showing time or a 15-minute call. Gate registration and the HOA file are handled before you arrive."
+        primaryLabel="Book a showing"
+        campaign="home"
       />
     </>
   );

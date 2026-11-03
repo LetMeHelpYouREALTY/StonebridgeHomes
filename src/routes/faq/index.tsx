@@ -59,9 +59,9 @@ export default component$(() => {
       <Faq id="selling" faqs={selling} heading="Selling in Stonebridge" />
       <CtaBand
         heading="Still have a question?"
-        body="Text it. Short questions get short answers, usually within the hour during business hours."
-        primaryLabel="Send a question"
-        primaryHref="/contact"
+        body="Text it, or book a 15-minute call. Short questions get short answers, usually within the hour during business hours."
+        primaryLabel="Book a quick call"
+        campaign="faq"
       />
     </>
   );

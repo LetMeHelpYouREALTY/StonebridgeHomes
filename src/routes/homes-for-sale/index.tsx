@@ -127,6 +127,7 @@ export default component$(() => {
       <CtaBand
         heading="Want to walk one of these this week?"
         body="Showings inside the gates take one call. Dr. Duffy handles gate registration and pulls the HOA file before you tour."
+        campaign="homes-for-sale"
       />
     </>
   );

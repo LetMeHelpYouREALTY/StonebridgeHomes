@@ -119,8 +119,8 @@ export default component$(() => {
       <CtaBand
         heading="See the homes within a walk of the park"
         body="Dr. Duffy can map every current listing by distance to the park and to the Heritage gate."
-        primaryLabel="Ask for the park-walk list"
-        primaryHref="/contact"
+        primaryLabel="Book a park-side tour"
+        campaign="stonebridge-park"
       />
     </>
   );

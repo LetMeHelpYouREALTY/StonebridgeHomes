@@ -132,6 +132,7 @@ export default component$(() => {
       <CtaBand
         heading="Tour Heritage with gate registration handled"
         body="Dr. Duffy pre-registers you at the gatehouse and brings the HOA summary so you can decide on the walkthrough."
+        campaign="heritage"
       />
     </>
   );

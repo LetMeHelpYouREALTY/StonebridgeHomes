@@ -11,10 +11,10 @@ Stonebridge neighborhood. This site covers the whole village and links to it.
 ## Stack
 
 - [Qwik City](https://qwik.dev) 1.17 with the Vercel Edge adapter (static
-  pre-render of every route, edge functions for the contact action and API).
+  pre-render of every route, an edge function for the `/api/contact` lead endpoint).
 - Tailwind CSS 3 with the palette in `tailwind.config.js`.
 - RealScout web components for live MLS listings and home values.
-- Follow Up Boss events API for contact-form leads (`FOLLOW_UP_BOSS_API_KEY`).
+- Calendly inline widget for bookings; Follow Up Boss events API remains available at `/api/contact` for other lead sources (`FOLLOW_UP_BOSS_API_KEY`).
 - Biome for lint/format, Vitest for tests.
 
 ## Commands

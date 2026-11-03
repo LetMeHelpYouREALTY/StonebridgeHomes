@@ -174,9 +174,9 @@ export default component$(() => {
 
       <CtaBand
         heading="Get a sold-price comp sheet for one floor plan"
-        body="Tell Dr. Duffy the plan or address. You get the last five closed sales with days on market and concessions, usually the same day."
-        primaryLabel="Request a comp sheet"
-        primaryHref="/contact"
+        body="Book a 15-minute call with the plan or address. You get the last five closed sales with days on market and concessions, usually the same day."
+        primaryLabel="Book a comp-sheet call"
+        campaign="prices"
       />
     </>
   );

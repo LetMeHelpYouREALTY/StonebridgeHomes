@@ -80,8 +80,8 @@ export default component$(() => {
       <CtaBand
         heading="Not sure which neighborhood fits?"
         body="Tell Dr. Duffy your budget, single-story or two, and whether a staffed gate matters. You get a shortlist of two or three neighborhoods with recent sold prices."
-        primaryLabel="Get a neighborhood shortlist"
-        primaryHref="/contact"
+        primaryLabel="Book a 15-minute call"
+        campaign="neighborhoods"
       />
     </>
   );

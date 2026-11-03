@@ -81,8 +81,8 @@ export default component$(() => {
       <CtaBand
         heading="Get the sold-price comp sheet for your plan"
         body="No obligation, no automated follow-up sequence. One sheet, one conversation."
-        primaryLabel="Request my comp sheet"
-        primaryHref="/contact"
+        primaryLabel="Book a pricing call"
+        campaign="home-value"
       />
     </>
   );

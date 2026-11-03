@@ -90,6 +90,10 @@ export const RouterHead = component$(() => {
       <link rel="preconnect" href="https://em.realscout.com" />
       <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module" async />
 
+      {/* Calendly inline booking widget */}
+      <link rel="preconnect" href="https://assets.calendly.com" />
+      <script src="https://assets.calendly.com/assets/external/widget.js" async />
+
       <script type="application/ld+json" {...{ dangerouslySetInnerHTML: JSON.stringify(realEstateAgent) }} />
       <script type="application/ld+json" {...{ dangerouslySetInnerHTML: JSON.stringify(webSite) }} />
     </>

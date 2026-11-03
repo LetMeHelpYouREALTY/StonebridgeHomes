@@ -133,9 +133,9 @@ export default component$(() => {
 
       <CtaBand
         heading="Want the plan sheet for a specific home?"
-        body="Send the address. Dr. Duffy will match it to the builder plan, pull the last sales of that plan, and tell you what to look for on the walkthrough."
-        primaryLabel="Ask about a plan"
-        primaryHref="/contact"
+        body="Book a call with the address. Dr. Duffy will match it to the builder plan, pull the last sales of that plan, and tell you what to look for on the walkthrough."
+        primaryLabel="Book a plan call"
+        campaign="floor-plans"
       />
     </>
   );

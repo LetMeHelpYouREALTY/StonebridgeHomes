@@ -72,4 +72,8 @@ export const FOOTER_LINKS = [
   { href: '/sitemap.xml', label: 'Sitemap' },
 ];
 
+/** Calendly booking link tagged with the page that sent the visitor. */
+export const calendlyUrl = (campaign: string) =>
+  `${AGENT.calendly}?hide_gdpr_banner=1&utm_source=stonebridgelasvegashomes.com&utm_medium=site&utm_campaign=${campaign}`;
+
 export const abs = (path: string) => `${SITE_ORIGIN}${path === '/' ? '' : path}`;

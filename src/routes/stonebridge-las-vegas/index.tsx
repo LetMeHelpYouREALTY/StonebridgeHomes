@@ -140,7 +140,8 @@ export default component$(() => {
 
       <CtaBand
         heading="Ready to see the real Stonebridge?"
-        body="Call for a 20-minute driving tour of the village: the park, the gates, the view streets, and what each neighborhood sold for."
+        body="Book a 20-minute driving tour of the village: the park, the gates, the view streets, and what each neighborhood sold for."
+        campaign="stonebridge-las-vegas"
       />
     </>
   );

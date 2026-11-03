@@ -134,8 +134,8 @@ export default component$(() => {
       <CtaBand
         heading="Relocating to Summerlin West?"
         body="Dr. Duffy works with buyers relocating from California and out of state. Ask for the relocation packet: commute times, utility averages, and the move-in checklist."
-        primaryLabel="Request the relocation packet"
-        primaryHref="/contact"
+        primaryLabel="Book a relocation call"
+        campaign="community"
       />
     </>
   );
