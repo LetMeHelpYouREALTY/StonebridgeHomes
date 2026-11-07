@@ -1,55 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
-        heritage: {
-          primary: '#8B4513',
-          secondary: '#D2691E',
-          dark: '#654321',
-          light: '#F5F5DC',
-          neutral: '#F8F8FF'
-        }
+        stone: {
+          night: '#16202A',
+          slate: '#1F2A33',
+          ink: '#1C1C1C',
+          sand: '#F4EFE6',
+          cream: '#FBF8F2',
+          dune: '#E6DCCB',
+          rock: '#B5542D',
+          copper: '#C9733E',
+          ember: '#8E3F22',
+          gold: '#F4C27A',
+          mist: '#6B7A86',
+        },
       },
       fontFamily: {
-        'serif': ['Georgia', 'serif'],
-        'sans': ['Inter', 'system-ui', 'sans-serif']
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
       },
-      spacing: {
-        '18': '4.5rem',
-        '88': '22rem',
-        '128': '32rem'
-      },
-      maxWidth: {
-        '8xl': '88rem',
-        '9xl': '96rem'
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'bounce-gentle': 'bounceGentle 2s infinite'
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' }
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' }
-        },
-        bounceGentle: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-5px)' }
-        }
-      }
-    }
+      maxWidth: { '8xl': '88rem' },
+      boxShadow: { card: '0 10px 30px -12px rgba(22, 32, 42, 0.25)' },
+    },
   },
   plugins: [],
-  future: {
-    hoverOnlyWhenSupported: true
-  }
-}
+  future: { hoverOnlyWhenSupported: true },
+};

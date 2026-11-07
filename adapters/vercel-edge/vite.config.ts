@@ -13,7 +13,7 @@ export default defineConfig(() => {
         target: 'node',
         ssg: {
           include: ['/*'],
-          origin: 'https://stonebridge-homes.vercel.app',
+          origin: 'https://www.stonebridgelasvegashomes.com',
         },
       }),
       tsconfigPaths(),

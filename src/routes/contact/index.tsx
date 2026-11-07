@@ -1,232 +1,99 @@
 import { component$ } from '@builder.io/qwik';
-import { Form, routeAction$ } from '@builder.io/qwik-city';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import {
-  CONTACT_ERROR_MESSAGE,
-  getFollowUpBossApiKey,
-  sendFollowUpBossEvent,
-  validateContactPayload,
-  type ContactFormPayload,
-} from '~/lib/follow-up-boss';
+import { StructuredData } from '~/components/StructuredData';
+import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
+import { CalendlyInline } from '~/components/ui/Calendly';
+import { PageHero } from '~/components/ui/PageHero';
+import { pageHead } from '~/lib/seo';
+import { AGENT, SITE_ORIGIN, calendlyUrl } from '~/lib/site';
 
-export const useContactAction = routeAction$(async (values, event) => {
-  const payload = values as ContactFormPayload;
-  const fallbackSourceUrl =
-    event.request.headers.get('referer') ?? `${event.url.origin}/contact`;
-  const validation = validateContactPayload(payload, fallbackSourceUrl);
-
-  if (!validation.ok) {
-    return event.fail(validation.status, {
-      success: false,
-      message: validation.error,
-    });
-  }
-
-  const apiKey = getFollowUpBossApiKey(event.env);
-  const result = await sendFollowUpBossEvent(validation.data, { apiKey });
-
-  if (!result.ok) {
-    const message =
-      result.status === 503 ? result.error : CONTACT_ERROR_MESSAGE;
-    return event.fail(result.status, {
-      success: false,
-      message,
-    });
-  }
-
-  return {
-    success: true,
-    message: 'Thank you for your message! We will get back to you soon.',
-  };
-});
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${SITE_ORIGIN}/contact#page`,
+  url: `${SITE_ORIGIN}/contact`,
+  mainEntity: { '@id': `${SITE_ORIGIN}/#agent` },
+};
 
 export default component$(() => {
-  const contactAction = useContactAction();
-
   return (
-    <div class="min-h-screen bg-heritage-light">
-      <div class="hero-section">
-        <div class="container-max text-center">
-          <h1 class="text-4xl font-bold mb-4">Contact Dr. Jan Duffy</h1>
-          <p class="text-xl">Your Heritage at Stonebridge real estate expert</p>
-        </div>
-      </div>
+    <>
+      <StructuredData data={contactSchema} />
+      <PageHero
+        eyebrow="Stonebridge · Summerlin West"
+        title="Talk with Dr. Jan Duffy"
+        intro="Book a showing or a call below, or call and text directly. Every booking lands on Dr. Duffy's own calendar, not a call center."
+        image="two-story-contemporary"
+        imageAlt="Contemporary two-story home with a courtyard entry and mountain views on a clear morning"
+      >
+        <a href={`tel:${AGENT.phoneTel}`} class="btn-primary">
+          Call or text {AGENT.phoneDisplay}
+        </a>
+        <a href="#calendly-heading" class="btn-outline">
+          Book a time
+        </a>
+      </PageHero>
+      <Breadcrumbs items={[{ name: 'Contact', path: '/contact' }]} />
 
-      <section class="section-padding">
-        <div class="container-max">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div>
-              <h2 class="text-3xl font-bold mb-6 text-heritage-primary">Get In Touch</h2>
-              <div class="space-y-6">
-                <div class="heritage-card p-6">
-                  <h3 class="text-xl font-semibold mb-4">Dr. Jan Duffy</h3>
-                  <div class="space-y-3">
-                    <div class="flex items-center">
-                      <span class="text-2xl mr-3">📞</span>
-                      <a href="tel:702-222-1964" class="text-heritage-primary hover:text-heritage-secondary">
-                        (702) 222-1964
-                      </a>
-                    </div>
-                    <div class="flex items-center">
-                      <span class="text-2xl mr-3">📧</span>
-                      <a href="mailto:jan.duffy@heritagestonebridge.com" class="text-heritage-primary hover:text-heritage-secondary">
-                        jan.duffy@heritagestonebridge.com
-                      </a>
-                    </div>
-                    <div class="flex items-start">
-                      <span class="text-2xl mr-3">📍</span>
-                      <div>
-                        <div>Heritage at Stonebridge</div>
-                        <div>Summerlin, Las Vegas, NV 89144</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <CalendlyInline campaign="contact" />
 
-                <div class="heritage-card p-6">
-                  <h3 class="text-xl font-semibold mb-4">Office Hours</h3>
-                  <div class="space-y-2">
-                    <div class="flex justify-between">
-                      <span>Monday - Friday:</span>
-                      <span>9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div class="flex justify-between">
-                      <span>Saturday:</span>
-                      <span>10:00 AM - 4:00 PM</span>
-                    </div>
-                    <div class="flex justify-between">
-                      <span>Sunday:</span>
-                      <span>By Appointment</span>
-                    </div>
-                  </div>
-                </div>
+      <section class="section">
+        <div class="container-max grid gap-6 md:grid-cols-3">
+          <div class="card p-6">
+            <h2 class="text-xl font-bold">{AGENT.name}</h2>
+            <p class="mt-1 text-sm text-stone-mist">
+              {AGENT.title} · {AGENT.brokerage} · NV License {AGENT.license}
+            </p>
+            <ul class="mt-4 space-y-2 text-base">
+              <li>
+                <a href={`tel:${AGENT.phoneTel}`} class="font-semibold text-stone-rock">
+                  {AGENT.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a href={calendlyUrl('contact-card')} rel="noopener" class="font-semibold text-stone-rock">
+                  Booking calendar
+                </a>
+              </li>
+              <li>
+                <a href={AGENT.realScoutPortal} rel="noopener" class="font-semibold text-stone-rock">
+                  Search every Las Vegas listing
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h2 class="text-xl font-bold">Hours</h2>
+            <dl class="mt-3 space-y-2 text-base">
+              <div class="flex justify-between">
+                <dt>Monday to Friday</dt>
+                <dd>9:00 AM to 6:00 PM</dd>
               </div>
-            </div>
-
-            {/* Contact Form */}
-            <div>
-              <h2 class="text-3xl font-bold mb-6 text-heritage-primary">Send a Message</h2>
-              <div class="heritage-card p-6">
-                {contactAction.value?.success && (
-                  <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                    {contactAction.value.message}
-                  </div>
-                )}
-
-                {contactAction.value?.failed && (
-                  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
-                    {contactAction.value.message}
-                  </div>
-                )}
-                
-                <Form action={contactAction} class="space-y-4">
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-heritage-primary"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-heritage-primary"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-heritage-primary"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-heritage-primary"
-                    />
-                  </div>
-
-                  <div>
-                    <label for="interest" class="block text-sm font-medium text-gray-700 mb-1">
-                      I'm interested in:
-                    </label>
-                    <select
-                      id="interest"
-                      name="interest"
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-heritage-primary"
-                    >
-                      <option value="">Select an option</option>
-                      <option value="buying">Buying a Home</option>
-                      <option value="selling">Selling a Home</option>
-                      <option value="community">Learning about the Community</option>
-                      <option value="investment">Real Estate Investment</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-heritage-primary"
-                      placeholder="Tell us about your real estate needs..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    class="w-full heritage-button"
-                    disabled={contactAction.isRunning}
-                  >
-                    {contactAction.isRunning ? 'Sending...' : 'Send Message'}
-                  </button>
-                </Form>
+              <div class="flex justify-between">
+                <dt>Saturday</dt>
+                <dd>10:00 AM to 4:00 PM</dd>
               </div>
-            </div>
+              <div class="flex justify-between">
+                <dt>Sunday</dt>
+                <dd>Showings by appointment</dd>
+              </div>
+            </dl>
+            <p class="mt-3 text-sm text-stone-mist">Texts outside these hours are answered the next morning.</p>
+          </div>
+          <div class="card p-6">
+            <h2 class="text-xl font-bold">Service area</h2>
+            <p class="mt-2 text-base leading-7 text-stone-ink/85">
+              Stonebridge and all of Summerlin West (89138), plus the rest of Summerlin, Las Vegas, and Henderson for
+              buyers comparing villages.
+            </p>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 });
 
-export const head: DocumentHead = {
-  title: 'Contact Dr. Jan Duffy - Heritage at Stonebridge Real Estate Expert',
-  meta: [
-    {
-      name: 'description',
-      content: 'Contact Dr. Jan Duffy for luxury real estate in Heritage at Stonebridge, Summerlin. Call (702) 222-1964 or email for personalized service.',
-    },
-  ],
-};
+export const head = pageHead({
+  title: `Book a Showing with Dr. Jan Duffy | Stonebridge Summerlin REALTOR® | ${AGENT.phoneDisplay}`,
+  description: `Book a Stonebridge showing or a 15-minute call on Dr. Jan Duffy's calendar, or call and text ${AGENT.phoneDisplay}. Berkshire Hathaway HomeServices Nevada Properties, Summerlin West 89138, including 55+ Heritage at Stonebridge.`,
+  path: '/contact',
+});

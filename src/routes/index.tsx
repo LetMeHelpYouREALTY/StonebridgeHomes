@@ -1,205 +1,222 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import { StructuredData } from '~/components/StructuredData';
+import { CtaBand } from '~/components/ui/CtaBand';
+import { DataNote } from '~/components/ui/DataNote';
+import { Figure, } from '~/components/ui/Figure';
+
+import { Faq } from '~/components/ui/Faq';
+import { PageHero } from '~/components/ui/PageHero';
+import { RealScoutListings } from '~/components/ui/RealScout';
+import { StatGrid } from '~/components/ui/StatGrid';
+import { EXAMPLE_LISTINGS, HERITAGE_MARKET, NEIGHBORHOODS, SITE_FAQS, STONEBRIDGE_MARKET } from '~/lib/data';
+import { money, pageHead } from '~/lib/seo';
+import { AGENT, AREA, SITE_ORIGIN, abs } from '~/lib/site';
+
+const placeSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Place',
+  '@id': `${SITE_ORIGIN}/#stonebridge`,
+  name: 'Stonebridge, Summerlin West',
+  alternateName: ['Stonebridge Summerlin', 'Stonebridge Las Vegas', 'Summerlin Village 24'],
+  description:
+    'A 502-acre village of Summerlin West on the far west edge of Las Vegas, NV 89138, built from 2018 by KB Home, Lennar, Pulte, Woodside, Richmond American, Toll Brothers, Tri Pointe, and Pardee. Includes the 55+ Heritage at Stonebridge neighborhood and Stonebridge Park.',
+  address: { '@type': 'PostalAddress', addressLocality: 'Las Vegas', addressRegion: 'NV', postalCode: '89138', addressCountry: 'US' },
+  geo: { '@type': 'GeoCoordinates', latitude: AREA.geo.lat, longitude: AREA.geo.lng },
+  containedInPlace: { '@type': 'Place', name: 'Summerlin, Las Vegas, NV' },
+  url: SITE_ORIGIN,
+  image: abs('/images/home-exterior-golden-hour.jpg'),
+};
 
 export default component$(() => {
+  const sb = STONEBRIDGE_MARKET;
+  const hb = HERITAGE_MARKET;
+  const featured = EXAMPLE_LISTINGS[0];
+
   return (
-    <div class="min-h-screen bg-heritage-light">
-      {/* Hero Section */}
-      <section class="hero-section text-center">
+    <>
+      <StructuredData data={placeSchema} />
+      <PageHero
+        tall
+        eyebrow={`Summerlin West · Las Vegas, NV ${AREA.zip}`}
+        title="Stonebridge Summerlin homes for sale"
+        intro={`Resale homes from about $500,000 to $3 million in Summerlin's westernmost village, five minutes from Red Rock Canyon. Real sold prices, every floor plan, and the 55+ Heritage neighborhood, from the agent who works these streets every week.`}
+        image="home-exterior-golden-hour"
+        imageAlt="Single-story stone and stucco home at golden hour with the Red Rock Canyon cliffs behind it"
+      >
+        <a href="/homes-for-sale" class="btn-primary">
+          See homes for sale
+        </a>
+        <a href="/prices" class="btn-outline">
+          What homes sold for
+        </a>
+      </PageHero>
+
+      <section class="section">
         <div class="container-max">
-          <h1 class="text-5xl font-bold mb-4">
-            Welcome to <span class="text-heritage-light">Heritage at Stonebridge</span>
-          </h1>
-          <p class="text-xl mb-8 max-w-3xl mx-auto">
-            Discover luxury living in the Heritage at Stonebridge community in Summerlin, Las Vegas
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/homes" class="heritage-button">
-              View Available Properties →
+          <p class="eyebrow">Stonebridge at a glance</p>
+          <h2 class="mt-2 text-3xl font-bold md:text-4xl">The numbers behind the village</h2>
+          <div class="mt-8">
+            <StatGrid
+              stats={[
+                { value: money(sb.medianSold), label: 'Median sold, last 12 months' },
+                { value: `${sb.medianDaysToSell} days`, label: 'Median time to sell' },
+                { value: `${sb.pctOfOriginalList}%`, label: 'Of original list price' },
+                { value: `${sb.activeListings}`, label: 'Homes for sale now' },
+              ]}
+            />
+          </div>
+          <DataNote asOf={sb.asOf} source={sb.source} />
+        </div>
+      </section>
+
+      <section class="section bg-white">
+        <div class="container-max grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div class="prose-site">
+            <p class="eyebrow">This week's example</p>
+            <h2 class="mt-2 text-3xl font-bold md:text-4xl">A real Stonebridge price, not a guess</h2>
+            <p>
+              {featured.address.split(',')[0]} listed at {money(featured.price)} on {featured.listed}: a{' '}
+              {featured.plan} plan, {featured.beds} bedrooms, {featured.baths} baths, {featured.sqft?.toLocaleString()} square feet,
+              built {featured.yearBuilt}, inside the guard gate at Heritage at Stonebridge. MLS {featured.mls}.
+            </p>
+            <p>
+              Across the whole village, {sb.closedSales12mo} homes closed in the last 12 months. Heritage homes went
+              under contract in a median of {hb.medianDaysToSell} days; the rest of Stonebridge took about {sb.medianDaysToSell}.
+              That gap is the single most useful thing to know before you write an offer here.
+            </p>
+            <p class="text-sm text-stone-mist">{featured.note}</p>
+            <a href="/prices" class="btn-dark">
+              Read the full price breakdown
             </a>
-            <a href="/contact" class="heritage-button-secondary">
-              Contact Dr. Jan Duffy
+          </div>
+          <Figure
+            name="village-aerial-dusk"
+            alt="Aerial view at dusk of curving neighborhood streets with a lighted park in the middle and red rock cliffs behind"
+            caption="Stonebridge sits on elevated ground north of Charleston Boulevard, with Stonebridge Park at its center."
+          />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container-max">
+          <p class="eyebrow">Twelve neighborhoods, eight builders</p>
+          <h2 class="mt-2 text-3xl font-bold md:text-4xl">Which part of Stonebridge fits you?</h2>
+          <div class="mt-8">
+            <Figure
+              name="neighborhood-street"
+              alt="Quiet residential street with sidewalks, young street trees, and single- and two-story homes with mountains at the end"
+              caption="Most Stonebridge streets mix one- and two-story plans; Heritage is the only all-single-story neighborhood."
+              sizes="100vw"
+            />
+          </div>
+          <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {NEIGHBORHOODS.slice(0, 6).map((n) => (
+              <a key={n.slug} href={`/neighborhoods#${n.slug}`} class="card p-6 transition hover:-translate-y-0.5">
+                <p class="eyebrow">{n.builder}</p>
+                <h3 class="mt-2 text-xl font-bold">{n.name}</h3>
+                <p class="mt-2 text-base text-stone-ink/80">{n.blurb}</p>
+              </a>
+            ))}
+          </div>
+          <div class="mt-8">
+            <a href="/neighborhoods" class="btn-light">
+              See all 12 neighborhoods
             </a>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <main class="section-padding">
-        <div class="container-max">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Available Properties */}
-            <div class="heritage-card p-6 text-center">
-              <div class="text-4xl mb-4">🏠</div>
-              <h2 class="text-xl font-semibold mb-3">Available Properties</h2>
-              <p class="text-gray-600 mb-4">
-                Browse our current listings in the Heritage at Stonebridge community.
-              </p>
-              <a href="/homes" class="heritage-button text-sm">
-                View Listings →
-              </a>
+      <section class="section bg-stone-sand">
+        <div class="container-max grid gap-10 lg:grid-cols-3">
+          <a href="/heritage-at-stonebridge" class="card">
+            <img src="/images/clubhouse-pool-960.jpg" alt="Resort pool and spa in front of a modern clubhouse at dusk" width="960" height="536" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
+            <div class="p-6">
+            <p class="eyebrow">55+ living</p>
+            <h3 class="mt-2 text-2xl font-bold">Heritage at Stonebridge</h3>
+            <p class="mt-3 text-base text-stone-ink/80">
+              421 single-story Lennar homes behind a staffed gate. Median sold {money(hb.medianSold)}, HOA{' '}
+              {money(hb.hoaMonthly + hb.masterMonthly)} a month all in.
+            </p>
             </div>
-
-            {/* Community Features */}
-            <div class="heritage-card p-6 text-center">
-              <div class="text-4xl mb-4">🏊‍♀️</div>
-              <h2 class="text-xl font-semibold mb-3">Community Features</h2>
-              <p class="text-gray-600 mb-4">
-                Learn about the amenities and lifestyle at Heritage at Stonebridge.
-              </p>
-              <a href="/community" class="heritage-button text-sm">
-                Explore Amenities →
-              </a>
+          </a>
+          <a href="/floor-plans" class="card">
+            <img src="/images/floor-plan-rendering-960.jpg" alt="Top-down rendering of a furnished single-story floor plan with a great room, island kitchen, and two-car garage" width="960" height="536" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
+            <div class="p-6">
+            <p class="eyebrow">Floor plans</p>
+            <h3 class="mt-2 text-2xl font-bold">1,232 to 4,500 square feet</h3>
+            <p class="mt-3 text-base text-stone-ink/80">
+              Nine single-story Lennar plans in Heritage plus the larger one- and two-story plans from KB, Pulte,
+              Woodside, Richmond American, and Toll Brothers.
+            </p>
             </div>
-
-            {/* Floor Plans */}
-            <div class="heritage-card p-6 text-center">
-              <div class="text-4xl mb-4">📐</div>
-              <h2 class="text-xl font-semibold mb-3">Floor Plans</h2>
-              <p class="text-gray-600 mb-4">
-                Explore our available floor plans and home designs.
-              </p>
-              <a href="/homes" class="heritage-button text-sm">
-                View Plans →
-              </a>
+          </a>
+          <a href="/stonebridge-park" class="card">
+            <img src="/images/park-fields-courts-960.jpg" alt="Soccer field, shaded playground, and pickleball courts at a desert park with red rock mountains behind" width="960" height="536" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
+            <div class="p-6">
+            <p class="eyebrow">Open to everyone</p>
+            <h3 class="mt-2 text-2xl font-bold">Stonebridge Park</h3>
+            <p class="mt-3 text-base text-stone-ink/80">
+              About 11 acres at 870 Crossbridge Road with lighted soccer fields, pickleball, basketball, and a shaded
+              playground. Open 6 AM to 11 PM.
+            </p>
             </div>
+          </a>
+        </div>
+      </section>
 
-            {/* Contact Us */}
-            <div class="heritage-card p-6 text-center">
-              <div class="text-4xl mb-4">📞</div>
-              <h2 class="text-xl font-semibold mb-3">Contact Us</h2>
-              <p class="text-gray-600 mb-4">
-                Schedule a tour or request more information.
-              </p>
-              <a href="/contact" class="heritage-button text-sm">
-                Get In Touch →
+      <RealScoutListings heading="Stonebridge homes for sale right now" />
+
+      <section class="section">
+        <div class="container-max grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+          <div class="prose-site">
+            <p class="eyebrow">Your Stonebridge agent</p>
+            <h2 class="mt-2 text-3xl font-bold md:text-4xl">{AGENT.name}</h2>
+            <p>
+              {AGENT.yearsInLasVegas} years in Las Vegas, licensed since {AGENT.licensedSince}, {AGENT.brokerage}.
+              Dr. Duffy lists and sells inside Stonebridge, which means her comps come from this village's closed
+              sales, not a citywide average.
+            </p>
+            <p>
+              Buying: she knows which Heritage plans resell fastest and what the entry-gated neighborhoods closed for
+              last quarter. Selling: she prices from your floor plan's last five sales and markets across her Las Vegas
+              neighborhood sites and social pages.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href={`tel:${AGENT.phoneTel}`} class="btn-primary">
+                Call or text {AGENT.phoneDisplay}
+              </a>
+              <a href="/contact" class="btn-light">
+                Book a showing
               </a>
             </div>
           </div>
-        </div>
-      </main>
-
-      {/* Agent Information */}
-      <section class="py-16 bg-heritage-primary text-white">
-        <div class="container-max">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 class="text-3xl font-bold mb-6">Meet Your Local Expert</h2>
-              <div class="text-lg mb-6">
-                <h3 class="text-2xl font-semibold mb-4">Dr. Jan Duffy</h3>
-                <p class="mb-4">Las Vegas REALTOR®</p>
-                <p class="mb-6">
-                  With extensive experience in the Summerlin real estate market, Dr. Jan Duffy specializes in luxury homes and provides personalized service to help you find your dream home in Heritage at Stonebridge.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                  <a href="tel:702-222-1964" class="bg-white text-heritage-primary px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
-                    📞 (702) 222-1964
-                  </a>
-                  <a href="mailto:jan.duffy@heritagestonebridge.com" class="bg-heritage-secondary text-white px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-colors">
-                    📧 Email Dr. Duffy
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="w-64 h-64 bg-heritage-secondary rounded-full mx-auto flex items-center justify-center text-6xl">
-                👨‍💼
-              </div>
-            </div>
+          <div class="card p-6">
+            <p class="eyebrow">Also by Dr. Duffy</p>
+            <p class="mt-2 text-lg">
+              Looking only at the 55+ neighborhood? Her dedicated site,{' '}
+              <a href="https://heritagestonebridge.com" rel="noopener" class="font-semibold text-stone-rock">
+                heritagestonebridge.com
+              </a>
+              , covers Heritage HOA documents, the clubhouse, and gate procedures in depth.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Community Stats */}
-      <section class="py-16 bg-white">
-        <div class="container-max">
-          <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-            Community Overview
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="text-center">
-              <div class="text-4xl font-bold text-heritage-primary mb-2">847</div>
-              <div class="text-lg text-gray-600">Total Homes</div>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-heritage-primary mb-2">$1.25M+</div>
-              <div class="text-lg text-gray-600">Starting From</div>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-heritage-primary mb-2">2015-2023</div>
-              <div class="text-lg text-gray-600">Year Built</div>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-heritage-primary mb-2">10/10</div>
-              <div class="text-lg text-gray-600">Overall Rating</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      <Faq faqs={SITE_FAQS} heading="Stonebridge Summerlin questions, answered" />
+
+      <CtaBand
+        heading="Ready to walk a Stonebridge home?"
+        body="Pick a showing time or a 15-minute call. Gate registration and the HOA file are handled before you arrive."
+        primaryLabel="Book a showing"
+        campaign="home"
+      />
+    </>
   );
 });
 
-export const head: DocumentHead = {
-  title: 'Heritage at Stonebridge | Summerlin Luxury Homes',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Luxury homes at Heritage at Stonebridge in Summerlin, Las Vegas — custom builds, resort-style amenities, and gated-community privacy with Dr. Jan Duffy.',
-    },
-    {
-      name: 'keywords',
-      content:
-        'Heritage Stonebridge, Summerlin homes, Las Vegas real estate, luxury homes, Dr. Jan Duffy, gated community, custom homes, resort amenities',
-    },
-    {
-      name: 'author',
-      content: 'Dr. Jan Duffy',
-    },
-    {
-      name: 'robots',
-      content: 'index, follow',
-    },
-    {
-      property: 'og:type',
-      content: 'website',
-    },
-    {
-      property: 'og:title',
-      content: 'Heritage at Stonebridge | Summerlin Luxury Homes',
-    },
-    {
-      property: 'og:description',
-      content: 'Luxury homes in a gated Summerlin community with resort-style amenities.',
-    },
-    {
-      property: 'og:image',
-      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
-    },
-    {
-      property: 'og:url',
-      content: 'https://heritagestonebridge.com',
-    },
-    {
-      property: 'og:site_name',
-      content: 'Heritage at Stonebridge',
-    },
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image',
-    },
-    {
-      name: 'twitter:title',
-      content: 'Heritage at Stonebridge | Summerlin Luxury Homes',
-    },
-    {
-      name: 'twitter:description',
-      content: 'Luxury homes in a gated Summerlin community with resort-style amenities.',
-    },
-    {
-      name: 'twitter:image',
-      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
-    },
-  ],
-};
+export const head = pageHead({
+  title: 'Stonebridge Summerlin Homes for Sale, Prices & Floor Plans | Las Vegas 89138',
+  description: `Stonebridge Summerlin homes for sale from the $500Ks to $3M. Median sold ${money(STONEBRIDGE_MARKET.medianSold)} (LVR MLS, ${STONEBRIDGE_MARKET.asOf}). Floor plans, 55+ Heritage at Stonebridge, Stonebridge Park, and live listings from Dr. Jan Duffy.`,
+  path: '/',
+});

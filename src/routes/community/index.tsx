@@ -1,206 +1,150 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import { StructuredData } from '../../components/StructuredData';
+import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
+import { CtaBand } from '~/components/ui/CtaBand';
+import { Faq } from '~/components/ui/Faq';
+import { Figure, PhotoStrip } from '~/components/ui/Figure';
+
+import { PageHero } from '~/components/ui/PageHero';
+import { pageHead } from '~/lib/seo';
+
+const faqs = [
+  {
+    q: 'What schools are zoned for Stonebridge Summerlin?',
+    a: 'Doral Academy Red Rock, a tuition-free public charter school, is inside the village on Crossbridge Drive. Clark County School District zoning for most Stonebridge addresses is Givens Elementary, Sig Rogich Middle, and Palo Verde High. Zoning follows the exact address and changes; confirm with CCSD before you buy.',
+  },
+  {
+    q: 'Where do Stonebridge residents shop and eat?',
+    a: 'Downtown Summerlin, about seven minutes east, has the main retail, dining, the Las Vegas Ballpark, and City National Arena. Closer in, the shopping centers at Charleston and Desert Foothills and at Far Hills and the 215 cover groceries, pharmacies, and everyday dining.',
+  },
+  {
+    q: 'What outdoor recreation is near Stonebridge?',
+    a: 'Red Rock Canyon National Conservation Area is about five minutes west, with the 13-mile scenic drive and more than 30 miles of hiking trails. Summerlin has more than 150 miles of interconnected trails and ten golf courses; the closest are Red Rock Country Club and TPC Las Vegas. The paved Red Rock Legacy Trail from Charleston and Sky Vista opened its first mile in April 2026.',
+  },
+  {
+    q: 'Which hospital is closest to Stonebridge?',
+    a: 'Summerlin Hospital Medical Center, about ten minutes by the 215 Beltway. Several urgent care clinics sit along Charleston Boulevard and in Downtown Summerlin.',
+  },
+];
 
 export default component$(() => {
-  const breadcrumb = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://heritagestonebridge.com' },
-      { '@type': 'ListItem', position: 2, name: 'Community', item: 'https://heritagestonebridge.com/community' },
-    ],
-  };
-
   return (
-    <div class="min-h-screen bg-heritage-light">
-      <StructuredData data={breadcrumb} />
-      <div class="hero-section">
-        <div class="container-max text-center">
-          <h1 class="text-4xl font-bold mb-4">Heritage at Stonebridge Community</h1>
-          <p class="text-xl">Discover luxury living in Summerlin's premier gated community</p>
-        </div>
-      </div>
+    <>
+      <PageHero
+        eyebrow="Living in Stonebridge"
+        title="Life in Summerlin's westernmost village"
+        intro="Elevation, Red Rock at the end of the street, an 11-acre park in the middle, and Downtown Summerlin seven minutes away. What daily life in Stonebridge looks like, with the facts you need to check."
+        image="red-rock-canyon-trail"
+        imageAlt="Paved trail through Mojave desert toward the banded red sandstone cliffs of Red Rock Canyon under a clear sky"
+      >
+        <a href="/homes-for-sale" class="btn-primary">
+          Homes for sale
+        </a>
+      </PageHero>
+      <Breadcrumbs items={[{ name: 'Living Here', path: '/community' }]} />
 
-      <section class="section-padding">
+      <section class="section pt-6">
         <div class="container-max">
-          {/* Community Overview */}
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-              Community Overview
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <p class="text-lg mb-6">
-                  Heritage at Stonebridge is a premier gated community offering luxury homes with stunning mountain and valley views. Located in the heart of Summerlin, this gated neighborhood provides residents with an unparalleled lifestyle experience.
-                </p>
-                <div class="space-y-4">
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✓</span>
-                    <span>847 luxury homes</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✓</span>
-                    <span>Gated community with 24/7 security</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✓</span>
-                    <span>Resort-style amenities</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✓</span>
-                    <span>Public schools nearby</span>
-                  </div>
-                </div>
-              </div>
-              <div class="bg-heritage-neutral h-64 flex items-center justify-center text-6xl rounded-lg">
-                🏘️
-              </div>
-            </div>
-          </div>
+          <PhotoStrip
+            items={[
+              { name: 'shopping-promenade', alt: 'Open-air shopping promenade with palm trees and cafe seating', caption: 'Downtown Summerlin, seven minutes east' },
+              { name: 'park-fields-courts', alt: 'Soccer field, playground, and pickleball courts with red rock mountains behind', caption: 'Stonebridge Park at the center of the village' },
+              { name: 'covered-patio-sunset', alt: 'Covered patio with a fire pit looking toward red rock mountains at sunset', caption: 'Evenings face the Red Rock escarpment' },
+            ]}
+          />
+        </div>
+        <div class="container-max mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="card p-6">
+            <p class="eyebrow">Recreation</p>
+            <h2 class="mt-2 text-xl font-bold">Red Rock Canyon, five minutes west</h2>
+            <p class="mt-2 text-base leading-7 text-stone-ink/85">
+              The scenic loop entrance is at the end of Charleston Boulevard. Summerlin's 150-plus miles of trails
+              connect through Stonebridge Park, and the new Red Rock Legacy Trail starts at Charleston and Sky Vista.
+            </p>
+          </article>
+          <article class="card p-6">
+            <p class="eyebrow">Shopping and dining</p>
+            <h2 class="mt-2 text-xl font-bold">Downtown Summerlin, seven minutes east</h2>
+            <p class="mt-2 text-base leading-7 text-stone-ink/85">
+              More than 125 stores and restaurants, the Las Vegas Ballpark, and City National Arena. Groceries and
+              pharmacies are closer at Charleston and Desert Foothills.
+            </p>
+          </article>
+          <article class="card p-6">
+            <p class="eyebrow">Schools</p>
+            <h2 class="mt-2 text-xl font-bold">A charter school inside the village</h2>
+            <p class="mt-2 text-base leading-7 text-stone-ink/85">
+              Doral Academy Red Rock is on Crossbridge Drive next to the park. CCSD zoning for most addresses: Givens
+              Elementary, Sig Rogich Middle, Palo Verde High. Verify by address with CCSD.
+            </p>
+          </article>
+          <article class="card p-6">
+            <p class="eyebrow">Health care</p>
+            <h2 class="mt-2 text-xl font-bold">Summerlin Hospital, ten minutes</h2>
+            <p class="mt-2 text-base leading-7 text-stone-ink/85">
+              Summerlin Hospital Medical Center is south on the 215. Urgent care and specialist offices line Charleston
+              Boulevard and Downtown Summerlin.
+            </p>
+          </article>
+          <article class="card p-6">
+            <p class="eyebrow">Golf</p>
+            <h2 class="mt-2 text-xl font-bold">Ten Summerlin courses</h2>
+            <p class="mt-2 text-base leading-7 text-stone-ink/85">
+              Red Rock Country Club (private, two courses) and TPC Las Vegas are the closest. Stonebridge itself has no
+              golf course; the village was built around the park and trails instead.
+            </p>
+          </article>
+          <article class="card p-6">
+            <p class="eyebrow">Getting out of town</p>
+            <h2 class="mt-2 text-xl font-bold">Airport in about 27 minutes</h2>
+            <p class="mt-2 text-base leading-7 text-stone-ink/85">
+              Harry Reid International Airport by the 215 Beltway. Mount Charleston's ski area and Lee Canyon are about
+              an hour north.
+            </p>
+          </article>
+        </div>
+      </section>
 
-          {/* Amenities */}
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-              Resort-Style Amenities
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { icon: '🏊‍♀️', title: 'Resort-Style Pool & Spa', description: 'Luxurious pool area with spa, perfect for relaxation and entertaining' },
-                { icon: '⛳', title: 'Championship Golf Course', description: 'Access to world-class golf courses designed by renowned architects' },
-                { icon: '💪', title: 'Fitness Center', description: 'State-of-the-art fitness facilities with personal training available' },
-                { icon: '🎾', title: 'Tennis Courts', description: 'Professional tennis courts for residents and guests' },
-                { icon: '🔒', title: 'Gated Security', description: '24/7 security with controlled access for peace of mind' },
-                { icon: '🚶‍♀️', title: 'Walking Trails', description: 'Scenic walking trails throughout the community' },
-                { icon: '🌳', title: 'Parks & Recreation', description: 'Beautiful parks and recreational areas for families' },
-                { icon: '🏛️', title: 'Community Clubhouse', description: 'Elegant clubhouse for events and community gatherings' }
-              ].map((amenity) => (
-                <div key={amenity.title} class="heritage-card p-6 text-center">
-                  <div class="text-4xl mb-4">{amenity.icon}</div>
-                  <h3 class="text-xl font-semibold mb-3">{amenity.title}</h3>
-                  <p class="text-gray-600">{amenity.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Location & Schools */}
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-              Location & Schools
-            </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div class="heritage-card p-6">
-                <h3 class="text-2xl font-semibold mb-4">Prime Location</h3>
-                <div class="space-y-3">
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">📍</span>
-                    <span>Located in Summerlin, Las Vegas</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">🛍️</span>
-                    <span>Minutes from shopping and dining</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">🏥</span>
-                    <span>Close to medical facilities</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✈️</span>
-                    <span>Easy access to McCarran Airport</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="heritage-card p-6">
-                <h3 class="text-2xl font-semibold mb-4">Schools</h3>
-                <div class="space-y-3">
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">🏫</span>
-                    <span>Clark County School District</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">⭐</span>
-                    <span>Elementary and high schools nearby</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">🎓</span>
-                    <span>Private school options nearby</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">📚</span>
-                    <span>UNLV and other universities close</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Community Stats */}
-          <div class="bg-white py-16 rounded-lg">
-            <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-              Community Statistics
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">847</div>
-                <div class="text-lg text-gray-600">Total Homes</div>
-              </div>
-              <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">$1.25M</div>
-                <div class="text-lg text-gray-600">Median Price</div>
-              </div>
-              <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">2015-2020</div>
-                <div class="text-lg text-gray-600">Year Built</div>
-              </div>
-              <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">24/7</div>
-                <div class="text-lg text-gray-600">Gated Security</div>
-              </div>
-            </div>
+      <section class="section bg-white">
+        <div class="container-max grid gap-10 lg:grid-cols-2 lg:items-center">
+          <Figure
+            name="neighborhood-street"
+            alt="Residential street with sidewalks, street trees, decorative lamps, and desert front yards"
+            caption="Summerlin's design guidelines govern front yards, paint, and exterior changes village-wide."
+          />
+          <div class="prose-site">
+            <h2 class="text-3xl font-bold md:text-4xl">The master plan behind the address</h2>
+            <p>
+              Every Stonebridge home pays $69 a month to the Summerlin West Community Association, which funds the
+              village parks, trails, and landscaping standards that keep resale values consistent. Summerlin's design
+              review also governs exterior changes, so check the guidelines before planning a casita or a paint color.
+            </p>
+            <p>
+              Most neighborhoods add a sub-association for their entry gate and front-yard landscaping. The sub-fee and
+              the master fee together are what the MLS calls "HOA," and they are listed per address in the resale
+              package.
+            </p>
+            <a href="/prices#faq" class="btn-dark">
+              HOA and monthly costs
+            </a>
           </div>
         </div>
       </section>
-    </div>
+
+      <Faq faqs={faqs} heading="Living in Stonebridge: common questions" />
+
+      <CtaBand
+        heading="Relocating to Summerlin West?"
+        body="Dr. Duffy works with buyers relocating from California and out of state. Ask for the relocation packet: commute times, utility averages, and the move-in checklist."
+        primaryLabel="Book a relocation call"
+        campaign="community"
+      />
+    </>
   );
 });
 
-export const head: DocumentHead = {
-  title: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Discover Heritage at Stonebridge, a gated Summerlin community with resort-style amenities and custom luxury homes.',
-    },
-    { property: 'og:type', content: 'website' },
-    {
-      property: 'og:title',
-      content: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
-    },
-    {
-      property: 'og:description',
-      content: 'A gated Summerlin community with resort-style amenities and custom luxury homes.',
-    },
-    {
-      property: 'og:image',
-      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
-    },
-    { property: 'og:url', content: 'https://heritagestonebridge.com/community' },
-    { property: 'og:site_name', content: 'Heritage at Stonebridge' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    {
-      name: 'twitter:title',
-      content: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
-    },
-    {
-      name: 'twitter:description',
-      content: 'A gated Summerlin community with resort-style amenities and custom luxury homes.',
-    },
-    {
-      name: 'twitter:image',
-      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
-    },
-  ],
-};
+export const head = pageHead({
+  title: 'Living in Stonebridge Summerlin | Schools, Red Rock, Downtown Summerlin, HOA',
+  description:
+    'What daily life in Stonebridge, Summerlin West looks like: Doral Academy Red Rock and CCSD zoning, Red Rock Canyon five minutes away, Downtown Summerlin in seven, Summerlin Hospital, golf, trails, and the $69 master association that comes with every address.',
+  path: '/community',
+});
