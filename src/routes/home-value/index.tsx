@@ -3,6 +3,8 @@ import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { DataNote } from '~/components/ui/DataNote';
 import { Faq } from '~/components/ui/Faq';
+import { Figure, } from '~/components/ui/Figure';
+import { PageHero } from '~/components/ui/PageHero';
 import { RealScoutHomeValue } from '~/components/ui/RealScout';
 import { StatGrid } from '~/components/ui/StatGrid';
 import { HERITAGE_MARKET, STONEBRIDGE_MARKET } from '~/lib/data';
@@ -30,16 +32,17 @@ const faqs = [
 export default component$(() => {
   return (
     <>
-      <section class="bg-stone-slate py-16 text-white">
-        <div class="container-max">
-          <p class="eyebrow text-stone-gold">Sellers</p>
-          <h1 class="mt-3 font-serif text-4xl font-bold text-white md:text-5xl">What is your Stonebridge home worth?</h1>
-          <p class="mt-4 max-w-2xl text-lg text-stone-sand">
-            Village-wide, homes sold at {sb.pctOfOriginalList}% of original list in a median of {sb.medianDaysToSell} days
-            through {sb.asOf}. Get the instant number, then the real one.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Sellers"
+        title="What is your Stonebridge home worth?"
+        intro={`Village-wide, homes sold at ${sb.pctOfOriginalList}% of original list in a median of ${sb.medianDaysToSell} days through ${sb.asOf}. Get the instant number, then the real one.`}
+        image="home-front-sunrise"
+        imageAlt="Front of a well-kept single-story desert home at sunrise with paver driveway and desert landscaping"
+      >
+        <a href="#home-value-heading" class="btn-primary">
+          Get the instant estimate
+        </a>
+      </PageHero>
       <Breadcrumbs items={[{ name: 'Home Value', path: '/home-value' }]} />
 
       <RealScoutHomeValue />
@@ -62,7 +65,13 @@ export default component$(() => {
       </section>
 
       <section class="section">
-        <div class="container-max prose-site">
+        <div class="container-max grid gap-10 lg:grid-cols-2 lg:items-center">
+          <Figure
+            name="covered-patio-sunset"
+            alt="Finished covered patio with seating and fire pit facing red rock mountains at sunset"
+            caption="Backyard completion and view direction move a Stonebridge price more than square footage alone."
+          />
+          <div class="prose-site">
           <h2 class="text-3xl font-bold md:text-4xl">How Dr. Duffy prices a Stonebridge home</h2>
           <ul>
             <li>Pulls the last five closed sales of your exact floor plan, not your square footage range.</li>
@@ -73,6 +82,7 @@ export default component$(() => {
           <p>
             Call or text {AGENT.phoneDisplay} with your address. The comp sheet and net sheet usually come back the same day.
           </p>
+          </div>
         </div>
       </section>
 

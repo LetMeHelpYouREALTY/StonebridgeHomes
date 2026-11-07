@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import { StructuredData } from '~/components/StructuredData';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { DataNote } from '~/components/ui/DataNote';
+import { Figure, } from '~/components/ui/Figure';
+
 import { Faq } from '~/components/ui/Faq';
 import { PageHero } from '~/components/ui/PageHero';
 import { RealScoutListings } from '~/components/ui/RealScout';
@@ -22,7 +24,7 @@ const placeSchema = {
   geo: { '@type': 'GeoCoordinates', latitude: AREA.geo.lat, longitude: AREA.geo.lng },
   containedInPlace: { '@type': 'Place', name: 'Summerlin, Las Vegas, NV' },
   url: SITE_ORIGIN,
-  image: abs('/images/hero-stonebridge.jpg'),
+  image: abs('/images/home-exterior-golden-hour.jpg'),
 };
 
 export default component$(() => {
@@ -38,8 +40,8 @@ export default component$(() => {
         eyebrow={`Summerlin West · Las Vegas, NV ${AREA.zip}`}
         title="Stonebridge Summerlin homes for sale"
         intro={`Resale homes from about $500,000 to $3 million in Summerlin's westernmost village, five minutes from Red Rock Canyon. Real sold prices, every floor plan, and the 55+ Heritage neighborhood, from the agent who works these streets every week.`}
-        image="hero-stonebridge"
-        imageAlt="Illustration of single-story homes at dusk below the red rock ridges west of Summerlin"
+        image="home-exterior-golden-hour"
+        imageAlt="Single-story stone and stucco home at golden hour with the Red Rock Canyon cliffs behind it"
       >
         <a href="/homes-for-sale" class="btn-primary">
           See homes for sale
@@ -87,24 +89,11 @@ export default component$(() => {
               Read the full price breakdown
             </a>
           </div>
-          <figure class="card">
-            <picture>
-              <source srcset="/images/stonebridge-village-960.webp 960w, /images/stonebridge-village.webp 1600w" type="image/webp" />
-              <img
-                src="/images/stonebridge-village.jpg"
-                srcset="/images/stonebridge-village-960.jpg 960w, /images/stonebridge-village.jpg 1600w"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                alt="Illustrated aerial view of Stonebridge's curving streets with the village park in the middle and red rock ridges behind"
-                width="1600"
-                height="900"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-            <figcaption class="px-5 py-3 text-sm text-stone-mist">
-              Stonebridge sits on elevated ground north of Charleston Boulevard, with Stonebridge Park at its center.
-            </figcaption>
-          </figure>
+          <Figure
+            name="village-aerial-dusk"
+            alt="Aerial view at dusk of curving neighborhood streets with a lighted park in the middle and red rock cliffs behind"
+            caption="Stonebridge sits on elevated ground north of Charleston Boulevard, with Stonebridge Park at its center."
+          />
         </div>
       </section>
 
@@ -112,6 +101,14 @@ export default component$(() => {
         <div class="container-max">
           <p class="eyebrow">Twelve neighborhoods, eight builders</p>
           <h2 class="mt-2 text-3xl font-bold md:text-4xl">Which part of Stonebridge fits you?</h2>
+          <div class="mt-8">
+            <Figure
+              name="neighborhood-street"
+              alt="Quiet residential street with sidewalks, young street trees, and single- and two-story homes with mountains at the end"
+              caption="Most Stonebridge streets mix one- and two-story plans; Heritage is the only all-single-story neighborhood."
+              sizes="100vw"
+            />
+          </div>
           <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {NEIGHBORHOODS.slice(0, 6).map((n) => (
               <a key={n.slug} href={`/neighborhoods#${n.slug}`} class="card p-6 transition hover:-translate-y-0.5">
@@ -131,29 +128,38 @@ export default component$(() => {
 
       <section class="section bg-stone-sand">
         <div class="container-max grid gap-10 lg:grid-cols-3">
-          <a href="/heritage-at-stonebridge" class="card p-6">
+          <a href="/heritage-at-stonebridge" class="card">
+            <img src="/images/clubhouse-pool-960.jpg" alt="Resort pool and spa in front of a modern clubhouse at dusk" width="960" height="536" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
+            <div class="p-6">
             <p class="eyebrow">55+ living</p>
             <h3 class="mt-2 text-2xl font-bold">Heritage at Stonebridge</h3>
             <p class="mt-3 text-base text-stone-ink/80">
               421 single-story Lennar homes behind a staffed gate. Median sold {money(hb.medianSold)}, HOA{' '}
               {money(hb.hoaMonthly + hb.masterMonthly)} a month all in.
             </p>
+            </div>
           </a>
-          <a href="/floor-plans" class="card p-6">
+          <a href="/floor-plans" class="card">
+            <img src="/images/floor-plan-rendering-960.jpg" alt="Top-down rendering of a furnished single-story floor plan with a great room, island kitchen, and two-car garage" width="960" height="536" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
+            <div class="p-6">
             <p class="eyebrow">Floor plans</p>
             <h3 class="mt-2 text-2xl font-bold">1,232 to 4,500 square feet</h3>
             <p class="mt-3 text-base text-stone-ink/80">
               Nine single-story Lennar plans in Heritage plus the larger one- and two-story plans from KB, Pulte,
               Woodside, Richmond American, and Toll Brothers.
             </p>
+            </div>
           </a>
-          <a href="/stonebridge-park" class="card p-6">
+          <a href="/stonebridge-park" class="card">
+            <img src="/images/park-fields-courts-960.jpg" alt="Soccer field, shaded playground, and pickleball courts at a desert park with red rock mountains behind" width="960" height="536" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
+            <div class="p-6">
             <p class="eyebrow">Open to everyone</p>
             <h3 class="mt-2 text-2xl font-bold">Stonebridge Park</h3>
             <p class="mt-3 text-base text-stone-ink/80">
               About 11 acres at 870 Crossbridge Road with lighted soccer fields, pickleball, basketball, and a shaded
               playground. Open 6 AM to 11 PM.
             </p>
+            </div>
           </a>
         </div>
       </section>

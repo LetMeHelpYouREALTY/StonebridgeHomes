@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { Faq } from '~/components/ui/Faq';
+import { Figure, PhotoStrip } from '~/components/ui/Figure';
+
 import { PageHero } from '~/components/ui/PageHero';
 import { HERITAGE_PLANS, NEIGHBORHOODS } from '~/lib/data';
 import { pageHead } from '~/lib/seo';
@@ -34,8 +36,8 @@ export default component$(() => {
         eyebrow="Every builder, every collection"
         title="Stonebridge Summerlin floor plans"
         intro="From 1,232 square feet in Heritage's Cromwell collection to about 4,500 square feet in the Toll Brothers collections. Square footage, bedrooms, garages, and which plans resell fastest."
-        image="floor-plans"
-        imageAlt="Blueprint-style drawing of a single-story floor plan with a great room, island kitchen, and covered patio"
+        image="floor-plan-rendering"
+        imageAlt="Top-down rendering of a furnished single-story floor plan with great room, island kitchen, primary suite, and two-car garage"
       >
         <a href="#heritage-plans" class="btn-primary">
           Heritage 55+ plans
@@ -54,6 +56,13 @@ export default component$(() => {
             All 421 Heritage homes are one story with two-car or larger garages. Every plan came with Lennar's
             Everything's Included package: quartz counters, stainless appliances, and smart-home controls.
           </p>
+          <PhotoStrip
+            items={[
+              { name: 'great-room-interior', alt: 'Open great room with island kitchen and a wide sliding glass wall to a covered patio', caption: 'Great room and island kitchen, the core of every Heritage plan' },
+              { name: 'open-kitchen-island', alt: 'Kitchen island with white quartz counters, bar seating, and stainless appliances', caption: 'Quartz counters and stainless appliances came standard' },
+              { name: 'primary-suite', alt: 'Primary bedroom with a mountain view window and an open door to a bathroom with a freestanding tub', caption: 'Primary suites sit at the back of the plan, away from the street' },
+            ]}
+          />
           {collections.map((c) => (
             <div key={c} class="mt-10">
               <h3 class="text-2xl font-bold">{c} collection</h3>
@@ -101,6 +110,14 @@ export default component$(() => {
             square feet across one- and two-story designs. Builder plan names varied by phase; the neighborhood tells you
             the builder, and the listing tells you the plan.
           </p>
+          <div class="mt-8">
+            <Figure
+              name="two-story-contemporary"
+              alt="Two-story contemporary home with a courtyard entry, black-framed windows, and a three-car garage"
+              caption="Two-story plans from 2,000 to about 4,500 sq ft make up most of the village outside Heritage."
+              sizes="100vw"
+            />
+          </div>
           <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {NEIGHBORHOODS.filter((n) => n.slug !== 'heritage-at-stonebridge').map((n) => (
               <a key={n.slug} href={`/neighborhoods#${n.slug}`} class="card p-6">
@@ -115,7 +132,13 @@ export default component$(() => {
       </section>
 
       <section class="section">
-        <div class="container-max prose-site">
+        <div class="container-max grid gap-10 lg:grid-cols-2 lg:items-center">
+          <Figure
+            name="covered-patio-sunset"
+            alt="Covered back patio with outdoor seating, fire pit, and turf, looking over a block wall to red rock mountains at sunset"
+            caption="A finished backyard with a view is the upgrade buyers pay for first."
+          />
+          <div class="prose-site">
           <h2 class="text-3xl font-bold md:text-4xl">Which plans resell fastest</h2>
           <p>
             In Heritage, the Cromwell two-bedroom plans are the lowest-priced new-era single-story homes in Summerlin West,
@@ -126,6 +149,7 @@ export default component$(() => {
             Outside Heritage, single-story plans and homes with finished backyards and views draw the most showings.
             Unfinished backyards, which some builders left to the owner, are a frequent price negotiation point.
           </p>
+          </div>
         </div>
       </section>
 

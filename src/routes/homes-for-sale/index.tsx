@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { DataNote } from '~/components/ui/DataNote';
+import { Figure, } from '~/components/ui/Figure';
+
 import { Faq } from '~/components/ui/Faq';
 import { PageHero } from '~/components/ui/PageHero';
 import { RealScoutListings } from '~/components/ui/RealScout';
@@ -36,8 +38,8 @@ export default component$(() => {
         eyebrow="Live MLS feed · Summerlin West 89138"
         title="Stonebridge Summerlin homes for sale"
         intro={`${sb.activeListings} homes on the market from about $500,000 to $3 million, median list price ${money(sb.medianListPrice)}. Every listing below is pulled from the Las Vegas REALTORS® MLS and refreshes as sellers change prices.`}
-        image="hero-stonebridge"
-        imageAlt="Illustration of single-story homes at dusk below the red rock ridges west of Summerlin"
+        image="home-front-sunrise"
+        imageAlt="Front of a single-story stucco and stone home at sunrise with desert landscaping and mountains behind"
       >
         <a href="#listings-heading" class="btn-primary">
           Jump to listings
@@ -51,7 +53,8 @@ export default component$(() => {
       <section class="section pt-6">
         <div class="container-max">
           <h2 class="text-3xl font-bold md:text-4xl">Where the {sb.activeListings} listings fall by price</h2>
-          <div class="mt-6 overflow-x-auto">
+          <div class="mt-6 grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+          <div class="overflow-x-auto">
             <table class="table-site">
               <thead>
                 <tr>
@@ -93,6 +96,13 @@ export default component$(() => {
                 </tr>
               </tbody>
             </table>
+          </div>
+          <Figure
+            name="valley-lights-blue-hour"
+            alt="View from an elevated Summerlin West street at blue hour over the lights of the Las Vegas valley"
+            caption="The elevated west and south streets carry the valley-view premium at the top of the price bands."
+            sizes="(min-width: 1024px) 40vw, 100vw"
+          />
           </div>
           <DataNote asOf={sb.asOf} source={sb.source} />
         </div>

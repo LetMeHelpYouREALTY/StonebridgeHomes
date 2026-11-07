@@ -3,6 +3,8 @@ import { StructuredData } from '~/components/StructuredData';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { DataNote } from '~/components/ui/DataNote';
+import { PhotoStrip } from '~/components/ui/Figure';
+
 import { Faq } from '~/components/ui/Faq';
 import { PageHero } from '~/components/ui/PageHero';
 import { RealScoutListings } from '~/components/ui/RealScout';
@@ -23,7 +25,7 @@ const schema = {
   address: { '@type': 'PostalAddress', streetAddress: '930 Silverfir Court', addressLocality: 'Las Vegas', addressRegion: 'NV', postalCode: '89138', addressCountry: 'US' },
   containedInPlace: { '@id': `${SITE_ORIGIN}/#stonebridge` },
   amenityFeature: ['8,000 sq ft clubhouse', 'Resort pool and spa', 'Heated lap pool', 'Fitness center', 'Pickleball courts', 'Bocce courts', 'Staffed gatehouse'].map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
-  image: abs('/images/heritage-clubhouse.jpg'),
+  image: abs('/images/clubhouse-pool.jpg'),
 };
 
 const faqs = [
@@ -58,8 +60,8 @@ export default component$(() => {
         eyebrow="Age-qualified 55+ · guard gate · Lennar"
         title="Heritage at Stonebridge"
         intro={`421 single-story homes built 2021 to 2025 behind the only staffed gate in Stonebridge. Median sold ${money(hb.medianSold)}, ${hb.medianDaysToSell} median days to sell, HOA $419 a month all in.`}
-        image="heritage-clubhouse"
-        imageAlt="Illustration of a clubhouse with a lit lap pool, spa, and fire pit at dusk below red rock mountains"
+        image="clubhouse-pool"
+        imageAlt="Resort pool, heated lap pool, and spa in front of a modern stone and stucco clubhouse at dusk with red rock mountains behind"
       >
         <a href="#listings-heading" class="btn-primary">
           Heritage homes for sale
@@ -88,6 +90,19 @@ export default component$(() => {
       </section>
 
       <section class="section bg-white">
+        <div class="container-max">
+          <h2 class="text-3xl font-bold md:text-4xl">The clubhouse and the gate</h2>
+          <PhotoStrip
+            items={[
+              { name: 'pickleball-bocce-courts', alt: 'Lighted pickleball courts and bocce courts beside a modern clubhouse at dusk', caption: 'Pickleball and bocce courts, lit for evening play' },
+              { name: 'firepit-terrace-night', alt: 'Fire pit terrace with lounge seating and string lights beside a glowing pool at night', caption: 'Fire-pit terrace off the clubhouse' },
+              { name: 'staffed-gatehouse', alt: 'Stone gatehouse with wrought iron gates and mountains behind', caption: 'Visitors check in at a staffed gatehouse, not a keypad' },
+            ]}
+          />
+        </div>
+      </section>
+
+      <section class="section">
         <div class="container-max grid gap-10 lg:grid-cols-2">
           <div class="prose-site">
             <h2 class="text-3xl font-bold md:text-4xl">What you are buying</h2>

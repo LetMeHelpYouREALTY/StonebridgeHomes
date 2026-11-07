@@ -2,6 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { Faq } from '~/components/ui/Faq';
+import { PageHero } from '~/components/ui/PageHero';
 import { HERITAGE_MARKET, SITE_FAQS, STONEBRIDGE_MARKET } from '~/lib/data';
 import { money, pageHead } from '~/lib/seo';
 import { AGENT } from '~/lib/site';
@@ -43,16 +44,17 @@ const selling = [
 export default component$(() => {
   return (
     <>
-      <section class="bg-stone-slate py-16 text-white">
-        <div class="container-max">
-          <p class="eyebrow text-stone-gold">Answers, not scripts</p>
-          <h1 class="mt-3 font-serif text-4xl font-bold text-white md:text-5xl">Stonebridge Summerlin questions</h1>
-          <p class="mt-4 max-w-2xl text-lg text-stone-sand">
-            Everything buyers and sellers ask about the village, with the numbers and the dates behind them. Call{' '}
-            {AGENT.phoneDisplay} if your question is not here.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Answers, not scripts"
+        title="Stonebridge Summerlin questions"
+        intro={`Everything buyers and sellers ask about the village, with the numbers and the dates behind them. Call ${AGENT.phoneDisplay} if your question is not here.`}
+        image="home-front-sunrise"
+        imageAlt="Front of a single-story desert home at sunrise with manicured desert landscaping and mountains behind"
+      >
+        <a href={`tel:${AGENT.phoneTel}`} class="btn-primary">
+          Call {AGENT.phoneDisplay}
+        </a>
+      </PageHero>
       <Breadcrumbs items={[{ name: 'FAQ', path: '/faq' }]} />
       <Faq id="village" faqs={SITE_FAQS} heading="About the village" />
       <Faq id="buying" faqs={buying} heading="Buying in Stonebridge" />

@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { Faq } from '~/components/ui/Faq';
+import { Figure, PhotoStrip } from '~/components/ui/Figure';
+
 import { PageHero } from '~/components/ui/PageHero';
 import { pageHead } from '~/lib/seo';
 
@@ -31,8 +33,8 @@ export default component$(() => {
         eyebrow="Living in Stonebridge"
         title="Life in Summerlin's westernmost village"
         intro="Elevation, Red Rock at the end of the street, an 11-acre park in the middle, and Downtown Summerlin seven minutes away. What daily life in Stonebridge looks like, with the facts you need to check."
-        image="hero-stonebridge"
-        imageAlt="Illustration of single-story homes at dusk below the red rock ridges west of Summerlin"
+        image="red-rock-canyon-trail"
+        imageAlt="Paved trail through Mojave desert toward the banded red sandstone cliffs of Red Rock Canyon under a clear sky"
       >
         <a href="/homes-for-sale" class="btn-primary">
           Homes for sale
@@ -41,7 +43,16 @@ export default component$(() => {
       <Breadcrumbs items={[{ name: 'Living Here', path: '/community' }]} />
 
       <section class="section pt-6">
-        <div class="container-max grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="container-max">
+          <PhotoStrip
+            items={[
+              { name: 'shopping-promenade', alt: 'Open-air shopping promenade with palm trees and cafe seating', caption: 'Downtown Summerlin, seven minutes east' },
+              { name: 'park-fields-courts', alt: 'Soccer field, playground, and pickleball courts with red rock mountains behind', caption: 'Stonebridge Park at the center of the village' },
+              { name: 'covered-patio-sunset', alt: 'Covered patio with a fire pit looking toward red rock mountains at sunset', caption: 'Evenings face the Red Rock escarpment' },
+            ]}
+          />
+        </div>
+        <div class="container-max mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <article class="card p-6">
             <p class="eyebrow">Recreation</p>
             <h2 class="mt-2 text-xl font-bold">Red Rock Canyon, five minutes west</h2>
@@ -95,21 +106,11 @@ export default component$(() => {
 
       <section class="section bg-white">
         <div class="container-max grid gap-10 lg:grid-cols-2 lg:items-center">
-          <figure class="card">
-            <picture>
-              <source srcset="/images/stonebridge-park-960.webp 960w, /images/stonebridge-park.webp 1600w" type="image/webp" />
-              <img
-                src="/images/stonebridge-park.jpg"
-                srcset="/images/stonebridge-park-960.jpg 960w, /images/stonebridge-park.jpg 1600w"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                alt="Illustration of a soccer field, pickleball and basketball courts on green turf below red rock mountains"
-                width="1600"
-                height="900"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
-          </figure>
+          <Figure
+            name="neighborhood-street"
+            alt="Residential street with sidewalks, street trees, decorative lamps, and desert front yards"
+            caption="Summerlin's design guidelines govern front yards, paint, and exterior changes village-wide."
+          />
           <div class="prose-site">
             <h2 class="text-3xl font-bold md:text-4xl">The master plan behind the address</h2>
             <p>

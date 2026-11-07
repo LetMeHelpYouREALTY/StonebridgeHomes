@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { DataNote } from '~/components/ui/DataNote';
+import { Figure, } from '~/components/ui/Figure';
+
 import { Faq } from '~/components/ui/Faq';
 import { PageHero } from '~/components/ui/PageHero';
 import { StatGrid } from '~/components/ui/StatGrid';
@@ -41,8 +43,8 @@ export default component$(() => {
         eyebrow="Sold data, not estimates"
         title="Stonebridge Summerlin prices"
         intro={`What homes in Stonebridge actually sold for: median ${money(sb.medianSold)} village-wide and ${money(hb.medianSold)} inside Heritage at Stonebridge, from Las Vegas REALTORS® MLS closed sales through ${sb.asOf}.`}
-        image="prices"
-        imageAlt="Abstract bar and line chart over a red rock skyline representing Stonebridge home prices"
+        image="valley-lights-blue-hour"
+        imageAlt="Homes on an elevated Summerlin West street at blue hour overlooking the lights of the Las Vegas valley"
       >
         <a href="/home-value" class="btn-primary">
           Price my Stonebridge home
@@ -136,6 +138,14 @@ export default component$(() => {
       <section class="section bg-stone-sand">
         <div class="container-max">
           <h2 class="text-3xl font-bold md:text-4xl">Monthly costs beyond the price</h2>
+          <div class="mt-6">
+            <Figure
+              name="two-story-contemporary"
+              alt="Two-story contemporary home with a courtyard entry, stacked stone accent wall, and three-car garage"
+              caption="Larger two-story plans carry higher sub-association dues and property tax; the resale package lists both."
+              sizes="100vw"
+            />
+          </div>
           <div class="mt-6 overflow-x-auto">
             <table class="table-site bg-white">
               <thead>

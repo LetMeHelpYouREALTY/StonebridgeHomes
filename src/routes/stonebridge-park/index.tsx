@@ -3,6 +3,8 @@ import { StructuredData } from '~/components/StructuredData';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { Faq } from '~/components/ui/Faq';
+import { PhotoStrip } from '~/components/ui/Figure';
+
 import { PageHero } from '~/components/ui/PageHero';
 import { pageHead } from '~/lib/seo';
 import { AREA, SITE_ORIGIN, abs } from '~/lib/site';
@@ -22,7 +24,7 @@ const schema = {
   publicAccess: true,
   containedInPlace: { '@id': `${SITE_ORIGIN}/#stonebridge` },
   amenityFeature: ['Lighted soccer fields', 'Lighted basketball court', 'Pickleball courts', 'Shaded playground', 'Picnic pavilions', 'Exercise area'].map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
-  image: abs('/images/stonebridge-park.jpg'),
+  image: abs('/images/park-fields-courts.jpg'),
 };
 
 const faqs = [
@@ -41,8 +43,8 @@ export default component$(() => {
         eyebrow="Open to everyone · 6 AM to 11 PM"
         title="Stonebridge Park"
         intro={`About ${park.acres} acres at ${park.address.split(',')[0]} with lighted soccer fields, pickleball, basketball, a shaded playground, and picnic pavilions. Opened ${park.opened} and run by the ${park.operator}.`}
-        image="stonebridge-park"
-        imageAlt="Illustration of a soccer field, pickleball and basketball courts on green turf below red rock mountains"
+        image="park-fields-courts"
+        imageAlt="Lighted soccer field, shaded playground, pavilions, and pickleball courts at a desert park with red rock mountains behind"
       >
         <a href="/homes-for-sale" class="btn-primary">
           Homes near the park
@@ -103,6 +105,17 @@ export default component$(() => {
       </section>
 
       <section class="section bg-white">
+        <div class="container-max">
+          <PhotoStrip
+            items={[
+              { name: 'shaded-playground', alt: 'Playground under sail shade canopies with picnic ramadas and red rock mountains behind', caption: 'Shaded playground and picnic ramadas' },
+              { name: 'red-rock-canyon-trail', alt: 'Paved trail curving toward the red and cream sandstone cliffs of Red Rock Canyon', caption: 'The trail network links the park toward Red Rock Canyon' },
+            ]}
+          />
+        </div>
+      </section>
+
+      <section class="section">
         <div class="container-max prose-site">
           <h2 class="text-3xl font-bold md:text-4xl">Why the park matters when you buy</h2>
           <p>

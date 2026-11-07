@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { Faq } from '~/components/ui/Faq';
+import { PhotoStrip } from '~/components/ui/Figure';
+
 import { PageHero } from '~/components/ui/PageHero';
 import { STONEBRIDGE_MARKET } from '~/lib/data';
 import { money, pageHead } from '~/lib/seo';
@@ -38,8 +40,8 @@ export default component$(() => {
         eyebrow="Orientation guide"
         title="Stonebridge, Las Vegas: the village, the park, and the name mix-ups"
         intro="There is one Stonebridge neighborhood in Las Vegas: the Summerlin West village in ZIP 89138. There is also a preschool and a hotel company that share the name and have nothing to do with it. This page sorts out which is which."
-        image="stonebridge-village"
-        imageAlt="Illustrated aerial view of Stonebridge's curving streets with the village park in the middle and red rock ridges behind"
+        image="village-aerial-dusk"
+        imageAlt="Aerial view at dusk of a newer master-planned village on elevated ground with a lighted park in the middle and Red Rock Canyon behind"
       >
         <a href="/homes-for-sale" class="btn-primary">
           Stonebridge homes for sale
@@ -114,6 +116,12 @@ export default component$(() => {
       <section class="section bg-white">
         <div class="container-max">
           <h2 class="text-3xl font-bold md:text-4xl">Getting around from Stonebridge</h2>
+          <PhotoStrip
+            items={[
+              { name: 'red-rock-canyon-trail', alt: 'Paved trail leading toward the Red Rock Canyon escarpment', caption: 'Red Rock Canyon, about five minutes west' },
+              { name: 'shopping-promenade', alt: 'Open-air shopping promenade with palm trees, string lights, and cafe seating', caption: 'Downtown Summerlin, about seven minutes east' },
+            ]}
+          />
           <div class="mt-6 overflow-x-auto">
             <table class="table-site">
               <thead>

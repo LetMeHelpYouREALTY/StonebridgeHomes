@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CtaBand } from '~/components/ui/CtaBand';
 import { Faq } from '~/components/ui/Faq';
+import { PhotoStrip } from '~/components/ui/Figure';
+
 import { PageHero } from '~/components/ui/PageHero';
 import { NEIGHBORHOODS } from '~/lib/data';
 import { pageHead } from '~/lib/seo';
@@ -28,8 +30,8 @@ export default component$(() => {
         eyebrow="502 acres · Summerlin Village 24"
         title="Stonebridge neighborhoods"
         intro="Stonebridge is not one builder community. It is twelve neighborhoods from eight builders, sold from 2018 to 2025, wrapped around an 11-acre village park. Here is who built what, and what each one is known for."
-        image="stonebridge-village"
-        imageAlt="Illustrated aerial view of Stonebridge's curving streets with the village park in the middle and red rock ridges behind"
+        image="neighborhood-street"
+        imageAlt="Quiet residential street in a newer Summerlin West neighborhood with sidewalks, street trees, and mountains at the end"
       >
         <a href="/homes-for-sale" class="btn-primary">
           Homes for sale by neighborhood
@@ -39,7 +41,13 @@ export default component$(() => {
 
       <section class="section pt-6">
         <div class="container-max">
-          <div class="grid gap-6 md:grid-cols-2">
+          <PhotoStrip
+            items={[
+              { name: 'village-aerial-dusk', alt: 'Aerial view of the village at dusk with the park in the center', caption: 'The village from above: park in the middle, Heritage behind its gate to the west' },
+              { name: 'staffed-gatehouse', alt: 'Stone gatehouse with wrought iron gates at a community entrance', caption: 'Heritage has the only staffed gate; other neighborhoods use an entry gate' },
+            ]}
+          />
+          <div class="mt-10 grid gap-6 md:grid-cols-2">
             {NEIGHBORHOODS.map((n) => (
               <article key={n.slug} id={n.slug} class="card scroll-mt-24 p-6">
                 <div class="flex items-start justify-between gap-4">

@@ -2,6 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import { StructuredData } from '~/components/StructuredData';
 import { Breadcrumbs } from '~/components/ui/Breadcrumbs';
 import { CalendlyInline } from '~/components/ui/Calendly';
+import { PageHero } from '~/components/ui/PageHero';
 import { pageHead } from '~/lib/seo';
 import { AGENT, SITE_ORIGIN, calendlyUrl } from '~/lib/site';
 
@@ -17,24 +18,20 @@ export default component$(() => {
   return (
     <>
       <StructuredData data={contactSchema} />
-      <section class="bg-stone-slate py-16 text-white">
-        <div class="container-max">
-          <p class="eyebrow text-stone-gold">Stonebridge · Summerlin West</p>
-          <h1 class="mt-3 font-serif text-4xl font-bold text-white md:text-5xl">Talk with Dr. Jan Duffy</h1>
-          <p class="mt-4 max-w-2xl text-lg text-stone-sand">
-            Book a showing or a call below, or call and text directly. Every booking lands on Dr. Duffy's own
-            calendar, not a call center.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href={`tel:${AGENT.phoneTel}`} class="btn-primary">
-              Call or text {AGENT.phoneDisplay}
-            </a>
-            <a href="#calendly-heading" class="btn-outline">
-              Book a time
-            </a>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Stonebridge · Summerlin West"
+        title="Talk with Dr. Jan Duffy"
+        intro="Book a showing or a call below, or call and text directly. Every booking lands on Dr. Duffy's own calendar, not a call center."
+        image="two-story-contemporary"
+        imageAlt="Contemporary two-story home with a courtyard entry and mountain views on a clear morning"
+      >
+        <a href={`tel:${AGENT.phoneTel}`} class="btn-primary">
+          Call or text {AGENT.phoneDisplay}
+        </a>
+        <a href="#calendly-heading" class="btn-outline">
+          Book a time
+        </a>
+      </PageHero>
       <Breadcrumbs items={[{ name: 'Contact', path: '/contact' }]} />
 
       <CalendlyInline campaign="contact" />
