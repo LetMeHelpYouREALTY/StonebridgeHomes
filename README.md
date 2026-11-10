@@ -10,7 +10,7 @@ Stonebridge neighborhood. This site covers the whole village and links to it.
 
 ## Stack
 
-- [Qwik City](https://qwik.dev) 1.17 with the Vercel Edge adapter (static
+- [Qwik City](https://qwik.dev) 1.20 on Vite 7 with the Vercel Edge adapter (static
   pre-render of every route, an edge function for the `/api/contact` lead endpoint).
 - Tailwind CSS 3 with the palette in `tailwind.config.js`.
 - RealScout web components for live MLS listings and home values.
