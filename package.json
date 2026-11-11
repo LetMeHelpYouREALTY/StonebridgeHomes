@@ -1,7 +1,7 @@
 {
-  "name": "stonebridge-homes-qwik",
+  "name": "stonebridge-las-vegas-homes",
   "version": "1.0.0",
-  "description": "Heritage at Stonebridge - Premier luxury real estate website built with Qwik",
+  "description": "Stonebridge Las Vegas Homes - Summerlin West village real estate site (Qwik City on Vercel Edge)",
   "type": "module",
   "scripts": {
     "build": "npm run build.client && npm run build.server",
@@ -22,7 +22,8 @@
     "preview": "vite preview --mode ssr",
     "qwik": "qwik",
     "test": "vitest run --passWithNoTests",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "images": "node scripts/generate-images.mjs"
   },
   "dependencies": {
     "@builder.io/qwik": "^1.17.1",
@@ -36,9 +37,9 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2",
-    "vite": "^5.4.21",
+    "vite": "^7.3.0",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.6.1"
+    "vitest": "^5.1.0"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.52.5",
@@ -49,14 +50,20 @@
   },
   "keywords": [
     "real-estate",
-    "heritage-stonebridge",
-    "summerlin",
+    "stonebridge",
+    "summerlin-west",
     "las-vegas",
-    "luxury-homes",
+    "heritage-at-stonebridge",
     "qwik",
-    "performance",
     "seo"
   ],
   "author": "Dr. Jan Duffy",
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "zod": "^4.6.6",
+    "sharp": "^0.35.5",
+    "brace-expansion": "^2.1.7",
+    "browserslist": "^4.28.7",
+    "baseline-browser-mapping": "^2.11.0"
+  }
 }

@@ -70,12 +70,8 @@ jobs:
         run: npm ci --prefer-offline --no-audit
 
       - name: 🔒 NPM Audit
-        # audit-level=high: the 2 remaining moderate advisories are
-        # esbuild's dev-server cross-origin issue (GHSA-67mh-4wv8-2f99),
-        # pulled in transitively through Vite. They do not affect the
-        # production bundle. Upgrading to the patched esbuild requires
-        # Vite 6+, which Qwik 1.17 does not yet support. Revisit when
-        # Qwik bumps its Vite floor.
+        # Vite 7 / Vitest 5 plus package.json overrides keep the tree at
+        # zero advisories. Qwik 1.20 supports Vite >=5 <8.
         run: npm audit --audit-level=high
 
       - name: 🔒 CodeQL Analysis
@@ -106,13 +102,19 @@ jobs:
 
       - name: ⏳ Wait for Vercel Preview Deployment
         id: vercel_preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 600
+          # Vercel Authentication protects preview URLs. The bypass secret is
+          # generated in Vercel > Project > Settings > Deployment Protection >
+          # Protection Bypass for Automation and stored as a repo secret.
+          vercel_protection_bypass_header: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
 
       - name: 📊 Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
+        env:
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         with:
           urls: ${{ steps.vercel_preview.outputs.url }}
           configPath: './lighthouse.config.cjs'

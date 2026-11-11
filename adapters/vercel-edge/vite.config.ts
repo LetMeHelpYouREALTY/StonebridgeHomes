@@ -13,7 +13,10 @@ export default defineConfig(() => {
         target: 'node',
         ssg: {
           include: ['/*'],
-          origin: 'https://stonebridge-homes.vercel.app',
+          origin: 'https://www.stonebridgelasvegashomes.com',
+          // src/routes/sitemap.xml serves the sitemap with real lastmod dates;
+          // the adapter's auto-generated one would collide with it at the same path.
+          sitemapOutFile: null,
         },
       }),
       tsconfigPaths(),

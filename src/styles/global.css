@@ -3,93 +3,65 @@
 @tailwind utilities;
 
 @layer base {
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  /* Qwik specific styles */
-  q:before {
-    content: '"';
-  }
-  
-  q:after {
-    content: '"';
-  }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { @apply bg-stone-cream text-stone-ink font-sans antialiased leading-relaxed; }
+  h1, h2, h3, h4 { @apply font-serif text-stone-slate; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { @apply font-semibold; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { @apply outline-none ring-2 ring-stone-copper ring-offset-2 ring-offset-stone-cream; }
+  summary { cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  ::selection { background: #F4C27A; color: #16202A; }
 }
 
 @layer components {
-  .heritage-button {
-    @apply bg-heritage-primary text-white px-6 py-3 rounded-md font-semibold hover:bg-heritage-dark transition-colors duration-300 inline-block;
-  }
-
-  .heritage-button-secondary {
-    @apply bg-heritage-secondary text-white px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-colors duration-300 inline-block;
-  }
-
-  .heritage-card {
-    @apply bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-transform duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg;
-  }
-
-  .container-max {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .section-padding {
-    @apply py-16;
-  }
-
-  .hero-section {
-    @apply bg-gradient-to-r from-heritage-primary to-heritage-secondary text-white py-20;
-  }
+  .container-max { @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10; }
+  .section { @apply py-20 md:py-28; }
+  .eyebrow { @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-stone-rock; }
+  .eyebrow::before { content: ''; @apply inline-block h-px w-8 bg-stone-copper; }
+  .btn { @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] transition-all duration-300; }
+  .btn-primary { @apply btn bg-stone-rock text-white hover:bg-stone-ember hover:shadow-lg; }
+  .btn-dark { @apply btn bg-stone-slate text-white hover:bg-stone-night; }
+  .btn-light { @apply btn bg-transparent text-stone-slate border border-stone-slate/30 hover:border-stone-rock hover:text-stone-rock; }
+  .btn-outline { @apply btn border border-white/60 text-white hover:border-stone-gold hover:text-stone-gold; }
+  .card { @apply bg-white border border-stone-dune/80 overflow-hidden transition-all duration-300 hover:border-stone-copper/60 hover:shadow-card; }
+  .card img { @apply transition-transform duration-700 ease-out; }
+  .card:hover img { transform: scale(1.03); }
+  .prose-site p { @apply mb-5 text-lg leading-8 text-stone-ink/85; }
+  .prose-site ul { @apply mb-5 list-disc pl-6 text-lg leading-8 text-stone-ink/85; }
+  .prose-site h2 { @apply text-3xl md:text-4xl; }
+  .stat { @apply font-serif text-4xl md:text-5xl text-stone-slate; }
+  .hero-media { @apply relative isolate overflow-hidden bg-stone-night text-white; }
+  .hero-media img { @apply absolute inset-0 h-full w-full object-cover; z-index: -1; }
+  .hero-media::after { content: ''; @apply absolute inset-0 bg-gradient-to-t from-stone-night/95 via-stone-night/45 to-stone-night/20; z-index: -1; }
+  .table-site { @apply w-full text-left text-base border-collapse; }
+  .table-site th { @apply bg-stone-sand text-[11px] uppercase tracking-[0.18em] text-stone-slate font-semibold px-4 py-3 border-b border-stone-dune; }
+  .table-site td { @apply px-4 py-3.5 border-b border-stone-dune align-top; }
+  .skip-link { @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2; }
+  .rule-gold { @apply h-px w-16 bg-stone-gold; }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+realscout-office-listings { --rs-listing-divider-color: #E6DCCB; width: 100%; display: block; min-height: 480px; }
+realscout-home-value {
+  --rs-hvw-background-color: #ffffff;
+  --rs-hvw-title-color: #1F2A33;
+  --rs-hvw-subtitle-color: #6B7A86;
+  --rs-hvw-primary-button-text-color: #ffffff;
+  --rs-hvw-primary-button-color: #B5542D;
+  --rs-hvw-secondary-button-text-color: #B5542D;
+  --rs-hvw-secondary-button-color: #ffffff;
+  --rs-hvw-widget-width: 100%;
+  display: block;
+  min-height: 320px;
 }
 
-/* Print styles */
 @media print {
-  .no-print {
-    display: none !important;
-  }
-  
-  body {
-    background: white !important;
-    color: black !important;
-  }
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
 }
 
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* High contrast support */
-@media (prefers-contrast: high) {
-  .heritage-button {
-    border: 2px solid currentColor;
-  }
+  html { scroll-behavior: auto; }
+  .btn, .card, .card img { transition: none; transform: none !important; }
 }
