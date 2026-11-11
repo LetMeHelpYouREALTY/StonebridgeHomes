@@ -14,9 +14,9 @@ export const AGENT = {
   licensedSince: 2008,
   yearsInLasVegas: 35,
   /**
-   * TODO(Dr. Jan): confirm the tracking number assigned to
-   * stonebridgelasvegashomes.com. The marketing line 702-222-1964 is reserved
-   * for client email/text and must not appear on a website.
+   * Site-wide number, confirmed by Dr. Jan on 2026-11-11 (decision A).
+   * The marketing line 702-222-1964 is reserved for client email/text and
+   * must not appear on a website.
    */
   phoneDisplay: '(702) 500-1955',
   phoneTel: '+17025001955',
