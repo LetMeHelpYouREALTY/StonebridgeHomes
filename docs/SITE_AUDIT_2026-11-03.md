@@ -40,6 +40,7 @@ Date: 2026-11-03 · Repo: LetMeHelpYouREALTY/StonebridgeHomes · Live domain: ww
 | `/faq` | long-tail questions (AEO) | 3× FAQPage |
 | `/home-value` | Stonebridge home value (sellers) | Breadcrumb, FAQPage |
 | `/contact` | contact | ContactPage |
+| `/luxury-homes` (added 2026-11-11) | Stonebridge luxury homes, homes over $1M | Breadcrumb, FAQPage |
 
 **Keyword handling for the two unrelated entities.** "Stonebridge Learning Academy" is a preschool chain (Rainbow Blvd, Henderson, Sunset Rd) and "Stonebridge hospitality" is Stonebridge Companies, a Denver hotel operator. The `/stonebridge-las-vegas` page answers both queries honestly as a disambiguation, which is the only way to capture that traffic without misleading anyone. The footer carries a not-affiliated line.
 

@@ -23,6 +23,8 @@ export const AGENT = {
   calendly: 'https://calendly.com/drjanduffy/showing',
   realScoutPortal: 'https://drjanduffy.realscout.com/',
   realScoutAgentEncodedId: 'QWdlbnQtMjI1MDUw',
+  /** Verified third-party rating shown on the site; re-check the date when updating. */
+  rating: { value: '5.0', count: 50, source: 'Realtor.com', asOf: 'October 2026' },
   sameAs: [
     'https://www.linkedin.com/in/dr-jan-duffy',
     'https://www.facebook.com/heritagestonebridge',
@@ -53,22 +55,24 @@ export const AREA = {
 
 export const NAV = [
   { href: '/homes-for-sale', label: 'Homes for Sale' },
+  { href: '/luxury-homes', label: 'Luxury' },
   { href: '/prices', label: 'Prices' },
   { href: '/floor-plans', label: 'Floor Plans' },
   { href: '/neighborhoods', label: 'Neighborhoods' },
   { href: '/heritage-at-stonebridge', label: '55+ Heritage' },
   { href: '/stonebridge-park', label: 'Park' },
   { href: '/community', label: 'Living Here' },
-  { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ];
 
 export const FOOTER_LINKS = [
   { href: '/stonebridge-las-vegas', label: 'Stonebridge Las Vegas guide' },
+  { href: '/luxury-homes', label: 'Luxury homes over $1M' },
   { href: '/home-value', label: 'What is my Stonebridge home worth?' },
   { href: '/heritage-at-stonebridge', label: 'Heritage at Stonebridge 55+' },
   { href: '/stonebridge-park', label: 'Stonebridge Park' },
   { href: '/faq', label: 'Questions buyers ask' },
+  { href: '/prices', label: 'Price guide' },
   { href: '/sitemap.xml', label: 'Sitemap' },
 ];
 

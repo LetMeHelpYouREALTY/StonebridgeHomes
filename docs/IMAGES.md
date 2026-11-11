@@ -30,5 +30,8 @@ and Crossbridge Road will outperform them; swap them in by filename.
 | `shaded-playground` | Playground under shade sails | Stonebridge Park |
 | `red-rock-canyon-trail` | Trail toward the escarpment | Living Here hero, Park, Stonebridge Las Vegas |
 | `shopping-promenade` | Open-air retail promenade | Living Here, Stonebridge Las Vegas |
+| `luxury-estate-twilight` | Estate with infinity pool, Red Rock behind | Luxury Homes hero |
+| `luxury-great-room` | Double-height great room open to pool | Luxury Homes |
+| `bhhs-seal-white.png`, `bhhs-seal-cabernet.png` | Berkshire Hathaway HomeServices seal (from the bhhs-seal-logos plugin; masters in `assets/brand`) | Footer, Home agent block |
 | `og-stonebridge-las-vegas-homes.png` | OG/Twitter card | Every page |
 | `logo.svg`, `logo-light.svg`, `logo.png` | Mark | Header, footer, schema |

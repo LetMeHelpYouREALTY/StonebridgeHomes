@@ -9,6 +9,7 @@ import { SITE_ORIGIN } from '~/lib/site';
 export const ROUTES = [
   { path: '/', priority: '1.0', changefreq: 'weekly', lastmod: '2026-11-03' },
   { path: '/homes-for-sale', priority: '0.9', changefreq: 'daily', lastmod: '2026-11-03' },
+  { path: '/luxury-homes', priority: '0.9', changefreq: 'weekly', lastmod: '2026-11-11' },
   { path: '/prices', priority: '0.9', changefreq: 'weekly', lastmod: '2026-11-03' },
   { path: '/floor-plans', priority: '0.8', changefreq: 'monthly', lastmod: '2026-11-03' },
   { path: '/neighborhoods', priority: '0.8', changefreq: 'monthly', lastmod: '2026-11-03' },

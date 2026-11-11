@@ -127,7 +127,7 @@ export default component$(() => {
       </section>
 
       <section class="section bg-stone-sand">
-        <div class="container-max grid gap-10 lg:grid-cols-3">
+        <div class="container-max grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           <a href="/heritage-at-stonebridge" class="card">
             <img src="/images/clubhouse-pool-960.jpg" alt="Resort pool and spa in front of a modern clubhouse at dusk" width="960" height="536" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
             <div class="p-6">
@@ -147,6 +147,17 @@ export default component$(() => {
             <p class="mt-3 text-base text-stone-ink/80">
               Nine single-story Lennar plans in Heritage plus the larger one- and two-story plans from KB, Pulte,
               Woodside, Richmond American, and Toll Brothers.
+            </p>
+            </div>
+          </a>
+          <a href="/luxury-homes" class="card">
+            <img src="/images/two-story-contemporary-960.jpg" alt="Two-story contemporary estate home with a courtyard entry and mountain views" width="960" height="536" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover" />
+            <div class="p-6">
+            <p class="eyebrow">Over $1 million</p>
+            <h3 class="mt-2 text-2xl font-bold">Luxury homes in Stonebridge</h3>
+            <p class="mt-3 text-base text-stone-ink/80">
+              Fifteen listings above $1M on the elevated west side: Toll Brothers, Scots Pine, and Skye Knoll homes to
+              about 4,500 sq ft, several near $3M.
             </p>
             </div>
           </a>
@@ -190,10 +201,24 @@ export default component$(() => {
               </a>
             </div>
           </div>
-          <div class="card p-6">
-            <p class="eyebrow">Also by Dr. Duffy</p>
-            <p class="mt-2 text-lg">
-              Looking only at the 55+ neighborhood? Her dedicated site,{' '}
+          <div class="card p-8">
+            <div class="flex items-center gap-5">
+              <img src="/images/bhhs-seal-cabernet.png" alt="Berkshire Hathaway HomeServices seal" width="96" height="96" loading="lazy" class="h-24 w-24" />
+              <div>
+                <p class="font-serif text-2xl font-semibold text-stone-slate">{AGENT.brokerage}</p>
+                <p class="mt-1 text-sm text-stone-mist">Nevada License {AGENT.license}</p>
+              </div>
+            </div>
+            <div class="mt-6 border-t border-stone-dune pt-6">
+              <p class="font-serif text-4xl text-stone-slate">
+                {AGENT.rating.value}<span class="text-stone-gold">★</span>
+              </p>
+              <p class="mt-1 text-sm text-stone-mist">
+                Client rating on {AGENT.rating.source}, {AGENT.rating.count} reviews, as of {AGENT.rating.asOf}.
+              </p>
+            </div>
+            <p class="mt-6 text-base leading-7 text-stone-ink/85">
+              Buying only in the 55+ neighborhood? Dr. Duffy's dedicated site,{' '}
               <a href="https://heritagestonebridge.com" rel="noopener" class="font-semibold text-stone-rock">
                 heritagestonebridge.com
               </a>
