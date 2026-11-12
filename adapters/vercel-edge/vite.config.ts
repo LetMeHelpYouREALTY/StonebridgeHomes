@@ -13,7 +13,10 @@ export default defineConfig(() => {
         target: 'node',
         ssg: {
           include: ['/*'],
-          origin: 'https://stonebridge-homes.vercel.app',
+          // Canonical production origin for SSG sitemap.xml + absolute URLs
+          origin: 'https://heritagestonebridge.com',
+          // Endpoint routes own GSC sitemaps (sitemap.xml index + sitemap-pages.xml)
+          sitemapOutFile: null,
         },
       }),
       tsconfigPaths(),

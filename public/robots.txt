@@ -1,0 +1,20 @@
+# https://heritagestonebridge.com/
+User-agent: *
+Allow: /
+
+# Keep admin/API private if present
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Primary sitemap for Google Search Console
+Sitemap: https://heritagestonebridge.com/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /

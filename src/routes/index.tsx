@@ -139,7 +139,6 @@ export const head: DocumentHead = {
         'Heritage at Stonebridge, Stonebridge Homes Summerlin, 55+ Summerlin West, Dr. Jan Duffy, exclusive realtor services, Lennar Stonebridge',
     },
     { name: 'author', content: 'Dr. Jan Duffy' },
-    { name: 'robots', content: 'index, follow' },
     { property: 'og:type', content: 'website' },
     {
       property: 'og:title',
