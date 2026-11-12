@@ -1,7 +1,7 @@
 /** Single source of truth for Heritage at Stonebridge NAP + exclusive services. */
 
 export const SITE = {
-  origin: 'https://heritagestonebridge.com',
+  origin: 'https://www.heritagestonebridge.com',
   brand: 'Heritage Stonebridge | Homes By Dr. Jan Duffy',
   shortBrand: 'Heritage at Stonebridge',
   agent: 'Dr. Jan Duffy',
@@ -28,7 +28,12 @@ export const SITE = {
     'https://www.google.com/search?q=Heritage+Stonebridge+Homes+By+Dr.+Jan+Duffy+reviews',
   heroImage:
     'https://imagedelivery.net/byE6BTe9lNqo21V57n4aPQ/34bde918-5f0a-4479-c146-d7914daee500/desktop',
-  ogImage: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
+  ogImage: 'https://www.heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
+  agentPhoto: '/images/dr-jan-duffy.png',
+  realScoutAgentId: 'QWdlbnQtMjI1MDUw',
+  calendlyShowing: 'https://calendly.com/drjanduffy/showing',
+  calendlyStrategy: 'https://calendly.com/drjanduffy/15min',
+  calendlyListing: 'https://calendly.com/drjanduffy/listing-consultation',
   communityHomes: 421,
   communityType: 'Guard-gated, age-qualified 55+ Lennar community',
   village: 'Village of Stonebridge, Summerlin West',

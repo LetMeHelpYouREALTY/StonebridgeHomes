@@ -14,7 +14,7 @@ export default defineConfig(() => {
         ssg: {
           include: ['/*'],
           // Canonical production origin for SSG sitemap.xml + absolute URLs
-          origin: 'https://heritagestonebridge.com',
+          origin: 'https://www.heritagestonebridge.com',
           // Endpoint routes own GSC sitemaps (sitemap.xml index + sitemap-pages.xml)
           sitemapOutFile: null,
         },

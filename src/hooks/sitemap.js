@@ -11,7 +11,7 @@ module.exports = [
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(route => `
   <url>
-    <loc>https://heritagestonebridge.com${route.route}</loc>
+    <loc>https://www.heritagestonebridge.com${route.route}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${route.route === '/' ? '1.0' : '0.8'}</priority>
@@ -23,7 +23,7 @@ ${routes.map(route => `
       
       const robots = `User-agent: *
 Allow: /
-Sitemap: https://heritagestonebridge.com/sitemap.xml`;
+Sitemap: https://www.heritagestonebridge.com/sitemap.xml`;
       
       await fs.writeFile(path.join(settings.distDir, 'robots.txt'), robots);
     }

@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { NapBlock } from '../../components/sections/NapBlock';
+import { AgentPortrait } from '../../components/sections/AgentPortrait';
+import { CalendlyEmbed } from '../../components/widgets/CalendlyEmbed';
 import { AMENITIES, SITE, localBusinessSchema, siteUrl } from '../../config/site';
 
 export default component$(() => {
@@ -91,13 +93,24 @@ export default component$(() => {
             </div>
           </div>
 
-          <p class="section-more">
-            <a href="/services/" class="text-link">
-              Tour with exclusive Stonebridge services →
-            </a>
-          </p>
+          <div class="agent-band-copy" style={{ marginTop: '2.5rem' }}>
+            <AgentPortrait size="md" />
+            <p class="section-more" style={{ marginTop: 0 }}>
+              <a href="/services/" class="text-link">
+                Tour with exclusive Stonebridge services →
+              </a>
+            </p>
+          </div>
         </div>
       </section>
+
+      <CalendlyEmbed
+        variant="showing"
+        heading="Tour the clubhouse and community"
+        intro="Visitor check-in at the staffed gate — book a guided walk with Dr. Duffy."
+        utmMedium="community"
+        utmCampaign="community"
+      />
 
       <NapBlock />
     </div>

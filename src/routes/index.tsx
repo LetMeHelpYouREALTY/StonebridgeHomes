@@ -4,6 +4,9 @@ import { StructuredData } from '../components/StructuredData';
 import { ExclusiveServices } from '../components/sections/ExclusiveServices';
 import { FaqSection } from '../components/sections/FaqSection';
 import { NapBlock } from '../components/sections/NapBlock';
+import { AgentPortrait } from '../components/sections/AgentPortrait';
+import { RealScoutListings } from '../components/widgets/RealScoutListings';
+import { CalendlyEmbed } from '../components/widgets/CalendlyEmbed';
 import {
   COLLECTIONS,
   SITE,
@@ -50,6 +53,19 @@ export default component$(() => {
         </div>
       </section>
 
+      <RealScoutListings
+        title="Homes for sale at Heritage at Stonebridge"
+        intro="Live MLS inventory through Dr. Jan Duffy — filter, compare, and request a tour inside the gate."
+      />
+
+      <CalendlyEmbed
+        variant="showing"
+        heading="Tour Heritage at Stonebridge"
+        intro="Book a showing. Dr. Duffy pulls comps before you walk the home."
+        utmMedium="after-listings"
+        utmCampaign="home"
+      />
+
       <ExclusiveServices
         heading="Built only for this community"
         intro="Dr. Jan Duffy works Heritage at Stonebridge every week — nine plans, recent closings, gate logistics, and HOA details before you write."
@@ -81,21 +97,24 @@ export default component$(() => {
 
       <section class="agent-band">
         <div class="container-max agent-grid">
-          <div>
-            <p class="section-kicker">Your Stonebridge specialist</p>
-            <h2>{SITE.agent}</h2>
-            <p>
-              Licensed since 2008 · {SITE.license} · {SITE.brokerage}. She prices
-              from Heritage sales, holds weekend open houses behind the gate, and
-              answers HOA and clubhouse questions within the hour.
-            </p>
-            <div class="hero-ctas" style={{ marginTop: '1.5rem' }}>
-              <a href="/contact/" class="btn-primary">
-                Request a market snapshot
-              </a>
-              <a href="/homes/" class="btn-ghost">
-                View homes for sale
-              </a>
+          <div class="agent-band-copy">
+            <AgentPortrait size="lg" showName />
+            <div>
+              <p class="section-kicker">Your Stonebridge specialist</p>
+              <h2>{SITE.agent}</h2>
+              <p>
+                Licensed since 2008 · {SITE.license} · {SITE.brokerage}. She prices
+                from Heritage sales, holds weekend open houses behind the gate, and
+                answers HOA and clubhouse questions within the hour.
+              </p>
+              <div class="hero-ctas" style={{ marginTop: '1.5rem' }}>
+                <a href="/contact/" class="btn-primary">
+                  Request a market snapshot
+                </a>
+                <a href="/homes/" class="btn-ghost">
+                  View homes for sale
+                </a>
+              </div>
             </div>
           </div>
           <div class="stat-row">
@@ -118,6 +137,15 @@ export default component$(() => {
           </div>
         </div>
       </section>
+
+      <CalendlyEmbed
+        variant="strategy"
+        heading="Free 15-minute market strategy call"
+        intro="Subdivision-level data for 89138 — inventory, timing, and next steps."
+        utmMedium="before-faq"
+        utmCampaign="home"
+        compact
+      />
 
       <FaqSection />
       <NapBlock />

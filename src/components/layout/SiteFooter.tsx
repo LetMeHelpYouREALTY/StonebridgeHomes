@@ -5,12 +5,22 @@ export const SiteFooter = component$(() => {
   return (
     <footer class="site-footer">
       <div class="container-max footer-grid">
-        <div>
-          <p class="footer-brand">{SITE.brand}</p>
-          <p class="footer-copy">
-            Exclusive representation for Heritage at Stonebridge — 421 guard-gated
-            55+ homes in Summerlin West {SITE.zip}.
-          </p>
+        <div class="footer-brand-block">
+          <img
+            src={SITE.agentPhoto}
+            alt={SITE.agent}
+            width={64}
+            height={64}
+            class="footer-photo"
+            loading="lazy"
+          />
+          <div>
+            <p class="footer-brand">{SITE.brand}</p>
+            <p class="footer-copy">
+              Exclusive representation for Heritage at Stonebridge — 421
+              guard-gated 55+ homes in Summerlin West {SITE.zip}.
+            </p>
+          </div>
         </div>
 
         <div class="footer-nap">

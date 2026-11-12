@@ -3,6 +3,8 @@ import { Form, routeAction$ } from '@builder.io/qwik-city';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { NapBlock } from '../../components/sections/NapBlock';
+import { AgentPortrait } from '../../components/sections/AgentPortrait';
+import { CalendlyEmbed } from '../../components/widgets/CalendlyEmbed';
 import { SITE, localBusinessSchema, siteUrl } from '../../config/site';
 import {
   CONTACT_ERROR_MESSAGE,
@@ -79,7 +81,8 @@ export default component$(() => {
         <div class="container-max contact-grid">
           <div class="space-y-6">
             <div class="contact-card">
-              <h2 style={{ marginTop: 0, fontSize: '1.75rem' }}>{SITE.brand}</h2>
+              <AgentPortrait size="md" showName />
+              <h2 style={{ marginTop: '1rem', fontSize: '1.75rem' }}>{SITE.brand}</h2>
               <p>
                 <a href={`tel:${SITE.phoneTel}`} class="text-link">
                   {SITE.phoneDisplay}
@@ -181,6 +184,23 @@ export default component$(() => {
           </div>
         </div>
       </section>
+
+      <CalendlyEmbed
+        variant="strategy"
+        heading="Schedule a 15-minute call"
+        intro="Market snapshot for Heritage at Stonebridge — HOA, inventory, and timing."
+        utmMedium="contact"
+        utmCampaign="contact"
+      />
+
+      <CalendlyEmbed
+        variant="showing"
+        heading="Or book a property showing"
+        intro="Meet at a Stonebridge address — comps ready before you arrive."
+        utmMedium="contact"
+        utmCampaign="showing"
+        compact
+      />
 
       <NapBlock />
     </div>

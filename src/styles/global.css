@@ -170,8 +170,23 @@
 
   .brand-mark {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
     line-height: 1.1;
+  }
+
+  .brand-photo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid rgba(196, 165, 116, 0.55);
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
   }
 
   .brand-name {
@@ -490,9 +505,106 @@
     }
   }
 
+  .agent-band-copy {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
   .agent-band p {
     color: var(--ink-muted);
     max-width: 36rem;
+  }
+
+  .agent-portrait {
+    margin: 0;
+    text-align: center;
+  }
+
+  .agent-portrait img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(196, 165, 116, 0.65);
+    box-shadow: 0 12px 32px rgba(15, 20, 25, 0.12);
+  }
+
+  .agent-portrait figcaption {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .agent-portrait figcaption strong {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .agent-portrait figcaption span {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .agent-portrait-sm img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .agent-portrait-md img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .agent-portrait-lg img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .widget-section {
+    padding: 4rem 0;
+  }
+
+  .realscout-section {
+    background: rgba(255, 255, 255, 0.45);
+    border-top: 1px solid rgba(15, 20, 25, 0.08);
+    border-bottom: 1px solid rgba(15, 20, 25, 0.08);
+  }
+
+  .realscout-host {
+    min-height: 360px;
+  }
+
+  .calendly-section {
+    background: rgba(15, 20, 25, 0.03);
+  }
+
+  .calendly-frame {
+    overflow: hidden;
+    border: 1px solid rgba(15, 20, 25, 0.1);
+    background: #fff;
+  }
+
+  .calendly-fallback {
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  .footer-brand-block {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .footer-photo {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(196, 165, 116, 0.5);
+    flex-shrink: 0;
   }
 
   .stat-row {

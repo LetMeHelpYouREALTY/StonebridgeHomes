@@ -2,6 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { NapBlock } from '../../components/sections/NapBlock';
+import { RealScoutListings } from '../../components/widgets/RealScoutListings';
+import { CalendlyEmbed } from '../../components/widgets/CalendlyEmbed';
 import { COLLECTIONS, SITE, localBusinessSchema, siteUrl } from '../../config/site';
 
 export default component$(() => {
@@ -30,31 +32,21 @@ export default component$(() => {
         </div>
       </section>
 
+      <RealScoutListings
+        title="Current Heritage at Stonebridge listings"
+        intro="Browse MLS homes for sale. Then book a showing with Dr. Jan Duffy."
+      />
+
+      <CalendlyEmbed
+        variant="showing"
+        heading="Schedule a Stonebridge showing"
+        intro="30 minutes at the property — comps pulled before you walk in."
+        utmMedium="homes"
+        utmCampaign="homes"
+      />
+
       <section class="content-panel">
         <div class="container-max">
-          <div class="listing-note">
-            <p class="section-kicker">Live inventory</p>
-            <h2 style={{ fontSize: '1.85rem', marginTop: 0 }}>
-              Call for homes on the market now
-            </h2>
-            <p style={{ color: 'var(--ink-muted)' }}>
-              List prices and availability change with the MLS. For active
-              Heritage at Stonebridge listings, open-house times, and a
-              collection-by-collection read, call or text {SITE.phoneDisplay}.
-            </p>
-            <div class="nap-actions">
-              <a href={`tel:${SITE.phoneTel}`} class="btn-primary">
-                Call {SITE.phoneDisplay}
-              </a>
-              <a href="/services/" class="btn-ghost">
-                Floor-plan advisor
-              </a>
-              <a href="/contact/" class="btn-ghost">
-                Request listings
-              </a>
-            </div>
-          </div>
-
           <div class="section-intro">
             <p class="section-kicker">What you are buying</p>
             <h2>Know the collection before you write</h2>

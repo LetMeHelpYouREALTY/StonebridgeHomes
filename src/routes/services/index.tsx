@@ -3,6 +3,8 @@ import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { ExclusiveServices } from '../../components/sections/ExclusiveServices';
 import { NapBlock } from '../../components/sections/NapBlock';
+import { AgentPortrait } from '../../components/sections/AgentPortrait';
+import { CalendlyEmbed } from '../../components/widgets/CalendlyEmbed';
 import { SITE, localBusinessSchema, siteUrl } from '../../config/site';
 
 export default component$(() => {
@@ -56,8 +58,9 @@ export default component$(() => {
       />
 
       <section class="content-panel">
-        <div class="container-max">
-          <div class="listing-note">
+        <div class="container-max agent-band-copy">
+          <AgentPortrait size="md" showName />
+          <div class="listing-note" style={{ flex: 1, marginBottom: 0 }}>
             <p class="section-kicker">How engagements start</p>
             <h2 style={{ fontSize: '2rem', marginTop: 0 }}>
               A current market snapshot in one call
@@ -65,7 +68,7 @@ export default component$(() => {
             <p style={{ color: 'var(--ink-muted)' }}>
               Expect straight answers on HOA fees, which collections are moving,
               clubhouse guest rules, and what comparable Heritage homes closed
-              for. Call or text {SITE.phoneDisplay}, or request a callback below.
+              for. Call or text {SITE.phoneDisplay}, or book a strategy call below.
             </p>
             <div class="nap-actions">
               <a href={`tel:${SITE.phoneTel}`} class="btn-primary">
@@ -78,6 +81,23 @@ export default component$(() => {
           </div>
         </div>
       </section>
+
+      <CalendlyEmbed
+        variant="strategy"
+        heading="Book a free market strategy call"
+        intro="15 minutes on Heritage at Stonebridge inventory, pricing, and your next step."
+        utmMedium="services"
+        utmCampaign="services"
+      />
+
+      <CalendlyEmbed
+        variant="listing"
+        heading="Selling inside the gate?"
+        intro="Listing consultation with Heritage-only comps and open-house planning."
+        utmMedium="services"
+        utmCampaign="listing"
+        compact
+      />
 
       <NapBlock />
     </div>

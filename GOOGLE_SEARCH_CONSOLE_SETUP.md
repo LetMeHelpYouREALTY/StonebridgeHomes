@@ -1,6 +1,6 @@
 # Google Search Console Setup — Heritage at Stonebridge
 
-Canonical property: **https://heritagestonebridge.com**
+Canonical property: **https://www.heritagestonebridge.com** (www is primary)
 
 Based on [Google Search Central sitemap docs](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) and [robots.txt guidance](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt) (checked 2026-11-12).
 
@@ -10,7 +10,7 @@ Prefer **Domain** property verification via DNS TXT (covers http/https and www/n
 
 ### Option A — HTML meta tag (supported in this repo)
 
-1. Open [Google Search Console](https://search.google.com/search-console) → Add property → **URL prefix** → `https://heritagestonebridge.com`
+1. Open [Google Search Console](https://search.google.com/search-console) → Add property → **URL prefix** → `https://www.heritagestonebridge.com`
 2. Choose **HTML tag**
 3. Copy only the `content` token
 4. Set Vercel env var:
@@ -37,31 +37,31 @@ Add the TXT record Google provides at the DNS host (Cloudflare gray-cloud / DNS-
 
 | File | URL | Purpose |
 |------|-----|---------|
-| robots.txt | https://heritagestonebridge.com/robots.txt | Allow crawl + declare sitemap |
-| Sitemap index | https://heritagestonebridge.com/sitemap.xml | Submit this in GSC |
-| Pages sitemap | https://heritagestonebridge.com/sitemap-pages.xml | URL set for core pages |
+| robots.txt | https://www.heritagestonebridge.com/robots.txt | Allow crawl + declare sitemap |
+| Sitemap index | https://www.heritagestonebridge.com/sitemap.xml | Submit this in GSC |
+| Pages sitemap | https://www.heritagestonebridge.com/sitemap-pages.xml | URL set for core pages |
 
 Quick checks:
 
 ```bash
-curl -sI https://heritagestonebridge.com/robots.txt | head
-curl -s https://heritagestonebridge.com/sitemap.xml | head
-curl -s https://heritagestonebridge.com/sitemap-pages.xml | head
+curl -sI https://www.heritagestonebridge.com/robots.txt | head
+curl -s https://www.heritagestonebridge.com/sitemap.xml | head
+curl -s https://www.heritagestonebridge.com/sitemap-pages.xml | head
 ```
 
-Expect `Content-Type` of `text/plain` (robots) and `application/xml` (sitemaps). Loc URLs must be absolute `https://heritagestonebridge.com/...`.
+Expect `Content-Type` of `text/plain` (robots) and `application/xml` (sitemaps). Loc URLs must be absolute `https://www.heritagestonebridge.com/...`.
 
 ## 3. Submit the sitemap
 
 1. GSC → **Sitemaps**
-2. Enter: `sitemap.xml` (or full `https://heritagestonebridge.com/sitemap.xml`)
+2. Enter: `sitemap.xml` (or full `https://www.heritagestonebridge.com/sitemap.xml`)
 3. Submit
 4. Status should become **Success** after Google fetches it
 
 Also listed in robots.txt:
 
 ```
-Sitemap: https://heritagestonebridge.com/sitemap.xml
+Sitemap: https://www.heritagestonebridge.com/sitemap.xml
 ```
 
 ## 4. Request indexing for priority URLs
@@ -76,13 +76,13 @@ Use **URL Inspection** → Request indexing for:
 
 ## 5. What this repo already ships for GSC
 
-- Canonical tags pinned to `https://heritagestonebridge.com`
+- Canonical tags pinned to `https://www.heritagestonebridge.com`
 - `rel="sitemap"` link in `<head>`
 - `robots` / `googlebot` meta: `index, follow` (+ preview directives)
 - LocalBusiness / RealEstateAgent JSON-LD with NAP matching GBP
 - FAQ schema on the homepage
 - Trailing-slash locs aligned with Qwik SSG URLs
-- SSG origin set to `heritagestonebridge.com` (no vercel.app locs in the auto sitemap)
+- SSG origin set to `www.heritagestonebridge.com` (no vercel.app locs in the auto sitemap)
 
 ## 6. After go-live monitoring
 

@@ -9,7 +9,7 @@ import {
 describe('sitemap helpers', () => {
   it('builds absolute heritagestonebridge URLs', () => {
     expect(absoluteUrl('/services/')).toBe(
-      'https://heritagestonebridge.com/services/'
+      'https://www.heritagestonebridge.com/services/'
     );
   });
 
@@ -26,16 +26,16 @@ describe('sitemap helpers', () => {
     const xml = buildSitemapIndexXml('2026-11-12');
     expect(xml).toContain('<sitemapindex');
     expect(xml).toContain(
-      'https://heritagestonebridge.com/sitemap-pages.xml'
+      'https://www.heritagestonebridge.com/sitemap-pages.xml'
     );
   });
 
   it('emits urlset with absolute locs', () => {
     const xml = buildUrlsetXml(SITEMAP_PAGES, '2026-11-12');
     expect(xml).toContain('<urlset');
-    expect(xml).toContain('<loc>https://heritagestonebridge.com/</loc>');
+    expect(xml).toContain('<loc>https://www.heritagestonebridge.com/</loc>');
     expect(xml).toContain(
-      '<loc>https://heritagestonebridge.com/services/</loc>'
+      '<loc>https://www.heritagestonebridge.com/services/</loc>'
     );
   });
 });

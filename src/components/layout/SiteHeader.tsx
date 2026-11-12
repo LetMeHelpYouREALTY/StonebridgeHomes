@@ -18,8 +18,17 @@ export const SiteHeader = component$(() => {
     <header class="site-header">
       <div class="container-max header-inner">
         <a href="/" class="brand-mark" onClick$={close}>
-          <span class="brand-name">{SITE.shortBrand}</span>
-          <span class="brand-byline">Homes by {SITE.agent}</span>
+          <img
+            src={SITE.agentPhoto}
+            alt=""
+            width={44}
+            height={44}
+            class="brand-photo"
+          />
+          <span class="brand-text">
+            <span class="brand-name">{SITE.shortBrand}</span>
+            <span class="brand-byline">Homes by {SITE.agent}</span>
+          </span>
         </a>
 
         <nav class="desktop-nav" aria-label="Primary">
