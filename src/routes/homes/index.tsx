@@ -2,15 +2,15 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { NapBlock } from '../../components/sections/NapBlock';
-import { COLLECTIONS, SITE, localBusinessSchema } from '../../config/site';
+import { COLLECTIONS, SITE, localBusinessSchema, siteUrl } from '../../config/site';
 
 export default component$(() => {
   const breadcrumb = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.origin },
-      { '@type': 'ListItem', position: 2, name: 'Homes', item: `${SITE.origin}/homes` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl('/') },
+      { '@type': 'ListItem', position: 2, name: 'Homes', item: siteUrl('/homes/') },
     ],
   };
 
@@ -46,10 +46,10 @@ export default component$(() => {
               <a href={`tel:${SITE.phoneTel}`} class="btn-primary">
                 Call {SITE.phoneDisplay}
               </a>
-              <a href="/services" class="btn-ghost">
+              <a href="/services/" class="btn-ghost">
                 Floor-plan advisor
               </a>
-              <a href="/contact" class="btn-ghost">
+              <a href="/contact/" class="btn-ghost">
                 Request listings
               </a>
             </div>
@@ -107,7 +107,7 @@ export const head: DocumentHead = {
         'Live MLS inventory and collection guidance for Heritage at Stonebridge with Dr. Jan Duffy.',
     },
     { property: 'og:image', content: SITE.ogImage },
-    { property: 'og:url', content: `${SITE.origin}/homes` },
+    { property: 'og:url', content: siteUrl('/homes/') },
     { property: 'og:site_name', content: SITE.brand },
   ],
 };

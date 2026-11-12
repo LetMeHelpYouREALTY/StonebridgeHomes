@@ -3,7 +3,7 @@ import { Form, routeAction$ } from '@builder.io/qwik-city';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { NapBlock } from '../../components/sections/NapBlock';
-import { SITE, localBusinessSchema } from '../../config/site';
+import { SITE, localBusinessSchema, siteUrl } from '../../config/site';
 import {
   CONTACT_ERROR_MESSAGE,
   getFollowUpBossApiKey,
@@ -50,12 +50,12 @@ export default component$(() => {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.origin },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl('/') },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Contact',
-        item: `${SITE.origin}/contact`,
+        item: siteUrl('/contact/'),
       },
     ],
   };
@@ -206,7 +206,7 @@ export const head: DocumentHead = {
         'Call (702) 789-6561 or visit 930 Silverfir Court, Suite B, Las Vegas, NV 89138.',
     },
     { property: 'og:image', content: SITE.ogImage },
-    { property: 'og:url', content: `${SITE.origin}/contact` },
+    { property: 'og:url', content: siteUrl('/contact/') },
     { property: 'og:site_name', content: SITE.brand },
   ],
 };

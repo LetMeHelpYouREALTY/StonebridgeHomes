@@ -35,6 +35,20 @@ export const SITE = {
   zip: '89138',
 } as const;
 
+/** Qwik City trailing-slash canonical path helper. */
+export function sitePath(path: string): string {
+  if (path === '/' || path === '') {
+    return '/';
+  }
+  const withLeading = path.startsWith('/') ? path : `/${path}`;
+  return withLeading.endsWith('/') ? withLeading : `${withLeading}/`;
+}
+
+export function siteUrl(path: string): string {
+  const normalized = sitePath(path);
+  return normalized === '/' ? `${SITE.origin}/` : `${SITE.origin}${normalized}`;
+}
+
 export const COLLECTIONS = [
   {
     name: 'Cromwell',

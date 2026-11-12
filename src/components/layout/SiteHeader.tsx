@@ -2,10 +2,10 @@ import { component$, useSignal, $ } from '@builder.io/qwik';
 import { SITE } from '~/config/site';
 
 const NAV = [
-  { href: '/services', label: 'Exclusive Services' },
-  { href: '/homes', label: 'Homes' },
-  { href: '/community', label: 'Community' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/services/', label: 'Exclusive Services' },
+  { href: '/homes/', label: 'Homes' },
+  { href: '/community/', label: 'Community' },
+  { href: '/contact/', label: 'Contact' },
 ] as const;
 
 export const SiteHeader = component$(() => {
@@ -34,7 +34,7 @@ export const SiteHeader = component$(() => {
           <a href={`tel:${SITE.phoneTel}`} class="header-phone">
             {SITE.phoneDisplay}
           </a>
-          <a href="/contact" class="btn-primary header-cta">
+          <a href="/contact/" class="btn-primary header-cta">
             Book a Tour
           </a>
           <button

@@ -2,19 +2,19 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { NapBlock } from '../../components/sections/NapBlock';
-import { AMENITIES, SITE, localBusinessSchema } from '../../config/site';
+import { AMENITIES, SITE, localBusinessSchema, siteUrl } from '../../config/site';
 
 export default component$(() => {
   const breadcrumb = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.origin },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl('/') },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Community',
-        item: `${SITE.origin}/community`,
+        item: siteUrl('/community/'),
       },
     ],
   };
@@ -92,7 +92,7 @@ export default component$(() => {
           </div>
 
           <p class="section-more">
-            <a href="/services" class="text-link">
+            <a href="/services/" class="text-link">
               Tour with exclusive Stonebridge services →
             </a>
           </p>
@@ -123,7 +123,7 @@ export const head: DocumentHead = {
         'Guard-gated 55+ community amenities, clubhouse details, and location context for Stonebridge Summerlin.',
     },
     { property: 'og:image', content: SITE.ogImage },
-    { property: 'og:url', content: `${SITE.origin}/community` },
+    { property: 'og:url', content: siteUrl('/community/') },
     { property: 'og:site_name', content: SITE.brand },
   ],
 };

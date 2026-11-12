@@ -36,7 +36,7 @@ export const ExclusiveServices = component$(
           </ul>
           {limit && (
             <p class="section-more">
-              <a href="/services" class="text-link">
+              <a href="/services/" class="text-link">
                 See all exclusive Stonebridge services →
               </a>
             </p>

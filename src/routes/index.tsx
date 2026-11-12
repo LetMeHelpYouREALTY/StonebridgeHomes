@@ -39,7 +39,7 @@ export default component$(() => {
               advising, Heritage-only comps, and tours inside the staffed gate.
             </p>
             <div class="hero-ctas">
-              <a href="/services" class="btn-on-dark">
+              <a href="/services/" class="btn-on-dark">
                 Exclusive Services
               </a>
               <a href={`tel:${SITE.phoneTel}`} class="btn-outline-light">
@@ -90,10 +90,10 @@ export default component$(() => {
               answers HOA and clubhouse questions within the hour.
             </p>
             <div class="hero-ctas" style={{ marginTop: '1.5rem' }}>
-              <a href="/contact" class="btn-primary">
+              <a href="/contact/" class="btn-primary">
                 Request a market snapshot
               </a>
-              <a href="/homes" class="btn-ghost">
+              <a href="/homes/" class="btn-ghost">
                 View homes for sale
               </a>
             </div>
@@ -150,7 +150,7 @@ export const head: DocumentHead = {
         'Hyperlocal Stonebridge representation — floor plans, comps, gate tours, and resales exclusive to this 421-home community.',
     },
     { property: 'og:image', content: SITE.ogImage },
-    { property: 'og:url', content: SITE.origin },
+    { property: 'og:url', content: `${SITE.origin}/` },
     { property: 'og:site_name', content: SITE.brand },
     { name: 'twitter:card', content: 'summary_large_image' },
     {

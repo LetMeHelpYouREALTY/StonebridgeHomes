@@ -3,19 +3,19 @@ import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { ExclusiveServices } from '../../components/sections/ExclusiveServices';
 import { NapBlock } from '../../components/sections/NapBlock';
-import { SITE, localBusinessSchema } from '../../config/site';
+import { SITE, localBusinessSchema, siteUrl } from '../../config/site';
 
 export default component$(() => {
   const breadcrumb = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.origin },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl('/') },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Exclusive Services',
-        item: `${SITE.origin}/services`,
+        item: siteUrl('/services/'),
       },
     ],
   };
@@ -71,7 +71,7 @@ export default component$(() => {
               <a href={`tel:${SITE.phoneTel}`} class="btn-primary">
                 Call {SITE.phoneDisplay}
               </a>
-              <a href="/contact" class="btn-ghost">
+              <a href="/contact/" class="btn-ghost">
                 Contact form
               </a>
             </div>
@@ -103,7 +103,7 @@ export const head: DocumentHead = {
         'Hyperlocal realtor services exclusive to Heritage at Stonebridge in Summerlin West 89138.',
     },
     { property: 'og:image', content: SITE.ogImage },
-    { property: 'og:url', content: `${SITE.origin}/services` },
+    { property: 'og:url', content: siteUrl('/services/') },
     { property: 'og:site_name', content: SITE.brand },
   ],
 };
