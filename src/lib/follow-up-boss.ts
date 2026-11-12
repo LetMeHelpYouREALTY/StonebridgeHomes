@@ -1,7 +1,7 @@
 import type { EnvGetter } from '@builder.io/qwik-city/middleware/request-handler';
 
 export const FUB_SYSTEM = 'stonebridge-homes';
-export const CONTACT_ERROR_PHONE = '(702) 222-1964';
+export const CONTACT_ERROR_PHONE = '(702) 789-6561';
 export const CONTACT_ERROR_MESSAGE = `Sorry, something went wrong sending your message. Please call or text Dr. Jan Duffy at ${CONTACT_ERROR_PHONE}.`;
 
 export type ContactFormPayload = {

@@ -1,205 +1,168 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { StructuredData } from '../components/StructuredData';
+import { ExclusiveServices } from '../components/sections/ExclusiveServices';
+import { FaqSection } from '../components/sections/FaqSection';
+import { NapBlock } from '../components/sections/NapBlock';
+import {
+  COLLECTIONS,
+  SITE,
+  faqSchema,
+  localBusinessSchema,
+} from '../config/site';
 
 export default component$(() => {
   return (
-    <div class="min-h-screen bg-heritage-light">
-      {/* Hero Section */}
-      <section class="hero-section text-center">
-        <div class="container-max">
-          <h1 class="text-5xl font-bold mb-4">
-            Welcome to <span class="text-heritage-light">Heritage at Stonebridge</span>
-          </h1>
-          <p class="text-xl mb-8 max-w-3xl mx-auto">
-            Discover luxury living in the Heritage at Stonebridge community in Summerlin, Las Vegas
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/homes" class="heritage-button">
-              View Available Properties →
-            </a>
-            <a href="/contact" class="heritage-button-secondary">
-              Contact Dr. Jan Duffy
-            </a>
-          </div>
+    <div>
+      <StructuredData data={localBusinessSchema()} />
+      <StructuredData data={faqSchema()} />
+
+      <section class="luxury-hero">
+        <div class="hero-media" aria-hidden="true">
+          <img
+            src={SITE.heroImage}
+            alt=""
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+          />
+          <div class="hero-veil" />
         </div>
-      </section>
-
-      {/* Main Content */}
-      <main class="section-padding">
-        <div class="container-max">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Available Properties */}
-            <div class="heritage-card p-6 text-center">
-              <div class="text-4xl mb-4">🏠</div>
-              <h2 class="text-xl font-semibold mb-3">Available Properties</h2>
-              <p class="text-gray-600 mb-4">
-                Browse our current listings in the Heritage at Stonebridge community.
-              </p>
-              <a href="/homes" class="heritage-button text-sm">
-                View Listings →
+        <div class="hero-content">
+          <div class="container-max">
+            <h1 class="hero-brand">{SITE.shortBrand}</h1>
+            <p class="hero-headline">
+              Exclusive Stonebridge services by {SITE.agent}
+            </p>
+            <p class="hero-support">
+              421 guard-gated 55+ homes in Summerlin West {SITE.zip}. Floor-plan
+              advising, Heritage-only comps, and tours inside the staffed gate.
+            </p>
+            <div class="hero-ctas">
+              <a href="/services" class="btn-on-dark">
+                Exclusive Services
               </a>
-            </div>
-
-            {/* Community Features */}
-            <div class="heritage-card p-6 text-center">
-              <div class="text-4xl mb-4">🏊‍♀️</div>
-              <h2 class="text-xl font-semibold mb-3">Community Features</h2>
-              <p class="text-gray-600 mb-4">
-                Learn about the amenities and lifestyle at Heritage at Stonebridge.
-              </p>
-              <a href="/community" class="heritage-button text-sm">
-                Explore Amenities →
+              <a href={`tel:${SITE.phoneTel}`} class="btn-outline-light">
+                Call {SITE.phoneDisplay}
               </a>
-            </div>
-
-            {/* Floor Plans */}
-            <div class="heritage-card p-6 text-center">
-              <div class="text-4xl mb-4">📐</div>
-              <h2 class="text-xl font-semibold mb-3">Floor Plans</h2>
-              <p class="text-gray-600 mb-4">
-                Explore our available floor plans and home designs.
-              </p>
-              <a href="/homes" class="heritage-button text-sm">
-                View Plans →
-              </a>
-            </div>
-
-            {/* Contact Us */}
-            <div class="heritage-card p-6 text-center">
-              <div class="text-4xl mb-4">📞</div>
-              <h2 class="text-xl font-semibold mb-3">Contact Us</h2>
-              <p class="text-gray-600 mb-4">
-                Schedule a tour or request more information.
-              </p>
-              <a href="/contact" class="heritage-button text-sm">
-                Get In Touch →
-              </a>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      {/* Agent Information */}
-      <section class="py-16 bg-heritage-primary text-white">
-        <div class="container-max">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 class="text-3xl font-bold mb-6">Meet Your Local Expert</h2>
-              <div class="text-lg mb-6">
-                <h3 class="text-2xl font-semibold mb-4">Dr. Jan Duffy</h3>
-                <p class="mb-4">Las Vegas REALTOR®</p>
-                <p class="mb-6">
-                  With extensive experience in the Summerlin real estate market, Dr. Jan Duffy specializes in luxury homes and provides personalized service to help you find your dream home in Heritage at Stonebridge.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                  <a href="tel:702-222-1964" class="bg-white text-heritage-primary px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
-                    📞 (702) 222-1964
-                  </a>
-                  <a href="mailto:jan.duffy@heritagestonebridge.com" class="bg-heritage-secondary text-white px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-colors">
-                    📧 Email Dr. Duffy
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="w-64 h-64 bg-heritage-secondary rounded-full mx-auto flex items-center justify-center text-6xl">
-                👨‍💼
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Community Stats */}
-      <section class="py-16 bg-white">
+      <ExclusiveServices
+        heading="Built only for this community"
+        intro="Dr. Jan Duffy works Heritage at Stonebridge every week — nine plans, recent closings, gate logistics, and HOA details before you write."
+        limit={4}
+      />
+
+      <section class="collections-section">
         <div class="container-max">
-          <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-            Community Overview
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="text-center">
-              <div class="text-4xl font-bold text-heritage-primary mb-2">847</div>
-              <div class="text-lg text-gray-600">Total Homes</div>
+          <div class="section-intro">
+            <p class="section-kicker">Lennar collections</p>
+            <h2>Three collections. Nine single-story plans.</h2>
+            <p class="section-lede">
+              From compact Cromwell layouts to Evander homes with RV garages and
+              Next Gen suites — compare what resells inside Stonebridge, not
+              across Summerlin.
+            </p>
+          </div>
+          <div class="collection-grid">
+            {COLLECTIONS.map((collection) => (
+              <article key={collection.name} class="collection-item">
+                <h3>{collection.name}</h3>
+                <div class="collection-sqft">{collection.sqft}</div>
+                <p>{collection.note}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="agent-band">
+        <div class="container-max agent-grid">
+          <div>
+            <p class="section-kicker">Your Stonebridge specialist</p>
+            <h2>{SITE.agent}</h2>
+            <p>
+              Licensed since 2008 · {SITE.license} · {SITE.brokerage}. She prices
+              from Heritage sales, holds weekend open houses behind the gate, and
+              answers HOA and clubhouse questions within the hour.
+            </p>
+            <div class="hero-ctas" style={{ marginTop: '1.5rem' }}>
+              <a href="/contact" class="btn-primary">
+                Request a market snapshot
+              </a>
+              <a href="/homes" class="btn-ghost">
+                View homes for sale
+              </a>
             </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-heritage-primary mb-2">$1.25M+</div>
-              <div class="text-lg text-gray-600">Starting From</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat">
+              <strong>{SITE.communityHomes}</strong>
+              <span>Homes in community</span>
             </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-heritage-primary mb-2">2015-2023</div>
-              <div class="text-lg text-gray-600">Year Built</div>
+            <div class="stat">
+              <strong>55+</strong>
+              <span>Age-qualified living</span>
             </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-heritage-primary mb-2">10/10</div>
-              <div class="text-lg text-gray-600">Overall Rating</div>
+            <div class="stat">
+              <strong>8,000</strong>
+              <span>Clubhouse sq ft</span>
+            </div>
+            <div class="stat">
+              <strong>89138</strong>
+              <span>Summerlin West ZIP</span>
             </div>
           </div>
         </div>
       </section>
+
+      <FaqSection />
+      <NapBlock />
     </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: 'Heritage at Stonebridge | Summerlin Luxury Homes',
+  title: 'Heritage at Stonebridge | Exclusive Services by Dr. Jan Duffy',
   meta: [
     {
       name: 'description',
       content:
-        'Luxury homes at Heritage at Stonebridge in Summerlin, Las Vegas — custom builds, resort-style amenities, and gated-community privacy with Dr. Jan Duffy.',
+        'Luxury realtor for Heritage at Stonebridge in Summerlin West 89138. Exclusive services: nine floor-plan advising, Heritage-only comps, gate tours, and inside-the-gate resales with Dr. Jan Duffy. Call (702) 789-6561.',
     },
     {
       name: 'keywords',
       content:
-        'Heritage Stonebridge, Summerlin homes, Las Vegas real estate, luxury homes, Dr. Jan Duffy, gated community, custom homes, resort amenities',
+        'Heritage at Stonebridge, Stonebridge Homes Summerlin, 55+ Summerlin West, Dr. Jan Duffy, exclusive realtor services, Lennar Stonebridge',
     },
-    {
-      name: 'author',
-      content: 'Dr. Jan Duffy',
-    },
-    {
-      name: 'robots',
-      content: 'index, follow',
-    },
-    {
-      property: 'og:type',
-      content: 'website',
-    },
+    { name: 'author', content: 'Dr. Jan Duffy' },
+    { name: 'robots', content: 'index, follow' },
+    { property: 'og:type', content: 'website' },
     {
       property: 'og:title',
-      content: 'Heritage at Stonebridge | Summerlin Luxury Homes',
+      content: 'Heritage at Stonebridge | Exclusive Services by Dr. Jan Duffy',
     },
     {
       property: 'og:description',
-      content: 'Luxury homes in a gated Summerlin community with resort-style amenities.',
+      content:
+        'Hyperlocal Stonebridge representation — floor plans, comps, gate tours, and resales exclusive to this 421-home community.',
     },
-    {
-      property: 'og:image',
-      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
-    },
-    {
-      property: 'og:url',
-      content: 'https://heritagestonebridge.com',
-    },
-    {
-      property: 'og:site_name',
-      content: 'Heritage at Stonebridge',
-    },
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image',
-    },
+    { property: 'og:image', content: SITE.ogImage },
+    { property: 'og:url', content: SITE.origin },
+    { property: 'og:site_name', content: SITE.brand },
+    { name: 'twitter:card', content: 'summary_large_image' },
     {
       name: 'twitter:title',
-      content: 'Heritage at Stonebridge | Summerlin Luxury Homes',
+      content: 'Heritage at Stonebridge | Exclusive Services by Dr. Jan Duffy',
     },
     {
       name: 'twitter:description',
-      content: 'Luxury homes in a gated Summerlin community with resort-style amenities.',
+      content:
+        'Exclusive Stonebridge services in Summerlin West with Dr. Jan Duffy. Call (702) 789-6561.',
     },
-    {
-      name: 'twitter:image',
-      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
-    },
+    { name: 'twitter:image', content: SITE.ogImage },
   ],
 };
