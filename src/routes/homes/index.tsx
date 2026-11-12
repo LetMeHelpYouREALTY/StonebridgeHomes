@@ -2,6 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
 import { NapBlock } from '../../components/sections/NapBlock';
+import { AgentPortrait } from '../../components/sections/AgentPortrait';
 import { RealScoutListings } from '../../components/widgets/RealScoutListings';
 import { CalendlyEmbed } from '../../components/widgets/CalendlyEmbed';
 import { COLLECTIONS, SITE, localBusinessSchema, siteUrl } from '../../config/site';
@@ -22,13 +23,16 @@ export default component$(() => {
       <StructuredData data={breadcrumb} />
 
       <section class="page-hero">
-        <div class="container-max">
-          <h1>Homes for sale in Heritage at Stonebridge</h1>
-          <p>
-            Current MLS inventory for this Summerlin West 55+ community moves with
-            the market. {SITE.agent} pulls live listings and Heritage-only comps
-            before you tour.
-          </p>
+        <div class="container-max page-hero-with-photo">
+          <div>
+            <h1>Homes for sale in Heritage at Stonebridge</h1>
+            <p>
+              Current MLS inventory for this Summerlin West 55+ community moves with
+              the market. {SITE.agent} pulls live listings and Heritage-only comps
+              before you tour.
+            </p>
+          </div>
+          <AgentPortrait size="md" showName />
         </div>
       </section>
 
