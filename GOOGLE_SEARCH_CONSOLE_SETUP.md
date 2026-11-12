@@ -1,154 +1,104 @@
-# 🔍 Google Search Console Setup Guide for Stonebridge Homes
+# Google Search Console Setup — Heritage at Stonebridge
 
-## Overview
-This guide will help you set up and verify your site with Google Search Console for optimal SEO performance.
+Canonical property: **https://www.heritagestonebridge.com** (www is primary)
 
-## 📋 Prerequisites
-- Site deployed to production (e.g., stonebridge-homes.vercel.app)
-- Google account
-- Access to Google Search Console
+Based on [Google Search Central sitemap docs](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) and [robots.txt guidance](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt) (checked 2026-11-12).
 
-## 🚀 Setup Steps
+## 1. Verify ownership
 
-### Step 1: Access Google Search Console
-1. Go to [Google Search Console](https://search.google.com/search-console)
-2. Sign in with your Google account
-3. Click "Add Property" and select "URL prefix"
+Prefer **Domain** property verification via DNS TXT (covers http/https and www/non-www).
 
-### Step 2: Verify Ownership
-**Option A: HTML File Upload**
-1. Download Google's verification HTML file
-2. Place it in the `public/` directory
-3. Commit and deploy
-4. Verify in Google Search Console
+### Option A — HTML meta tag (supported in this repo)
 
-**Option B: Meta Tag Verification**
-1. Copy the verification meta tag from Google
-2. Add it to `src/components/router-head/router-head.tsx` in the `<head>` section
-3. Commit and deploy
-4. Verify in Google Search Console
+1. Open [Google Search Console](https://search.google.com/search-console) → Add property → **URL prefix** → `https://www.heritagestonebridge.com`
+2. Choose **HTML tag**
+3. Copy only the `content` token
+4. Set Vercel env var:
 
-**Option C: Domain Verification (if using custom domain)**
-1. Add the DNS TXT record provided by Google
-2. Verify in Google Search Console
-
-### Step 3: Submit Sitemap
-1. In Google Search Console, go to "Sitemaps"
-2. Enter: `https://stonebridge-homes.vercel.app/sitemap.xml`
-3. Click "Submit"
-4. Wait for Google to process (24-48 hours)
-
-### Step 4: Monitor Indexing Status
-- Check "Coverage" for indexing status
-- Review "Performance" for search queries and clicks
-- Monitor "Mobile Usability" for mobile-friendly issues
-
-## ✅ Available URLs for Verification
-
-### Sitemap
-```
-https://stonebridge-homes.vercel.app/sitemap.xml
+```bash
+PUBLIC_GOOGLE_SITE_VERIFICATION=your_token_here
 ```
 
-### Robots.txt
+5. Redeploy, then click **Verify** in GSC
+
+The meta tag is emitted from `src/components/router-head/router-head.tsx` when the env var is set.
+
+### Option B — HTML file upload
+
+1. Download Google’s `googleXXXX.html` verification file
+2. Place it in `public/googleXXXX.html`
+3. Commit, deploy, verify
+
+### Option C — DNS (recommended for long-term)
+
+Add the TXT record Google provides at the DNS host (Cloudflare gray-cloud / DNS-only for the apex when using Vercel).
+
+## 2. Confirm crawl files are live
+
+| File | URL | Purpose |
+|------|-----|---------|
+| robots.txt | https://www.heritagestonebridge.com/robots.txt | Allow crawl + declare sitemap |
+| Sitemap index | https://www.heritagestonebridge.com/sitemap.xml | Submit this in GSC |
+| Pages sitemap | https://www.heritagestonebridge.com/sitemap-pages.xml | URL set for core pages |
+
+Quick checks:
+
+```bash
+curl -sI https://www.heritagestonebridge.com/robots.txt | head
+curl -s https://www.heritagestonebridge.com/sitemap.xml | head
+curl -s https://www.heritagestonebridge.com/sitemap-pages.xml | head
 ```
-https://stonebridge-homes.vercel.app/robots.txt
+
+Expect `Content-Type` of `text/plain` (robots) and `application/xml` (sitemaps). Loc URLs must be absolute `https://www.heritagestonebridge.com/...`.
+
+## 3. Submit the sitemap
+
+1. GSC → **Sitemaps**
+2. Enter: `sitemap.xml` (or full `https://www.heritagestonebridge.com/sitemap.xml`)
+3. Submit
+4. Status should become **Success** after Google fetches it
+
+Also listed in robots.txt:
+
+```
+Sitemap: https://www.heritagestonebridge.com/sitemap.xml
 ```
 
-## 🎯 Key Pages to Monitor
+## 4. Request indexing for priority URLs
 
-| Page | URL | Priority |
-|------|-----|----------|
-| Homepage | `/` | 1.0 |
-| Available Homes | `/homes` | 0.9 |
-| Community Info | `/community` | 0.9 |
-| Contact | `/contact` | 0.8 |
-| Market Report | `/market-report` | 0.7 |
+Use **URL Inspection** → Request indexing for:
 
-## 📊 Structured Data Added
+1. `/`
+2. `/services/`
+3. `/homes/`
+4. `/community/`
+5. `/contact/`
 
-### Real Estate Agent Schema
-- **Type**: RealEstateAgent
-- **Name**: Dr. Jan Duffy
-- **Location**: Summerlin, Las Vegas, NV
-- **Contact**: Phone, Email
+## 5. What this repo already ships for GSC
 
-### Where to Add
-- JSON-LD on homepage via `StructuredData` component
-- Can be extended to property listings
+- Canonical tags pinned to `https://www.heritagestonebridge.com`
+- `rel="sitemap"` link in `<head>`
+- `robots` / `googlebot` meta: `index, follow` (+ preview directives)
+- LocalBusiness / RealEstateAgent JSON-LD with NAP matching GBP
+- FAQ schema on the homepage
+- Trailing-slash locs aligned with Qwik SSG URLs
+- SSG origin set to `www.heritagestonebridge.com` (no vercel.app locs in the auto sitemap)
 
-## 🔧 Ongoing Maintenance
+## 6. After go-live monitoring
 
-### Monthly Tasks
-1. Check for crawl errors in Google Search Console
-2. Review search performance data
-3. Monitor Core Web Vitals
-4. Update sitemap if adding new pages
+| Cadence | Action |
+|---------|--------|
+| 24–48h | Confirm sitemap Success; check Page indexing |
+| Weekly | Coverage / “Why pages aren’t indexed” |
+| Monthly | Performance (queries, CTR), Core Web Vitals |
 
-### Quarterly Tasks
-1. Review and update meta descriptions
-2. Check for broken links
-3. Analyze search queries and optimize content
-4. Review mobile usability reports
+## Support NAP
 
-## 🚨 Common Issues & Solutions
-
-### Issue: Site Not Indexed
-**Solution**: 
-- Submit sitemap in Google Search Console
-- Request indexing for individual pages
-- Check robots.txt isn't blocking Googlebot
-
-### Issue: Crawl Errors
-**Solution**:
-- Fix broken links
-- Ensure all pages return 200 status codes
-- Remove or fix 404 errors
-
-### Issue: Mobile Usability Problems
-**Solution**:
-- Test with Google's Mobile-Friendly Test
-- Fix tap targets that are too close
-- Ensure content fits mobile screens
-
-## 📝 Verification Files Created
-
-### Files Added
-✅ `src/routes/robots.ts` - Robots.txt handler
-✅ `src/routes/sitemap.ts` - Sitemap generator
-✅ `src/components/StructuredData.tsx` - JSON-LD component
-✅ Enhanced meta tags with Open Graph and Twitter Cards
-
-### Next Steps After Deployment
-1. Deploy site to production
-2. Verify ownership in Google Search Console
-3. Submit sitemap
-4. Request indexing for key pages
-5. Monitor performance over time
-
-## 📈 Expected Benefits
-
-- ✅ Improved search visibility
-- ✅ Better understanding of search performance
-- ✅ Early detection of crawling issues
-- ✅ Enhanced indexing of your content
-- ✅ Rich results in search with structured data
-
-## 🔗 Useful Resources
-
-- [Google Search Console Help](https://support.google.com/webmasters)
-- [Google Search Console](https://search.google.com/search-console)
-- [Structured Data Testing Tool](https://search.google.com/test/rich-results)
-- [Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
-
-## 📧 Support
-For questions about Google Search Console setup:
-- Email: jan.duffy@heritagestonebridge.com
-- Phone: (702) 222-1964
+- Brand: Heritage Stonebridge \| Homes By Dr. Jan Duffy  
+- Phone: (702) 789-6561  
+- Email: DrDuffySells@HeritageStonebridge.com  
+- Address: 930 Silverfir Court, Suite B, Las Vegas, NV 89138  
 
 ---
 
-**Last Updated**: October 2025
-**Site**: stonebridge-homes.vercel.app
-**Managed by**: Dr. Jan Duffy
-
+Last updated: 2026-11-12 (America/Los_Angeles)

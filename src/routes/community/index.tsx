@@ -1,206 +1,142 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { StructuredData } from '../../components/StructuredData';
+import { NapBlock } from '../../components/sections/NapBlock';
+import { AgentPortrait } from '../../components/sections/AgentPortrait';
+import { CalendlyEmbed } from '../../components/widgets/CalendlyEmbed';
+import { AMENITIES, SITE, localBusinessSchema, siteUrl } from '../../config/site';
 
 export default component$(() => {
   const breadcrumb = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://heritagestonebridge.com' },
-      { '@type': 'ListItem', position: 2, name: 'Community', item: 'https://heritagestonebridge.com/community' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl('/') },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Community',
+        item: siteUrl('/community/'),
+      },
     ],
   };
 
   return (
-    <div class="min-h-screen bg-heritage-light">
+    <div>
+      <StructuredData data={localBusinessSchema()} />
       <StructuredData data={breadcrumb} />
-      <div class="hero-section">
-        <div class="container-max text-center">
-          <h1 class="text-4xl font-bold mb-4">Heritage at Stonebridge Community</h1>
-          <p class="text-xl">Discover luxury living in Summerlin's premier gated community</p>
-        </div>
-      </div>
 
-      <section class="section-padding">
+      <section class="page-hero">
         <div class="container-max">
-          {/* Community Overview */}
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-              Community Overview
+          <h1>Heritage at Stonebridge community</h1>
+          <p>
+            Guard-gated, age-qualified 55+ living in the village of Stonebridge,
+            Summerlin West — {SITE.communityHomes} single-story Lennar homes with
+            an 8,000 sq ft clubhouse behind a staffed gate.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-panel">
+        <div class="container-max">
+          <div class="section-intro">
+            <p class="section-kicker">Summerlin West · {SITE.zip}</p>
+            <h2>Life inside the gate</h2>
+            <p class="section-lede">
+              Visitors check in at the gatehouse — access is not a shared code.
+              The clubhouse at {SITE.clubhouseAddress} anchors pools, fitness,
+              pickleball, and bocce. There is no on-site golf course in published
+              amenity lists.
+            </p>
+          </div>
+
+          <div class="amenity-grid">
+            {AMENITIES.map((amenity) => (
+              <article key={amenity.title} class="amenity-item">
+                <h3>{amenity.title}</h3>
+                <p>{amenity.detail}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="listing-note" style={{ marginTop: '3rem' }}>
+            <p class="section-kicker">Clubhouse</p>
+            <h2 style={{ fontSize: '1.75rem', marginTop: 0 }}>
+              930 Silverfir Court, Suite A
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <p class="text-lg mb-6">
-                  Heritage at Stonebridge is a premier gated community offering luxury homes with stunning mountain and valley views. Located in the heart of Summerlin, this gated neighborhood provides residents with an unparalleled lifestyle experience.
-                </p>
-                <div class="space-y-4">
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✓</span>
-                    <span>847 luxury homes</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✓</span>
-                    <span>Gated community with 24/7 security</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✓</span>
-                    <span>Resort-style amenities</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✓</span>
-                    <span>Public schools nearby</span>
-                  </div>
-                </div>
-              </div>
-              <div class="bg-heritage-neutral h-64 flex items-center justify-center text-6xl rounded-lg">
-                🏘️
-              </div>
+            <p style={{ color: 'var(--ink-muted)', marginBottom: '0.5rem' }}>
+              Posted hours Monday–Sunday, 7:00 AM–7:00 PM. Clubhouse phone{' '}
+              {SITE.clubhousePhone}. Confirm before you go.
+            </p>
+            <p style={{ color: 'var(--ink-muted)', margin: 0 }}>
+              Nearby context buyers ask about first: Red Rock Canyon National
+              Conservation Area, Downtown Summerlin, and the Summerlin Library.
+            </p>
+          </div>
+
+          <div class="stat-row" style={{ marginTop: '2.5rem' }}>
+            <div class="stat">
+              <strong>{SITE.communityHomes}</strong>
+              <span>Single-story homes</span>
+            </div>
+            <div class="stat">
+              <strong>9</strong>
+              <span>Floor plans</span>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>Staffed gate</span>
+            </div>
+            <div class="stat">
+              <strong>55+</strong>
+              <span>Age-qualified</span>
             </div>
           </div>
 
-          {/* Amenities */}
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-              Resort-Style Amenities
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { icon: '🏊‍♀️', title: 'Resort-Style Pool & Spa', description: 'Luxurious pool area with spa, perfect for relaxation and entertaining' },
-                { icon: '⛳', title: 'Championship Golf Course', description: 'Access to world-class golf courses designed by renowned architects' },
-                { icon: '💪', title: 'Fitness Center', description: 'State-of-the-art fitness facilities with personal training available' },
-                { icon: '🎾', title: 'Tennis Courts', description: 'Professional tennis courts for residents and guests' },
-                { icon: '🔒', title: 'Gated Security', description: '24/7 security with controlled access for peace of mind' },
-                { icon: '🚶‍♀️', title: 'Walking Trails', description: 'Scenic walking trails throughout the community' },
-                { icon: '🌳', title: 'Parks & Recreation', description: 'Beautiful parks and recreational areas for families' },
-                { icon: '🏛️', title: 'Community Clubhouse', description: 'Elegant clubhouse for events and community gatherings' }
-              ].map((amenity) => (
-                <div key={amenity.title} class="heritage-card p-6 text-center">
-                  <div class="text-4xl mb-4">{amenity.icon}</div>
-                  <h3 class="text-xl font-semibold mb-3">{amenity.title}</h3>
-                  <p class="text-gray-600">{amenity.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Location & Schools */}
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-              Location & Schools
-            </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div class="heritage-card p-6">
-                <h3 class="text-2xl font-semibold mb-4">Prime Location</h3>
-                <div class="space-y-3">
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">📍</span>
-                    <span>Located in Summerlin, Las Vegas</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">🛍️</span>
-                    <span>Minutes from shopping and dining</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">🏥</span>
-                    <span>Close to medical facilities</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">✈️</span>
-                    <span>Easy access to McCarran Airport</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="heritage-card p-6">
-                <h3 class="text-2xl font-semibold mb-4">Schools</h3>
-                <div class="space-y-3">
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">🏫</span>
-                    <span>Clark County School District</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">⭐</span>
-                    <span>Elementary and high schools nearby</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">🎓</span>
-                    <span>Private school options nearby</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="text-heritage-primary mr-3">📚</span>
-                    <span>UNLV and other universities close</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Community Stats */}
-          <div class="bg-white py-16 rounded-lg">
-            <h2 class="text-3xl font-bold text-center mb-12 text-heritage-primary">
-              Community Statistics
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">847</div>
-                <div class="text-lg text-gray-600">Total Homes</div>
-              </div>
-              <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">$1.25M</div>
-                <div class="text-lg text-gray-600">Median Price</div>
-              </div>
-              <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">2015-2020</div>
-                <div class="text-lg text-gray-600">Year Built</div>
-              </div>
-              <div class="text-center">
-                <div class="text-4xl font-bold text-heritage-primary mb-2">24/7</div>
-                <div class="text-lg text-gray-600">Gated Security</div>
-              </div>
-            </div>
+          <div class="agent-band-copy" style={{ marginTop: '2.5rem' }}>
+            <AgentPortrait size="md" />
+            <p class="section-more" style={{ marginTop: 0 }}>
+              <a href="/services/" class="text-link">
+                Tour with exclusive Stonebridge services →
+              </a>
+            </p>
           </div>
         </div>
       </section>
+
+      <CalendlyEmbed
+        variant="showing"
+        heading="Tour the clubhouse and community"
+        intro="Visitor check-in at the staffed gate — book a guided walk with Dr. Duffy."
+        utmMedium="community"
+        utmCampaign="community"
+      />
+
+      <NapBlock />
     </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
+  title: 'Heritage at Stonebridge Community | Summerlin West 55+ | Dr. Jan Duffy',
   meta: [
     {
       name: 'description',
       content:
-        'Discover Heritage at Stonebridge, a gated Summerlin community with resort-style amenities and custom luxury homes.',
+        'Heritage at Stonebridge in Summerlin West 89138: 421 guard-gated 55+ Lennar homes, 8,000 sq ft clubhouse, heated pools, pickleball, bocce, and a staffed gate. Guided by Dr. Jan Duffy.',
     },
     { property: 'og:type', content: 'website' },
     {
       property: 'og:title',
-      content: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
+      content: 'Heritage at Stonebridge Community | Summerlin West 55+',
     },
     {
       property: 'og:description',
-      content: 'A gated Summerlin community with resort-style amenities and custom luxury homes.',
+      content:
+        'Guard-gated 55+ community amenities, clubhouse details, and location context for Stonebridge Summerlin.',
     },
-    {
-      property: 'og:image',
-      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
-    },
-    { property: 'og:url', content: 'https://heritagestonebridge.com/community' },
-    { property: 'og:site_name', content: 'Heritage at Stonebridge' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    {
-      name: 'twitter:title',
-      content: 'Heritage at Stonebridge Community - Summerlin Luxury Living',
-    },
-    {
-      name: 'twitter:description',
-      content: 'A gated Summerlin community with resort-style amenities and custom luxury homes.',
-    },
-    {
-      name: 'twitter:image',
-      content: 'https://heritagestonebridge.com/images/heritage-stonebridge-og.jpg',
-    },
+    { property: 'og:image', content: SITE.ogImage },
+    { property: 'og:url', content: siteUrl('/community/') },
+    { property: 'og:site_name', content: SITE.brand },
   ],
 };
