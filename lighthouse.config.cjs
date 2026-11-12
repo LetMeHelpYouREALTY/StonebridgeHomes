@@ -1,9 +1,11 @@
 /**
  * Lighthouse CI config.
  *
- * Vercel Deployment Protection bypass must be sent as an HTTP header, never as
- * a query parameter on the audited URL. LHCI reports persist requestedUrl /
- * finalUrl and may be uploaded to temporary public storage.
+ * Vercel Deployment Protection bypass is applied via collect.settings.extraHeaders
+ * for the ephemeral CI runner only. Lighthouse persists those headers inside the
+ * LHR (configSettings.extraHeaders / network records), so this config must never
+ * upload reports to temporary public storage or any shared artifact store while
+ * the bypass secret is present. The GitHub Actions job asserts only.
  */
 const bypassSecret = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
 
@@ -32,8 +34,10 @@ module.exports = {
         'speed-index': ['error', { maxNumericValue: 3000 }],
       },
     },
+    // Never upload LHRs when a bypass secret may be embedded in them.
     upload: {
-      target: 'temporary-public-storage',
+      target: 'filesystem',
+      outputDir: '.lighthouseci',
     },
   },
 };

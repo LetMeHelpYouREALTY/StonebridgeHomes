@@ -88,9 +88,12 @@ jobs:
   # SSR). Previews use Vercel Authentication (SSO), so unprotected GETs
   # return 401. Set repo secret VERCEL_AUTOMATION_BYPASS_SECRET from
   # Vercel → Project → Deployment Protection → Protection Bypass for
-  # Automation. The bypass is sent only as an HTTP header (never as a
-  # query param on the audited URL) so it cannot leak into public LHCI
-  # reports. Without that secret the job skips Lighthouse cleanly.
+  # Automation.
+  #
+  # Security: Lighthouse embeds collect extraHeaders (including the bypass
+  # token) inside LHR JSON/HTML. Never upload those reports to temporary
+  # public storage or workflow artifacts. Assert-only; delete local LHRs
+  # after the run. Without the secret the job skips cleanly.
   performance:
     name: 📊 Performance Testing
     runs-on: ubuntu-latest
@@ -149,8 +152,7 @@ jobs:
             exit 0
           fi
 
-          # Never put the bypass secret in the audited URL / GITHUB_OUTPUT —
-          # LHCI reports persist requestedUrl and may be uploaded publicly.
+          # Never put the bypass secret in the audited URL / GITHUB_OUTPUT.
           CODE="000"
           for i in $(seq 1 40); do
             CODE=$(curl -sL -o /dev/null -w '%{http_code}' \
@@ -159,7 +161,7 @@ jobs:
             if [ "${CODE}" = "200" ]; then
               echo "url=${PREVIEW_URL}" >> "$GITHUB_OUTPUT"
               echo "skip=false" >> "$GITHUB_OUTPUT"
-              echo "Preview ready (bypass via header only)"
+              echo "Preview ready (bypass via header only; reports will not be uploaded)"
               exit 0
             fi
             sleep 15
@@ -168,20 +170,23 @@ jobs:
           echo "::warning::Preview stayed unreachable with bypass header (last HTTP ${CODE}). Skipping Lighthouse."
           echo "skip=true" >> "$GITHUB_OUTPUT"
 
-      - name: 📊 Lighthouse CI
+      - name: 📊 Lighthouse CI (assert only — no report upload)
         if: steps.lh_target.outputs.skip != 'true'
         uses: treosh/lighthouse-ci-action@v10
         env:
-          # Read by lighthouse.config.cjs → collect.settings.extraHeaders
+          # Ephemeral runner only. LHRs embed this in configSettings.extraHeaders,
+          # so uploads/artifacts are disabled below and cleaned up after.
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         with:
           urls: ${{ steps.lh_target.outputs.url }}
           configPath: './lighthouse.config.cjs'
-          uploadArtifacts: true
-          # Public LHCI storage is fine only because the audited URL never
-          # contains the bypass secret (header auth only).
-          temporaryPublicStorage: true
+          uploadArtifacts: false
+          temporaryPublicStorage: false
           runs: 3
+
+      - name: 🧹 Delete local Lighthouse reports
+        if: always() && steps.lh_target.outputs.skip != 'true'
+        run: rm -rf .lighthouseci
 
   # 🧹 Dependency Updates
   dependencies:
