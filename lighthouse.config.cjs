@@ -1,5 +1,25 @@
+/**
+ * Lighthouse CI config.
+ *
+ * Vercel Deployment Protection bypass must be sent as an HTTP header, never as
+ * a query parameter on the audited URL. LHCI reports persist requestedUrl /
+ * finalUrl and may be uploaded to temporary public storage.
+ */
+const bypassSecret = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
+
+const collectSettings = bypassSecret
+  ? {
+      extraHeaders: {
+        'x-vercel-protection-bypass': bypassSecret,
+      },
+    }
+  : {};
+
 module.exports = {
   ci: {
+    collect: {
+      settings: collectSettings,
+    },
     assert: {
       assertions: {
         'categories:performance': ['error', { minScore: 0.8 }],

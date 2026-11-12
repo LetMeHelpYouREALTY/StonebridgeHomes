@@ -88,9 +88,9 @@ jobs:
   # SSR). Previews use Vercel Authentication (SSO), so unprotected GETs
   # return 401. Set repo secret VERCEL_AUTOMATION_BYPASS_SECRET from
   # Vercel → Project → Deployment Protection → Protection Bypass for
-  # Automation. Without that secret the job skips Lighthouse cleanly
-  # instead of hanging on 401 (local static cannot stand in — RealScout/
-  # Calendly third-party weight fails the same CWV budgets).
+  # Automation. The bypass is sent only as an HTTP header (never as a
+  # query param on the audited URL) so it cannot leak into public LHCI
+  # reports. Without that secret the job skips Lighthouse cleanly.
   performance:
     name: 📊 Performance Testing
     runs-on: ubuntu-latest
@@ -149,35 +149,37 @@ jobs:
             exit 0
           fi
 
-          case "${PREVIEW_URL}" in
-            *\?*) BYPASS_URL="${PREVIEW_URL}&x-vercel-protection-bypass=${VERCEL_AUTOMATION_BYPASS_SECRET}&x-vercel-set-bypass-cookie=true" ;;
-            *)    BYPASS_URL="${PREVIEW_URL}?x-vercel-protection-bypass=${VERCEL_AUTOMATION_BYPASS_SECRET}&x-vercel-set-bypass-cookie=true" ;;
-          esac
-
+          # Never put the bypass secret in the audited URL / GITHUB_OUTPUT —
+          # LHCI reports persist requestedUrl and may be uploaded publicly.
           CODE="000"
           for i in $(seq 1 40); do
             CODE=$(curl -sL -o /dev/null -w '%{http_code}' \
               -H "x-vercel-protection-bypass: ${VERCEL_AUTOMATION_BYPASS_SECRET}" \
               "${PREVIEW_URL}" || echo "000")
             if [ "${CODE}" = "200" ]; then
-              echo "url=${BYPASS_URL}" >> "$GITHUB_OUTPUT"
+              echo "url=${PREVIEW_URL}" >> "$GITHUB_OUTPUT"
               echo "skip=false" >> "$GITHUB_OUTPUT"
-              echo "Preview ready: ${PREVIEW_URL}"
+              echo "Preview ready (bypass via header only)"
               exit 0
             fi
             sleep 15
           done
 
-          echo "::warning::Preview stayed unreachable with bypass (last HTTP ${CODE}). Skipping Lighthouse."
+          echo "::warning::Preview stayed unreachable with bypass header (last HTTP ${CODE}). Skipping Lighthouse."
           echo "skip=true" >> "$GITHUB_OUTPUT"
 
       - name: 📊 Lighthouse CI
         if: steps.lh_target.outputs.skip != 'true'
         uses: treosh/lighthouse-ci-action@v10
+        env:
+          # Read by lighthouse.config.cjs → collect.settings.extraHeaders
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         with:
           urls: ${{ steps.lh_target.outputs.url }}
           configPath: './lighthouse.config.cjs'
           uploadArtifacts: true
+          # Public LHCI storage is fine only because the audited URL never
+          # contains the bypass secret (header auth only).
           temporaryPublicStorage: true
           runs: 3
 
